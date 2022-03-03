@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/naccelerist/static/css/main.073c9b0a.css",
+    "main.js": "/naccelerist/static/js/main.3eaa3a1f.js",
+    "static/js/787.e0fa5844.chunk.js": "/naccelerist/static/js/787.e0fa5844.chunk.js",
+    "static/media/loginBackground.jpg": "/naccelerist/static/media/loginBackground.24c1ab40189abdb29fdc.jpg",
+    "index.html": "/naccelerist/index.html",
+    "static/media/hiddenPassword.svg": "/naccelerist/static/media/hiddenPassword.e4537af7281b073365fc67ee17511125.svg",
+    "main.073c9b0a.css.map": "/naccelerist/static/css/main.073c9b0a.css.map",
+    "main.3eaa3a1f.js.map": "/naccelerist/static/js/main.3eaa3a1f.js.map",
+    "787.e0fa5844.chunk.js.map": "/naccelerist/static/js/787.e0fa5844.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.3eaa3a1f.js"
+  ]
+}
