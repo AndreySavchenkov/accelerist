@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import {Form, Field} from 'react-final-form'
 import {LoginForm} from "./LoginForm";
 import registrationLink from "../../assets/img/registraionLink.png";
 
@@ -56,7 +55,7 @@ const ToggleContainer = styled.div`
   display: flex;
   margin-top: 25px;
   margin-bottom: 10px;
-  width: 374px;
+  width: 100%;
   height: 40px;
   background: #F8F8F8;
 `
@@ -72,6 +71,13 @@ const ToggleItem = styled.div<toggleItemProps>`
   font-size: 12px;
   line-height: 150%;
   cursor: pointer;
+  &:hover{
+    color: ${props => props.isToogle ? '#122434' : '#122434'};
+  }
+  &:disabled{
+    background-color: ${props => props.isToogle ? '#DCF5FF' : ''};
+    color: ${props => props.isToogle ? '#A8BED2' : '#BFBFBF'};
+  } 
 `
 const FormContainer = styled.div`
   width: 100%;
@@ -90,6 +96,7 @@ const RegistrationLink = styled.img`
   height: 24px;
   border-radius: 50%;
   border: 10px solid #F8F8F8;
+  cursor: pointer;
 `
 
 
