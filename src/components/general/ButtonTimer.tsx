@@ -5,34 +5,24 @@ type Props = {
     text: string
 }
 
-export const Button: FC<Props> = ({text,}) => {
+export const ButtonTimer: FC<Props> = ({text}) => {
     return (
         <>
-            <ButtonBody type="submit">{text}</ButtonBody>
+            <ButtonTimerBody type="submit">{text}</ButtonTimerBody>
         </>
     )
 }
 
-const ButtonBody = styled.button`
+const ButtonTimerBody = styled.button`
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
   line-height: 145%;
   text-align: center;
   font-weight: 600;
-  color: #FFFFFF;
-  background: #2BAEE0;
+  color: #2BAEE0;
+  background: #CEEDF9;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  &:hover {
-    background: #51C2EE;
-  }
-  &:focus {
-    background: #1DA7DC;
-  }
-  &:disabled{
-    background: #CEEDF9;
-    color: #2BAEE0;
-  }
 `

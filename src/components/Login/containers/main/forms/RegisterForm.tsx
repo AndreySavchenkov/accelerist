@@ -3,35 +3,24 @@ import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
-import {Button} from "../general/Button";
+import {Button} from "../../../../general/Button";
 
+type Values = {
+    email: string,
+    password: string,
+}
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
+
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     const togglePasswordShow = () => {
         setIsShowPassword(!isShowPassword)
     }
 
-    const InputPassword = styled.input.attrs({
-        type: isShowPassword ? "password" : "text"
-    })`
-      padding: 10px 40px 10px 16px;
-      width: 100%;
-      height: 46px;
-      border: 1px solid #E8E8E8;
-      box-sizing: border-box;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 155%;
-      color: #122434;
-    `
-
-    const onSubmit = () => {
-
+    const onSubmit = (values: Values) => {
+        console.log(values)
     }
-
 
     return (
         <>
@@ -42,18 +31,35 @@ export const LoginForm = () => {
                     <FormContainer onSubmit={handleSubmit}>
                         <FormItem>
                             <Label>Email</Label>
-                            <Field name="email" component={InputEmail}/>
+                            <Field
+                                name="email"
+                                render={({input, meta}) => (
+                                    <>
+                                        <InputEmail {...input} type={"email"}/>
+                                        {meta.touched && meta.error && <span>{meta.error}</span>}
+                                    </>
+                                )}
+                            />
                         </FormItem>
                         <FormItem>
                             <Label>Password</Label>
-                            <Field name="password" component={InputPassword}/>
-                            <ShowPassword onClick={togglePasswordShow} src={!isShowPassword ? showPassword : hiddenPassword}/>
+                            <Field
+                                name="password"
+                                render={({input, meta}) => (
+                                    <>
+                                        <InputPassword {...input} type={isShowPassword ? "password" : "text"}/>
+                                        {meta.touched && meta.error && <span>{meta.error}</span>}
+                                    </>
+                                )}
+                            />
+                            <ShowPassword onClick={togglePasswordShow}
+                                          src={!isShowPassword ? showPassword : hiddenPassword}/>
                         </FormItem>
                         <Text>
                             I agree that by clicking <Link>“Registration”</Link> I accept the <Link>Terms Of
                             Service</Link> and <Link>Privacy Policy</Link>
                         </Text>
-                        <Button text={"Registration"} onSubmit={onSubmit}/>
+                        <Button text={"Registration"}/>
                     </FormContainer>
                 )}
             />
@@ -78,10 +84,20 @@ const Label = styled.label`
   font-weight: 400;
   color: #737373;
 `
-const InputEmail = styled.input.attrs({
-    type: "Email"
-})`
+const InputEmail = styled.input`
   padding: 10px 16px;
+  width: 100%;
+  height: 46px;
+  border: 1px solid #E8E8E8;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 155%;
+  color: #122434;
+`
+const InputPassword = styled.input`
+  padding: 10px 40px 10px 16px;
   width: 100%;
   height: 46px;
   border: 1px solid #E8E8E8;
@@ -104,19 +120,6 @@ const Link = styled.span`
   font-weight: 600;
   color: #122434;
 `
-// const Button = styled.button`
-//   padding: 12px 0;
-//   width: 100%;
-//   font-size: 16px;
-//   line-height: 145%;
-//   text-align: center;
-//   font-weight: 600;
-//   color: #FFFFFF;
-//   background: #2BAEE0;
-//   border: none;
-//   border-radius: 6px;
-//   cursor: pointer;
-// `
 const ShowPassword = styled.img`
   position: absolute;
   bottom: 13px;

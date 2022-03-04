@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import {LoginForm} from "./LoginForm";
-import registrationLink from "../../assets/img/registraionLink.png";
+import {LoginForm} from "./forms/LoginForm";
+import registrationLink from "../../../../assets/img/registraionLink.png";
+import {RegisterForm} from "./forms/RegisterForm";
 
 type toggleItemProps = {
-    isToogle: boolean
+    isToggle: boolean
 }
 
 export const MainForm = () => {
@@ -16,16 +17,15 @@ export const MainForm = () => {
         setLogin(!isLogin);
     }
 
-
     return (
         <Container>
             <Title>Welcome to Accelerist</Title>
             <ToggleContainer>
-                <ToggleItem onClick={clickHandler} isToogle={isRegister}>Register</ToggleItem>
-                <ToggleItem onClick={clickHandler} isToogle={isLogin}>Login</ToggleItem>
+                <ToggleItem onClick={clickHandler} isToggle={isRegister}>Register</ToggleItem>
+                <ToggleItem onClick={clickHandler} isToggle={isLogin}>Login</ToggleItem>
             </ToggleContainer>
             <FormContainer>
-                <LoginForm/>
+                {!isRegister ? <LoginForm/> : <RegisterForm/>}
             </FormContainer>
             <SomeText>or continue with</SomeText>
             <RegistrationLink src={registrationLink}/>
@@ -60,9 +60,9 @@ const ToggleContainer = styled.div`
   background: #F8F8F8;
 `
 const ToggleItem = styled.div<toggleItemProps>`
-  background-color: ${props => props.isToogle ? '#CAF0FF' : ''};
-  color: ${props => props.isToogle ? '#122434' : '#737373'};
-  border-radius: ${props => props.isToogle ? '6px' : ''};
+  background-color: ${props => props.isToggle ? '#CAF0FF' : ''};
+  color: ${props => props.isToggle ? '#122434' : '#737373'};
+  border-radius: ${props => props.isToggle ? '6px' : ''};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,11 +72,11 @@ const ToggleItem = styled.div<toggleItemProps>`
   line-height: 150%;
   cursor: pointer;
   &:hover{
-    color: ${props => props.isToogle ? '#122434' : '#122434'};
+    color: ${props => props.isToggle ? '#122434' : '#122434'};
   }
   &:disabled{
-    background-color: ${props => props.isToogle ? '#DCF5FF' : ''};
-    color: ${props => props.isToogle ? '#A8BED2' : '#BFBFBF'};
+    background-color: ${props => props.isToggle ? '#DCF5FF' : ''};
+    color: ${props => props.isToggle ? '#A8BED2' : '#BFBFBF'};
   } 
 `
 const FormContainer = styled.div`
