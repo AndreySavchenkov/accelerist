@@ -1,7 +1,8 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga';
-import loginReducer, {signInWorkerSaga} from "./loginSlice";
+import loginReducer from "./login/loginSlice";
 import {takeEvery} from 'redux-saga/effects'
+import {signInWorkerSaga} from "./login/loginSaga";
 
 
 const rootReducer = combineReducers({

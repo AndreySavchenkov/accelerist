@@ -3,6 +3,9 @@ import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
+import {useDispatch} from "react-redux";
+import {signInAction} from "../../../../../redux/login/loginSaga";
+
 
 
 type Values = {
@@ -14,6 +17,7 @@ type Values = {
 export const LoginForm = () => {
 
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const dispatch = useDispatch();
 
     const togglePasswordShow = () => {
         setIsShowPassword(!isShowPassword)
@@ -22,6 +26,7 @@ export const LoginForm = () => {
 
     const onSubmit = (values: Values) => {
         console.log(values)
+        dispatch(signInAction(values.email,values.password))
     }
 
     return (
