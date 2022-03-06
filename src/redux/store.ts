@@ -2,7 +2,7 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga';
 import loginReducer from "./login/loginSlice";
 import {takeEvery} from 'redux-saga/effects'
-import {signInWorkerSaga} from "./login/loginSaga";
+import {signInWorkerSaga, signUpWorkerSaga} from "./login/loginSaga";
 
 
 const rootReducer = combineReducers({
@@ -21,6 +21,7 @@ export const store = configureStore({
 
 function* rootWatcher() {
     yield takeEvery('SAGA/SIGN_IN', signInWorkerSaga);
+    yield takeEvery('SAGA/SIGN_UP', signUpWorkerSaga);
 }
 
 sagaMiddleware.run(rootWatcher)

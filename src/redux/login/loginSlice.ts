@@ -1,8 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {call, put} from 'redux-saga/effects'
-import {authApi} from "../../api/api";
-
-
 
 type user = {
     id: string,
@@ -56,11 +52,15 @@ const loginSlice = createSlice({
             state.accessToken = action.payload.accessToken
             state.user = action.payload.user
         },
+        signUp(state, action: PayloadAction<{ accessToken: string, user: user }>) {
+            state.accessToken = action.payload.accessToken
+            state.user = action.payload.user
+        },
     }
 })
 
 
 
 
-export const {signIn} = loginSlice.actions
+export const {signIn, signUp} = loginSlice.actions
 export default loginSlice.reducer

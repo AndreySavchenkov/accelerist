@@ -4,6 +4,8 @@ import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {Button} from "../../../../general/Button";
+import {signUpAction} from "../../../../../redux/login/loginSaga";
+import {useDispatch} from "react-redux";
 
 type Values = {
     email: string,
@@ -12,6 +14,8 @@ type Values = {
 
 export const RegisterForm = () => {
 
+    const dispatch = useDispatch();
+
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     const togglePasswordShow = () => {
@@ -19,7 +23,7 @@ export const RegisterForm = () => {
     }
 
     const onSubmit = (values: Values) => {
-        console.log(values)
+        dispatch(signUpAction(values.email,values.password))
     }
 
     return (

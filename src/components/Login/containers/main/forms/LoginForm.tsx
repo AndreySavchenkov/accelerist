@@ -23,9 +23,7 @@ export const LoginForm = () => {
         setIsShowPassword(!isShowPassword)
     }
 
-
     const onSubmit = (values: Values) => {
-        console.log(values)
         dispatch(signInAction(values.email,values.password))
     }
 
@@ -81,7 +79,7 @@ export const LoginForm = () => {
                                 I agree that by clicking <Link>“Registration”</Link> I accept the <Link>Terms Of
                                 Service</Link> and <Link>Privacy Policy</Link>
                             </Text>
-                            <ButtonBody type="submit">ddd</ButtonBody>
+                            <ButtonBody type="submit">Login</ButtonBody>
                         </FormContainer>
                     );
                 }}
