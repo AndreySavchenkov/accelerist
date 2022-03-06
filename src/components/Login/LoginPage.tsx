@@ -6,6 +6,7 @@ import {PasswordNew} from "./containers/password/PasswordNew";
 import {PasswordResend} from "./containers/password/PasswordResend";
 import {PasswordReset} from "./containers/password/PasswordReset";
 import {MainForm} from "./containers/main/MainForm";
+import {Route, Routes} from "react-router-dom";
 
 
 export const LoginPage = () => {
@@ -13,10 +14,12 @@ export const LoginPage = () => {
         <>
             <LoginHeader/>
             <Container>
-                <MainForm/>
-                {/*<PasswordReset/>*/}
-                {/*<PasswordResend/>*/}
-                {/*<PasswordNew/>*/}
+                <Routes>
+                    <Route path="/login" element={<MainForm/>}/>
+                    <Route path="/reset" element={<PasswordReset/>}/>
+                    <Route path="/resend" element={<PasswordResend/>}/>
+                    <Route path="/new" element={<PasswordNew/>}/>
+                </Routes>
             </Container>
         </>
     )

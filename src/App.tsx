@@ -1,20 +1,25 @@
 import React from 'react';
 import './App.css';
 import {LoginPage} from "./components/Login/LoginPage";
-
-
+import {Route, Router, Routes} from "react-router-dom";
 
 
 function App() {
     return (
         <>
-            <LoginPage/>
+
+                <Routes>
+                    {/*<Route path="*" element={<LoginPage/>}/>*/}
+                    <Route path={"accelerist/*"}  element={<LoginPage/>}/>
+                    {/*<Route path="expenses" element={<Expenses />} />*/}
+                    {/*<Route path="invoices" element={<Invoices />} />*/}
+                </Routes>
+                {/*<LoginPage/>*/}
+
+
         </>
     );
 }
-
-
-
 
 
 export default App;
