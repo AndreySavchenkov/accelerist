@@ -15,7 +15,7 @@ export const LoginPage = () => {
             <LoginHeader/>
             <Container>
                 <Routes>
-                    <Route path="/login" element={<MainForm/>}/>
+                    <Route path="/" element={<MainForm/>}/>
                     <Route path="/reset" element={<PasswordReset/>}/>
                     <Route path="/resend" element={<PasswordResend/>}/>
                     <Route path="/new" element={<PasswordNew/>}/>

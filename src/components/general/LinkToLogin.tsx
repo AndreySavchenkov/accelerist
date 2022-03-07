@@ -1,9 +1,12 @@
 import React, {FC} from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 export const LinkToLogin: FC = () => {
     return (
-            <LinkToLoginBody type="submit">Return to Login</LinkToLoginBody>
+        <LinkToLoginBody type="submit">
+            <Link to="/accelerist" style={{textDecoration: "none", color: 'inherit'}}>Return to Login</Link>
+        </LinkToLoginBody>
     )
 }
 

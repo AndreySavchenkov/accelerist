@@ -5,6 +5,7 @@ import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {useDispatch} from "react-redux";
 import {signInAction} from "../../../../../redux/login/loginSaga";
+import {Link} from "react-router-dom";
 
 
 
@@ -73,11 +74,11 @@ export const LoginForm = () => {
                                     />
                                     <LabelCheckbox>Remember</LabelCheckbox>
                                 </CheckboxItems>
-                                <CheckboxText>Forgot Password?</CheckboxText>
+                                <Link to="reset" style={{textDecoration: "none"}}><ForgotText>Forgot Password?</ForgotText></Link>
                             </CheckboxContainer>
                             <Text>
-                                I agree that by clicking <Link>“Registration”</Link> I accept the <Link>Terms Of
-                                Service</Link> and <Link>Privacy Policy</Link>
+                                I agree that by clicking <LinkCustom>“Registration”</LinkCustom> I accept the <LinkCustom>Terms Of
+                                Service</LinkCustom> and <LinkCustom>Privacy Policy</LinkCustom>
                             </Text>
                             <ButtonBody type="submit">Login</ButtonBody>
                         </FormContainer>
@@ -137,7 +138,7 @@ const Text = styled.div`
   line-height: 150%;
   color: #737373;
 `
-const Link = styled.span`
+const LinkCustom = styled.span`
   font-weight: 600;
   color: #122434;
 `
@@ -168,10 +169,11 @@ const CheckboxItems = styled.div`
   display: flex;
   align-items: center;
 `
-const CheckboxText = styled.div`
+const ForgotText = styled.div`
   font-size: 12px;
   line-height: 150%;
   color: #737373;
+  cursor: pointer;
 `
 const ButtonBody = styled.button`
   padding: 12px 0;
