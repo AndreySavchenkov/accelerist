@@ -3,9 +3,10 @@ import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
-import {Button} from "../../../../general/Button";
-import {signUpAction} from "../../../../../redux/login/loginSaga";
+import {Button} from "components/general/Button";
+import {signUpAction} from "redux/login/loginSaga";
 import {useDispatch} from "react-redux";
+import {composeValidators, minValue, required} from "helpers/validation";
 
 type Values = {
     email: string,
@@ -26,29 +27,10 @@ export const RegisterForm = () => {
         dispatch(signUpAction(values.email, values.password))
     }
 
-    const required = (value:any) => (value ? undefined : 'Required')
-    const minValue = (min: any) => (value: any) =>
-        value.length >= min ? undefined : `Should be greater than ${min}`
-    const composeValidators = (...validators: any) => (value:any) =>
-        validators.reduce((error:any, validator:any) => error || validator(value), undefined)
-
-
     return (
         <>
             <Form
                 onSubmit={onSubmit}
-                // validate={composeValidators(required,minValue(6))
-                // {
-                //     const errors: any = {};
-                //     if (!values.email) {
-                //         errors.email = 'Required'
-                //     }
-                //     if (!values.password) {
-                //         errors.password = 'Required'
-                //     }
-                //     return errors
-                // }
-               // }
                 render={({handleSubmit}) => (
                     <FormContainer onSubmit={handleSubmit}>
                         <FormItem>

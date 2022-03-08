@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import {Button} from "../../../general/Button";
 import {LinkToLogin} from "../../../general/LinkToLogin";
+import {composeValidators, required} from "../../../../helpers/validation";
 
 type Values = {
     email: string,
@@ -21,17 +22,24 @@ export const PasswordReset = () => {
                 <Text>Enter your email to receive instructions on how to reset your password.</Text>
                 <Form
                     onSubmit={onSubmit}
-                    // validate={validate}
                     render={({handleSubmit}) => (
                         <FormContainer onSubmit={handleSubmit}>
                             <FormItem>
                                 <Label>Email</Label>
                                 <Field
                                     name="email"
+                                    validate={composeValidators(required)}
                                     render={({input, meta}) => (
                                         <>
-                                            <InputEmail {...input} type={"email"}/>
-                                            {meta.touched && meta.error && <span>{meta.error}</span>}
+                                            <InputEmail {...input} type={"email"}
+                                                        placeholder='Enter email'
+                                                        style={meta.touched && meta.error ?
+                                                            {
+                                                                outline: '1px solid #F05658',
+                                                                backgroundColor: 'rgb(255, 242, 242)'
+                                                            }
+                                                            : undefined}/>
+                                            {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
                                         </>
                                     )}
                                 />
@@ -99,4 +107,15 @@ const InputEmail = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+  &:focus {
+    outline: 1px solid #2BAEE0;
+  }
+`
+const ErrorMessage = styled.span`
+  color: #F05658;
+  font-size: 12px;
+  line-height: 150%;
+  position: absolute;
+  bottom: 19px;
+  left: 0;
 `

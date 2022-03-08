@@ -4,8 +4,9 @@ import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {useDispatch} from "react-redux";
-import {signInAction} from "../../../../../redux/login/loginSaga";
+import {signInAction} from "redux/login/loginSaga";
 import {Link} from "react-router-dom";
+import {composeValidators, minValue, required} from "helpers/validation";
 
 
 
@@ -39,10 +40,18 @@ export const LoginForm = () => {
                                 <Label>Email</Label>
                                 <Field
                                     name="email"
+                                    validate={composeValidators(required)}
                                     render={({input, meta}) => (
                                         <>
-                                            <InputEmail {...input} type={"email"}/>
-                                            {meta.touched && meta.error && <span>{meta.error}</span>}
+                                            <InputEmail {...input} type={"email"}
+                                                        placeholder='Enter email'
+                                                        style={meta.touched && meta.error ?
+                                                            {
+                                                                outline: '1px solid #F05658',
+                                                                backgroundColor: 'rgb(255, 242, 242)'
+                                                            }
+                                                            : undefined}/>
+                                            {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
                                         </>
                                     )}
                                 />
@@ -51,10 +60,18 @@ export const LoginForm = () => {
                                 <Label>Password</Label>
                                 <Field
                                     name="password"
+                                    validate={composeValidators(required,minValue(6))}
                                     render={({input, meta}) => (
                                         <>
-                                            <InputPassword {...input} type={isShowPassword ? "password" : "text"}/>
-                                            {meta.touched && meta.error && <span>{meta.error}</span>}
+                                            <InputPassword placeholder='Enter password' {...input}
+                                                           type={isShowPassword ? "password" : "text"}
+                                                           style={meta.touched && meta.error ?
+                                                               {
+                                                                   outline: '1px solid #F05658',
+                                                                   backgroundColor: 'rgb(255, 242, 242)'
+                                                               }
+                                                               : undefined}/>
+                                            {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
                                         </>
                                     )}
                                 />
@@ -117,6 +134,9 @@ const InputEmail = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+  &:focus {
+    outline: 1px solid #2BAEE0;
+  }
 `
 const InputPassword = styled.input`
   padding: 10px 40px 10px 16px;
@@ -129,6 +149,9 @@ const InputPassword = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+  &:focus {
+    outline: 1px solid #2BAEE0;
+  }
 `
 const Text = styled.div`
   margin-top: 40px;
@@ -200,4 +223,12 @@ const ButtonBody = styled.button`
     background: #CEEDF9;
     color: #2BAEE0;
   }
+`
+const ErrorMessage = styled.span`
+  color: #F05658;
+  font-size: 12px;
+  line-height: 150%;
+  position: absolute;
+  bottom: -19px;
+  left: 0;
 `
