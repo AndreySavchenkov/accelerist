@@ -76,7 +76,7 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  width: 1320px;
+  width: 1440px;
   @media (max-width: 1330px) {
     padding: 0 5px;
   }
@@ -86,7 +86,7 @@ const LogoAndMenu = styled.div`
   align-items: center;
 `
 const Logo = styled.img`
-  margin-left: 32px;
+  margin-left: 60px;
   @media (max-width: 450px) {
     display: none;
   }
@@ -99,10 +99,7 @@ const LogoSmall = styled.img`
 `
 const Nav = styled.nav`
   margin-left: 50px;
-  @media (max-width: 840px) {
-    margin-left: 20px;
-  }
-  @media (max-width: 768px) {
+  @media (max-width: 1040px) {
     display: none;
   }
 
@@ -115,13 +112,7 @@ const Link = styled.a`
   font-size: 12px;
   line-height: 150%;
   color: #122434;
-  @media (max-width: 915px) {
-    margin-right: 15px;
-  }
-  @media (max-width: 830px) {
-    margin-right: 5px;
-  }
-  @media (max-width: 768px) {
+  @media (max-width: 1040px) {
     margin-bottom: 32px;
     font-size: 16px;
     line-height: 155%;
@@ -136,34 +127,37 @@ const Profile = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  @media (max-width: 768px) {
+  @media (max-width: 1040px) {
     display: none;
   }
 `
 const ProfileLogoContainer = styled.div`
   background-color: #fff;
+  margin-right: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
   border-radius: 6px;
-  margin-right: 12px;
-
 `
 const ProfileLogo = styled.img`
 
 `
 const ProfileText = styled.span`
   font-size: 12px;
+  margin-right: 60px;
   line-height: 150%;
   color: #122434;
 `
 const MenuBurgerIcon = styled.img`
   margin-right: 28px;
   cursor: pointer;
-  @media (min-width: 768px) {
+  @media (min-width: 1040px) {
     display: none;
+  }
+  @media (max-width: 650px) {
+    margin-right: 16px;
   }
 `
 const MenuBurgerContainer = styled.div`
@@ -193,7 +187,6 @@ const CloseButton = styled.img`
 const MenuBurgerNav = styled.nav`
   margin-top: 130px;
   margin-left: 40px;
-  
   display: flex;
   flex-direction: column;
 `
