@@ -5,7 +5,7 @@ import mail from "assets/img/mail.png"
 import upload from "assets/img/upload.png"
 import leftArray from "assets/img/arrayLeft.png"
 import rightArray from "assets/img/arrayRight.png"
-import {Cards} from "./Cards";
+import {Card} from "./Card";
 
 
 export const SearchFoundPanel = () => {
@@ -35,7 +35,14 @@ export const SearchFoundPanel = () => {
                             <RightArray src={rightArray}/>
                         </Navigation>
                     </SettingsPanel>
-                    <Cards/>
+                    <Cards>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                    </Cards>
                 </SearchContainer>
             </InnerContainer>
         </Container>
@@ -54,7 +61,7 @@ const InnerContainer = styled.div`
 const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1096px;
+  max-width: 1200px;
   width: 100%;
 `
 const Text = styled.span`
@@ -65,7 +72,7 @@ const Text = styled.span`
   font-weight: 600;
   line-height: 145%;
   color: #122434;
-  @media(max-width: 650px){
+  @media (max-width: 650px) {
     font-size: 12px;
     margin-left: 16px;
     margin-bottom: 20px;
@@ -73,9 +80,9 @@ const Text = styled.span`
   }
 `
 const TextHiden = styled.span`
-@media(max-width: 460px){
-  display: none;
-}
+  @media (max-width: 460px) {
+    display: none;
+  }
 `
 const SettingsPanel = styled.div`
   display: flex;
@@ -87,7 +94,7 @@ const Items = styled.div`
   display: flex;
   align-items: center;
   margin-left: 60px;
-  @media(max-width: 650px){
+  @media (max-width: 650px) {
     margin-left: 16px;
   }
 `
@@ -105,19 +112,19 @@ const ItemIcon = styled.img`
 `
 const Navigation = styled.div`
   position: relative;
-  @media(max-width: 650px){
+  @media (max-width: 650px) {
     display: none;
   }
 `
 const TextNavigation = styled.span`
-  margin-right: 25px;
+  margin-right: 60px;
   font-weight: 600;
   font-size: 12px;
   line-height: 150%;
   color: #122434;
 `
 const LeftArray = styled.img`
-position: absolute;
+  position: absolute;
   top: 0;
   left: -25px;
   cursor: pointer;
@@ -127,4 +134,13 @@ const RightArray = styled.img`
   top: 0;
   left: 65px;
   cursor: pointer;
+`
+const Cards = styled.div`
+  margin-left: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  @media (max-width: 932px) {
+    justify-content: center;
+    margin-left: 0;
+  }
 `

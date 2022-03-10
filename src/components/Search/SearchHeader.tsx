@@ -105,7 +105,6 @@ const Nav = styled.nav`
 
 `
 const Link = styled.a`
-  letter-spacing: 0.6px;
   margin-right: 28px;
   font-weight: 400;
   text-decoration: none;
@@ -119,8 +118,7 @@ const Link = styled.a`
   }
 
   &:active, &:hover {
-    font-weight: 600;
-    letter-spacing: 0;
+    color: #000;
   }
 `
 const Profile = styled.div`

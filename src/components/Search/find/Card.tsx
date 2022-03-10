@@ -4,10 +4,9 @@ import appleLogo from "assets/img/apple.png"
 import heart from "assets/img/heart.png"
 
 
-export const Cards = () => {
+export const Card = () => {
     return (
-        <Container>
-            <Card>
+            <Container>
                 <Ranking>
                     <ContainerLogo>
                         <Logo src={appleLogo}/>
@@ -38,21 +37,31 @@ export const Cards = () => {
                         <ProfileButton>Profile</ProfileButton>
                     </ButtonsContainer>
                 </MainContainer>
-            </Card>
-        </Container>
+            </Container>
     )
 }
 
-const Container = styled.div`
 
-`
-const Card = styled.div`
+const Container = styled.div`
+  position: relative;
   padding: 26px 32px;
   margin-bottom: 24px;
+  margin-right: 24px;
   display: flex;
-  max-width: 536px;
+  max-width: 475px;
   width: 100%;
   background: #fff;
+  @media (max-width: 1204px) {
+    width: 340px;
+    padding-bottom: 75px;
+  }
+  @media (max-width: 932px) {
+    margin-right: 0;
+  }
+  @media (max-width: 460px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `
 const Ranking = styled.div`
   border: 1px solid #E8E8E8;
@@ -63,7 +72,10 @@ const ContainerLogo = styled.div`
   border-bottom: 1px solid #E8E8E8;
 `
 const Logo = styled.img`
-
+  @media (max-width: 1204px) {
+    width: 80px;
+    height: 80px;
+  }
 `
 const ContainerInfo = styled.div`
   display: flex;
@@ -88,6 +100,9 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 16px;
+  @media (max-width: 1204px) {
+    max-width: 188px;
+  }
 `
 const MainTitle = styled.span`
   font-size: 16px;
@@ -111,9 +126,16 @@ const InnerContainer = styled.div`
   display: flex;
   padding-bottom: 12px;
   border-bottom: 1px solid #E8E8E8;
+  @media (max-width: 1204px) {
+    flex-direction: column;
+    border-bottom: none;
+  }
 `
 const FocusContainer = styled.div`
   padding-right: 20px;
+  @media (max-width: 1204px) {
+    padding-right: 0;
+  }
 `
 const FocusTitle = styled.span`
   display: block;
@@ -122,6 +144,9 @@ const FocusTitle = styled.span`
   font-size: 12px;
   line-height: 150%;
   color: #737373;
+  @media (max-width: 1204px) {
+    margin-top: 16px;
+  }
 `
 const FocusInfo = styled.div`
   display: flex;
@@ -130,9 +155,20 @@ const FocusInfo = styled.div`
   font-size: 12px;
   line-height: 150%;
   color: #122434;
+  @media (max-width: 1204px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `
 const RevenueContainer = styled.div`
   margin-left: 20px;
+  @media (max-width: 1204px) {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    width: 100%;
+  }
 `
 const RevenueTitle = styled.span`
   display: block;
@@ -141,6 +177,11 @@ const RevenueTitle = styled.span`
   font-size: 12px;
   line-height: 150%;
   color: #737373;
+  @media (max-width: 1204px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
 `
 const RevenuePrice = styled.span`
   font-weight: 600;
@@ -153,12 +194,32 @@ const ButtonsContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 24px;
+  @media (max-width: 1204px) {
+    position: absolute;
+    bottom: 24px;
+    left: 32px
+  }
+  @media (max-width: 458px) {
+    left: 10px;
+  }
 `
 const FavoriteButton = styled.img`
   padding: 5px;
   border-radius: 6px;
   border: 1px solid #E8E8E8;
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid #BFBFBF;
+  }
+
+  &:active {
+    border: 1px solid #F05658;
+  }
+
+  @media (max-width: 1204px) {
+    margin-right: 12px;
+  }
 `
 const ProfileButton = styled.div`
   padding: 9px 96px;
@@ -170,12 +231,32 @@ const ProfileButton = styled.div`
   border: 1px solid #2BAEE0;
   border-radius: 6px;
   cursor: pointer;
+
+  &:hover {
+    background: #EBF9FF;
+    color: #2BAEE0;
+  }
+
+  &:active {
+    background: #CAF0FF;
+  }
+
+  @media (max-width: 1204px) {
+    padding: 9px 128px;
+  }
+  @media (max-width: 458px) {
+    padding: 9px 126px;
+  }
+
 `
 const BorderLine = styled.div`
   align-self: flex-end;
   width: 1px;
   height: 40px;
   background-color: #E8E8E8;
+  @media (max-width: 1204px) {
+    display: none;
+  }
 `
 const Circle = styled.div`
   width: 4px;
