@@ -10,60 +10,41 @@ import {Card} from "./Card";
 
 export const SearchFoundPanel = () => {
     return (
-        <Container>
-            <InnerContainer>
-                <SearchContainer>
-                    <Text>Found 32 companies</Text>
-                    <SettingsPanel>
-                        <Items>
-                            <Item>
-                                <ItemIcon src={folderPlus}/>
-                                Save <TextHiden>List</TextHiden>
-                            </Item>
-                            <Item>
-                                <ItemIcon src={upload}/>
-                                Export <TextHiden>to Excel</TextHiden>
-                            </Item>
-                            <Item>
-                                <ItemIcon src={mail}/>
-                                Accelerist <TextHiden>Support</TextHiden>
-                            </Item>
-                        </Items>
-                        <Navigation>
-                            <TextNavigation>1-12 of 32</TextNavigation>
-                            <LeftArray src={leftArray}/>
-                            <RightArray src={rightArray}/>
-                        </Navigation>
-                    </SettingsPanel>
-                    <Cards>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                    </Cards>
-                </SearchContainer>
-            </InnerContainer>
-        </Container>
+        <>
+            <Text>Found 32 companies</Text>
+            <SettingsPanel>
+                <Items>
+                    <Item>
+                        <ItemIcon src={folderPlus}/>
+                        Save <TextHiden>List</TextHiden>
+                    </Item>
+                    <Item>
+                        <ItemIcon src={upload}/>
+                        Export <TextHiden>to Excel</TextHiden>
+                    </Item>
+                    <Item>
+                        <ItemIcon src={mail}/>
+                        Accelerist <TextHiden>Support</TextHiden>
+                    </Item>
+                </Items>
+                <Navigation>
+                    <TextNavigation>1-12 of 32</TextNavigation>
+                    <LeftArray src={leftArray}/>
+                    <RightArray src={rightArray}/>
+                </Navigation>
+            </SettingsPanel>
+            <Cards>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+            </Cards>
+        </>
     )
 }
 
-const Container = styled.div`
-  display: flex;
-  background: #F9F9F9;
-`
-const InnerContainer = styled.div`
-  display: flex;
-  margin: 0 auto;
-  width: 1440px;
-`
-const SearchContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  width: 100%;
-`
 const Text = styled.span`
   margin-left: 60px;
   margin-top: 32px;

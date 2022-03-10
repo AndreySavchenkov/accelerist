@@ -51,7 +51,7 @@ const Title = styled.span`
   line-height: 148%;
   color: #122434;
 `
-const ToggleContainer = styled.div`
+export const ToggleContainer = styled.div`
   display: flex;
   margin-top: 25px;
   margin-bottom: 10px;
@@ -59,7 +59,7 @@ const ToggleContainer = styled.div`
   height: 40px;
   background: #F8F8F8;
 `
-const ToggleItem = styled.div<toggleItemProps>`
+export const ToggleItem = styled.div<toggleItemProps>`
   background-color: ${props => props.isToggle ? '#CAF0FF' : ''};
   color: ${props => props.isToggle ? '#122434' : '#737373'};
   border-radius: ${props => props.isToggle ? '6px' : ''};

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import logoZoom from "assets/img/zoom-out.png"
 import logoSlider from "assets/img/sliders.png"
+import {Link} from "react-router-dom";
 
 
 export const SearchPanel = () => {
@@ -33,8 +34,8 @@ export const SearchPanel = () => {
                                                        : undefined}
                                         />
                                         {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
-                                        <LogoZoom src={logoZoom}/>
-                                        <LogoSlider src={logoSlider}/>
+                                        <Link to="accelerist/search"><LogoZoom src={logoZoom}/></Link>
+                                        <Link to="accelerist/filter"><LogoSlider src={logoSlider}/></Link>
                                     </>
                                 )}
                             />
