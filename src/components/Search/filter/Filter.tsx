@@ -2,38 +2,97 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {ToggleContainer, ToggleItem} from "../../Login/containers/main/MainForm";
 import {Field, Form} from "react-final-form";
-import down from "assets/img/chevron-down.png"
-import top from "assets/img/chevron-top.png"
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {Box, Slider} from "@mui/material";
+import {Link} from "react-router-dom";
 
-function valuetext(value: number) {
-    return `${value}°C`;
-}
 
 export const Filter = () => {
     const [isAdvanced, setAdvanced] = useState(true);
     const [isCustomize, setCustomize] = useState(false);
+
+    const [isSingle, setIsSingle] = useState(true);
+    const [isMarried, setIsMarried] = useState(false)
+
+    const [isMale, setIsMale] = useState(true);
+    const [isFemale, setIsFemale] = useState(false);
+    const [isBoth, setIsBoth] = useState(false);
+
+    const showGender = (name: string) => {
+        if (name === 'male') {
+            setIsMale(true);
+            setIsFemale(false);
+            setIsBoth(false);
+        }
+        if (name === 'female') {
+            setIsMale(false);
+            setIsFemale(true);
+            setIsBoth(false);
+        }
+        if (name === 'both') {
+            setIsMale(false);
+            setIsFemale(false);
+            setIsBoth(true);
+        }
+    }
+    const consoleGender = (male: boolean, female: boolean, both: boolean) => {
+        if (isMale) {
+            return 'male'
+        }
+        if (isFemale) {
+            return 'female'
+        }
+        if (isBoth) {
+            return 'both'
+        }
+    }
+
+
     const [value, setValue] = React.useState<number[]>([20, 37]);
+
+    const handleChange = (event: Event, newValue: number | number[]) => {
+        setValue(newValue as number[]);
+    };
+
+
+    const [age, setAge] = React.useState<number[]>([30, 45]);
+
+    const handleChangeAge = (event: Event, newValue: number | number[]) => {
+        setAge(newValue as number[]);
+    };
+
 
     const clickHandler = () => {
         setAdvanced(!isAdvanced);
         setCustomize(!isCustomize);
     }
-
-
-    const onSubmit = () => {
-
+    const clickHandlerGender = () => {
+        setIsSingle(!isSingle);
+        setIsMarried(!isMarried);
     }
 
 
-    const handleChange = (event: Event, newValue: number | number[]) => {
-        setValue(newValue as number[]);
-    };
+    const onSubmit = (values: any) => {
+        console.log('Form values ->', values)
+        console.log('Industry ->', industry)
+        console.log('Revenue ->', value)
+        console.log('Relations ->', isSingle ? 'single' : 'married')
+        console.log('Gender ->', consoleGender(isMale, isFemale, isBoth))
+        console.log('Location ->', location)
+        console.log('Scope ->', scope)
+        console.log('Goals ->', goals)
+        console.log('Focus ->', focus)
+        console.log('Contributions ->', contributions)
+        console.log('Household ->', household)
+        console.log('Ethnicity ->', ethnicity)
+        console.log('Age ->', age)
+    }
+
+
     const icon = <CheckBoxOutlineBlankIcon fontSize="small"/>;
     const checkedIcon = <CheckBoxIcon fontSize="small"/>;
     const industryData = [
@@ -41,6 +100,15 @@ export const Filter = () => {
         {title: 'Entertainment and Recrea..'},
         {title: 'Bars and Food Sevices'},
     ];
+
+    const [industry, setIndustry] = useState([{title: ''}])
+    const [location, setLocation] = useState([{title: ''}])
+    const [scope, setScope] = useState([{title: ''}])
+    const [goals, setGoals] = useState([{title: ''}])
+    const [focus, setFocus] = useState([{title: ''}])
+    const [contributions, setContributions] = useState([{title: ''}])
+    const [household, setHousehold] = useState([{title: ''}])
+    const [ethnicity, setEthnicity] = useState([{title: ''}])
 
     return (
         <Container>
@@ -51,266 +119,420 @@ export const Filter = () => {
             </ToggleContainer>
             <Form
                 onSubmit={onSubmit}
-                render={({handleSubmit}) => (
-                    <MainForm onSubmit={handleSubmit}>
-                        <CompanyTitle>Company</CompanyTitle>
-                        <CompanyContainer>
-                            <InnerContainer>
-                                <OneForm>
-                                    <Field
-                                        name="industry"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>Industry</Label>
-                                                <Autocomplete
-                                                    multiple
-                                                    id="industry"
-                                                    options={industryData}
-                                                    disableCloseOnSelect
-                                                    getOptionLabel={(option) => option.title}
-                                                    renderOption={(props, option, {selected}) => (
-                                                        <li {...props}>
-                                                            <Checkbox
-                                                                icon={icon}
-                                                                checkedIcon={checkedIcon}
-                                                                style={{marginRight: 10}}
-                                                                checked={selected}
+                render={({handleSubmit}) => {
+                    return (
+                        <MainForm onSubmit={handleSubmit}>
+                            <CompanyTitle>Company</CompanyTitle>
+                            <CompanyContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="industry"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Industry</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="industry"
+                                                        options={industryData}
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params}
                                                             />
-                                                            {option.title}
-                                                        </li>
-                                                    )}
-                                                    style={{width: 500}}
-                                                    renderInput={(params) => (
-                                                        <TextField {...params} />
-                                                    )}
-                                                />
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                                <OneForm>
-                                    <Field
-                                        name="location"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>Geographic Location</Label>
-                                                <Autocomplete
-                                                    multiple
-                                                    id="location"
-                                                    options={industryData}
-                                                    disableCloseOnSelect
-                                                    getOptionLabel={(option) => option.title}
-                                                    renderOption={(props, option, {selected}) => (
-                                                        <li {...props}>
-                                                            <Checkbox
-                                                                icon={icon}
-                                                                checkedIcon={checkedIcon}
-                                                                style={{marginRight: 10}}
-                                                                checked={selected}
-                                                            />
-                                                            {option.title}
-                                                        </li>
-                                                    )}
-                                                    style={{width: 500}}
-                                                    renderInput={(params) => (
-                                                        <TextField {...params} />
-                                                    )}
-                                                />
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                            </InnerContainer>
-                            <InnerContainer>
-                                <OneForm>
-                                    <Field
-                                        name="scope"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>Scope</Label>
-                                                <Autocomplete
-                                                    multiple
-                                                    id="scope"
-                                                    options={industryData}
-                                                    disableCloseOnSelect
-                                                    getOptionLabel={(option) => option.title}
-                                                    renderOption={(props, option, {selected}) => (
-                                                        <li {...props}>
-                                                            <Checkbox
-                                                                icon={icon}
-                                                                checkedIcon={checkedIcon}
-                                                                style={{marginRight: 10}}
-                                                                checked={selected}
-                                                            />
-                                                            {option.title}
-                                                        </li>
-                                                    )}
-                                                    style={{width: 500}}
-                                                    renderInput={(params) => (
-                                                        <TextField {...params} />
-                                                    )}
-                                                />
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                                <OneForm>
-                                    <Field
-                                        name="goals"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>SDG Goals</Label>
-                                                <Autocomplete
-                                                    multiple
-                                                    id="goals"
-                                                    options={industryData}
-                                                    disableCloseOnSelect
-                                                    getOptionLabel={(option) => option.title}
-                                                    renderOption={(props, option, {selected}) => (
-                                                        <li {...props}>
-                                                            <Checkbox
-                                                                icon={icon}
-                                                                checkedIcon={checkedIcon}
-                                                                style={{marginRight: 10}}
-                                                                checked={selected}
-                                                            />
-                                                            {option.title}
-                                                        </li>
-                                                    )}
-                                                    style={{width: 500}}
-                                                    renderInput={(params) => (
-                                                        <TextField {...params} />
-                                                    )}
-                                                />
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                            </InnerContainer>
-                            <InnerContainer>
-                                <OneForm>
-                                    <Field
-                                        name="focus"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>CDR Focus</Label>
-                                                <Autocomplete
-                                                    multiple
-                                                    id="focus"
-                                                    options={industryData}
-                                                    disableCloseOnSelect
-                                                    getOptionLabel={(option) => option.title}
-                                                    renderOption={(props, option, {selected}) => (
-                                                        <li {...props}>
-                                                            <Checkbox
-                                                                icon={icon}
-                                                                checkedIcon={checkedIcon}
-                                                                style={{marginRight: 10}}
-                                                                checked={selected}
-                                                            />
-                                                            {option.title}
-                                                        </li>
-                                                    )}
-                                                    style={{width: 500}}
-                                                    renderInput={(params) => (
-                                                        <TextField {...params} />
-                                                    )}
-                                                />
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                                <OneForm>
-                                    <Field
-                                        name="contributions"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>Total Annual Contributions</Label>
-                                                <Autocomplete
-                                                    multiple
-                                                    id="contributions"
-                                                    options={industryData}
-                                                    disableCloseOnSelect
-                                                    getOptionLabel={(option) => option.title}
-                                                    renderOption={(props, option, {selected}) => (
-                                                        <li {...props}>
-                                                            <Checkbox
-                                                                icon={icon}
-                                                                checkedIcon={checkedIcon}
-                                                                style={{marginRight: 10}}
-                                                                checked={selected}
-                                                            />
-                                                            {option.title}
-                                                        </li>
-                                                    )}
-                                                    style={{width: 500}}
-                                                    renderInput={(params) => (
-                                                        <TextField {...params} />
-                                                    )}
-                                                />
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                            </InnerContainer>
-                            <InnerContainer>
-                                <OneForm>
-                                    <Field
-                                        name="revenue"
-                                        multiple
-                                        type="select"
-                                        render={({input, meta}) => (
-                                            <>
-                                                <Label>Revenue</Label>
-                                                <Box sx={{width: 500}}>
-                                                    <Slider
-                                                        getAriaLabel={() => 'Temperature range'}
-                                                        value={value}
-                                                        onChange={handleChange}
-                                                        valueLabelDisplay="auto"
-                                                        getAriaValueText={valuetext}
+                                                        )}
+                                                        value={industry}
+                                                        onChange={(_event, option) => {
+                                                            setIndustry(option);
+                                                            input.onChange(option)
+                                                        }}
                                                     />
-                                                </Box>
-                                            </>
-                                        )}
-                                    />
-                                </OneForm>
-                            </InnerContainer>
-                        </CompanyContainer>
-                        <CompanyTitle>Customer Demographics</CompanyTitle>
-                        <CustomerContainer>
-                            <InnerContainer>
-                                <OneForm>
-                                    <Label>Gender</Label>
-
-                                </OneForm>
-                                <OneForm>
-                                    <Label>Relations</Label>
-
-                                </OneForm>
-                            </InnerContainer>
-                        </CustomerContainer>
-                        {/*<Button text={"Registration"}/>*/}
-                    </MainForm>
-                )}
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                    <OneForm>
+                                        <Field
+                                            name="location"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Geographic Location</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="location"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option: any) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params}
+                                                            />
+                                                        )}
+                                                        value={location}
+                                                        onChange={(_event, option) => {
+                                                            setLocation(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="scope"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Scope</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="scope"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params} />
+                                                        )}
+                                                        value={scope}
+                                                        onChange={(_event, option) => {
+                                                            setScope(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                    <OneForm>
+                                        <Field
+                                            name="goals"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>SDG Goals</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="goals"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params} />
+                                                        )}
+                                                        value={goals}
+                                                        onChange={(_event, option) => {
+                                                            setGoals(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="focus"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>CDR Focus</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="focus"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params} />
+                                                        )}
+                                                        value={focus}
+                                                        onChange={(_event, option) => {
+                                                            setFocus(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                    <OneForm>
+                                        <Field
+                                            name="contributions"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Total Annual Contributions</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="contributions"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params} />
+                                                        )}
+                                                        value={contributions}
+                                                        onChange={(_event, option) => {
+                                                            setContributions(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="revenue"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Revenue</Label>
+                                                    <Box sx={{width: 500}}>
+                                                        <Slider
+                                                            value={value}
+                                                            onChange={handleChange}
+                                                            valueLabelDisplay="auto"
+                                                        />
+                                                    </Box>
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                            </CompanyContainer>
+                            <CompanyTitle>Customer Demographics</CompanyTitle>
+                            <CustomerContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="gender"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Gender</Label>
+                                                    <ToggleContainer style={{width: '95%'}}>
+                                                        <ToggleItem onClick={() => showGender('male')}
+                                                                    isToggle={isMale}>Male</ToggleItem>
+                                                        <ToggleItem onClick={() => showGender('female')}
+                                                                    isToggle={isFemale}>Female</ToggleItem>
+                                                        <ToggleItem onClick={() => showGender('both')}
+                                                                    isToggle={isBoth}>Both</ToggleItem>
+                                                    </ToggleContainer>
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                    <OneForm>
+                                        <Field
+                                            name="relations"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Relations</Label>
+                                                    <ToggleContainer style={{width: '95%'}}>
+                                                        <ToggleItem onClick={clickHandlerGender}
+                                                                    isToggle={isSingle}>Single</ToggleItem>
+                                                        <ToggleItem onClick={clickHandlerGender}
+                                                                    isToggle={isMarried}>Married</ToggleItem>
+                                                    </ToggleContainer>
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="household"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Household Income</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="household"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params} />
+                                                        )}
+                                                        value={household}
+                                                        onChange={(_event, option) => {
+                                                            setHousehold(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                    <OneForm>
+                                        <Field
+                                            name="ethnicity"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Ethnicity</Label>
+                                                    <Autocomplete
+                                                        multiple
+                                                        id="ethnicity"
+                                                        options={industryData}
+                                                        disableCloseOnSelect
+                                                        getOptionLabel={(option) => option.title}
+                                                        renderOption={(props, option, {selected}) => (
+                                                            <li {...props}>
+                                                                <Checkbox
+                                                                    icon={icon}
+                                                                    checkedIcon={checkedIcon}
+                                                                    style={{marginRight: 10}}
+                                                                    checked={selected}
+                                                                />
+                                                                {option.title}
+                                                            </li>
+                                                        )}
+                                                        style={{width: 500}}
+                                                        renderInput={(params) => (
+                                                            <TextField {...params} />
+                                                        )}
+                                                        value={ethnicity}
+                                                        onChange={(_event, option) => {
+                                                            setEthnicity(option);
+                                                            input.onChange(option)
+                                                        }}
+                                                    />
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                                <InnerContainer>
+                                    <OneForm>
+                                        <Field
+                                            name="age"
+                                            type="select"
+                                            render={({...input}) => (
+                                                <>
+                                                    <Label>Age</Label>
+                                                    <Box sx={{width: 500}}>
+                                                        <Slider
+                                                            value={age}
+                                                            onChange={handleChangeAge}
+                                                            valueLabelDisplay="auto"
+                                                        />
+                                                    </Box>
+                                                </>
+                                            )}
+                                        />
+                                    </OneForm>
+                                </InnerContainer>
+                            </CustomerContainer>
+                            <ButtonContainer>
+                                <Link to="/accelerist/search"><ButtonClose>Close</ButtonClose></Link>
+                                <ButtonSearch type={"submit"}>Search</ButtonSearch>
+                            </ButtonContainer>
+                        </MainForm>
+                    )
+                }}
             />
         </Container>
     )
 }
 const Container = styled.div`
   margin-left: 60px;
+  margin-bottom: 60px;
   margin-top: 30px;
   padding: 40px;
   background: #ffffff;
@@ -340,7 +562,7 @@ const InnerContainer = styled.div`
   margin-bottom: 24px;
 `
 const OneForm = styled.div`
-
+  width: 100%;
 `
 const CompanyTitle = styled.span`
   padding-top: 34px;
@@ -356,3 +578,60 @@ const Label = styled.span`
   color: #737373;
   padding-bottom: 4px;
 `
+const ButtonContainer = styled.div`
+
+`
+const ButtonSearch = styled.button`
+  padding: 12px 0;
+  width: 146px;
+  font-size: 16px;
+  line-height: 145%;
+  text-align: center;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: #2BAEE0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #51C2EE;
+  }
+
+  &:focus {
+    background: #1DA7DC;
+  }
+
+  &:disabled {
+    background: #CEEDF9;
+    color: #2BAEE0;
+  }
+`
+const ButtonClose = styled.button`
+  margin-right: 8px;
+  padding: 12px 0;
+  width: 146px;
+  font-size: 16px;
+  line-height: 145%;
+  text-align: center;
+  font-weight: 600;
+  color: #122434;
+  background: #FFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #BFBFBF;
+  }
+
+  &:focus {
+    border: 1px solid #2BAEE0;
+  }
+
+  &:disabled {
+    border: 1px solid #E8E8E8;
+    color: #E8E8E8;
+  }
+`
+
