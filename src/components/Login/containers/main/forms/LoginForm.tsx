@@ -91,7 +91,7 @@ export const LoginForm = () => {
                                     />
                                     <LabelCheckbox>Remember</LabelCheckbox>
                                 </CheckboxItems>
-                                <Link to="reset" style={{textDecoration: "none"}}><ForgotText>Forgot Password?</ForgotText></Link>
+                                <Link to="/reset" style={{textDecoration: "none"}}><ForgotText>Forgot Password?</ForgotText></Link>
                             </CheckboxContainer>
                             <Text>
                                 I agree that by clicking <LinkCustom>“Registration”</LinkCustom> I accept the <LinkCustom>Terms Of

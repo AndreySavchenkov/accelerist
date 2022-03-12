@@ -520,7 +520,7 @@ export const Filter = () => {
                                 </InnerContainer>
                             </CustomerContainer>
                             <ButtonContainer>
-                                <Link to="/accelerist/search"><ButtonClose>Close</ButtonClose></Link>
+                                <Link to="/search"><ButtonClose>Close</ButtonClose></Link>
                                 <ButtonSearch type={"submit"}>Search</ButtonSearch>
                             </ButtonContainer>
                         </MainForm>

@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {SearchHeader} from "./SearchHeader";
 import {SearchPanel} from "./SearchPanel";
-import {SearchFoundPanel} from "./find/SearchFoundPanel";
-import {Filter} from "./filter/Filter";
-import {Route, Routes} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 
 
 export const SearchPage = () => {
@@ -15,10 +13,7 @@ export const SearchPage = () => {
             <Container>
                 <InnerContainer>
                     <SearchContainer>
-                        <Routes>
-                            <Route path="accelerist/search" element={<SearchFoundPanel/>}/>
-                            <Route path="accelerist/filter" element={<Filter/>}/>
-                        </Routes>
+                        <Outlet/>
                     </SearchContainer>
                 </InnerContainer>
             </Container>

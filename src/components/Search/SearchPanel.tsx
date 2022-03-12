@@ -34,8 +34,8 @@ export const SearchPanel = () => {
                                                        : undefined}
                                         />
                                         {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
-                                        <Link to="accelerist/search"><LogoZoom src={logoZoom}/></Link>
-                                        <Link to="accelerist/filter"><LogoSlider src={logoSlider}/></Link>
+                                        <LogoZoom src={logoZoom}/>
+                                        <Link to="filter"><LogoSlider src={logoSlider}/></Link>
                                     </>
                                 )}
                             />
