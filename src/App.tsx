@@ -13,35 +13,13 @@ import {useSelector} from "react-redux";
 import {RootState} from "./redux/store";
 
 
-// const accessToken = localStorage.getItem('accessToken')
 
 function App() {
 
     let accessToken = useSelector((state:RootState)=>state.login.accessToken)
 
-    // let navigate = useNavigate();
-    // if(!accessToken){
-    //     navigate("/", { replace: true })
-    // }
-    // console.log(accessToken)
-
-
-    // const[accessToken, setAccessToken] = useState<string | null>(null);
-    //
-
-    // let accessToken;
-
-
-
-
-
-    // const accessToken = localStorage.getItem('accessToken');
-    // console.log(accessToken)
-
-
     return (
         <>
-            {/*{accessToken ? <Navigate to="/" replace={true} /> : ''}*/}
             {accessToken ? (
 
                 <Routes>

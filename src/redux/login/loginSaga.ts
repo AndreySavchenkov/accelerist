@@ -1,7 +1,7 @@
 import {call, put} from "redux-saga/effects";
 import {authApi} from "../../api/api";
 import {signIn, signUp} from "./loginSlice";
-import {useNavigate} from "react-router-dom";
+
 
 export function* signInWorkerSaga(action: any):any {
     try{

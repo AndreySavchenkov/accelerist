@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import {SearchHeader} from "./SearchHeader";
 import {SearchPanel} from "./SearchPanel";
 import {Outlet} from "react-router-dom";
 
 
+
 export const SearchPage = () => {
+
+
+
     return (
         <div>
             <SearchHeader/>

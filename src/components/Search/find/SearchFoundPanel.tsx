@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import folderPlus from "assets/img/folder-plus.png"
 import mail from "assets/img/mail.png"
@@ -6,9 +6,18 @@ import upload from "assets/img/upload.png"
 import leftArray from "assets/img/arrayLeft.png"
 import rightArray from "assets/img/arrayRight.png"
 import {Card} from "./Card";
+import {useDispatch} from "react-redux";
+import {getCompaniesAction} from "../../../redux/companies/companiesSaga";
 
 
 export const SearchFoundPanel = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCompaniesAction())
+    }, [dispatch])
+
     return (
         <>
             <Text>Found 32 companies</Text>
