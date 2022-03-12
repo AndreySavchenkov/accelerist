@@ -5,7 +5,7 @@ import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {useDispatch} from "react-redux";
 import {signInAction} from "redux/login/loginSaga";
-import {Link} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
 
 
@@ -25,8 +25,12 @@ export const LoginForm = () => {
         setIsShowPassword(!isShowPassword)
     }
 
-    const onSubmit = (values: Values) => {
+    let navigate = useNavigate();
+    const  onSubmit = async(values: Values) => {
         dispatch(signInAction(values.email,values.password))
+
+            navigate("/search", { replace: true });
+
     }
 
     return (
