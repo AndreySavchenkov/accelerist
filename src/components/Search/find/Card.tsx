@@ -1,10 +1,22 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import appleLogo from "assets/img/apple.png"
 import heart from "assets/img/heart.png"
+import {formatNumber} from "../../../helpers/functions";
+
+type Props = {
+    name: string
+    city: string
+    phone: string
+    score: number
+    country: string
+    revenue: string
+    primaryIndustry: string
+}
+
+export const Card:FC<Props> = ({name,revenue,phone,score,country, city,primaryIndustry}) => {
 
 
-export const Card = () => {
     return (
             <Container>
                 <Ranking>
@@ -13,23 +25,22 @@ export const Card = () => {
                     </ContainerLogo>
                     <ContainerInfo>
                         <Title>Priority Ranking</Title>
-                        <Subtitle>12</Subtitle>
+                        <Subtitle>{score}</Subtitle>
                     </ContainerInfo>
                 </Ranking>
                 <MainContainer>
-                    <MainTitle>Apple</MainTitle>
-                    <MainAddress>4140 Parker Rd. Allentown,
-                        New Mexico 31134</MainAddress>
-                    <MainPhone>(671) 555-0110</MainPhone>
+                    <MainTitle>{name}</MainTitle>
+                    <MainAddress>{country}, {city}</MainAddress>
+                    <MainPhone>{phone}</MainPhone>
                     <InnerContainer>
                         <FocusContainer>
                             <FocusTitle>CSR Focus</FocusTitle>
-                            <FocusInfo>Health <Circle></Circle> Animals <Circle></Circle> Education</FocusInfo>
+                            <FocusInfo>{primaryIndustry}</FocusInfo>
                         </FocusContainer>
                         <BorderLine></BorderLine>
                         <RevenueContainer>
                             <RevenueTitle>Revenue</RevenueTitle>
-                            <RevenuePrice>$ 4,434,476</RevenuePrice>
+                            <RevenuePrice>$ {formatNumber(revenue)}</RevenuePrice>
                         </RevenueContainer>
                     </InnerContainer>
                     <ButtonsContainer>

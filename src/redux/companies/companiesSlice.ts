@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-type Company = {
+export type Company = {
     id: string,
     zoomInfoId: null,
     name: string,
@@ -52,6 +52,7 @@ type Company = {
     charitablePartners: [],
     statusZoomInfo: string,
     loadZoomInfoDate: null,
+    score: number,
     errorLoadZoomInfoDate: null,
     partnershipLink: null,
     employeeEngagementOpportunities: true,
@@ -63,10 +64,18 @@ type Company = {
     favoriteCompanies: [],
     like: boolean
 }
-type Companies = Company[]
+export type Companies = Company[]
+export type Meta = {
+    currentPage: string
+    itemCount: number
+    itemsPerPage: string
+    totalItems: number
+    totalPages: number
+}
 
 type InitialState = {
     companies: Companies
+    meta:Meta
 }
 
 const initialState = {} as InitialState
@@ -75,8 +84,9 @@ const companiesSlice = createSlice({
     name: 'companies',
     initialState,
     reducers: {
-        getCompanies(state, action: PayloadAction<{ companies: Companies }>) {
+        getCompanies(state, action: PayloadAction<{ companies: Companies, meta:Meta }>) {
             state.companies = action.payload.companies
+            state.meta = action.payload.meta
         },
     }
 })

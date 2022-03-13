@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import folderPlus from "assets/img/folder-plus.png"
 import mail from "assets/img/mail.png"
@@ -6,17 +6,52 @@ import upload from "assets/img/upload.png"
 import leftArray from "assets/img/arrayLeft.png"
 import rightArray from "assets/img/arrayRight.png"
 import {Card} from "./Card";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "../../../redux/companies/companiesSaga";
+import {RootState} from "../../../redux/store";
+
 
 
 export const SearchFoundPanel = () => {
 
+    const [localPage, setLocalPage] = useState(1);
+
+    const showNextPage = () => {
+        setLocalPage(localPage + 1)
+        dispatch(getCompaniesAction(localPage + 1))
+    }
+    const showPreviousPage = () => {
+        setLocalPage(localPage - 1)
+        if(localPage <= 1){
+            setLocalPage(1)
+        }
+        dispatch(getCompaniesAction(localPage - 1))
+    }
+
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getCompaniesAction())
-    }, [dispatch])
+        dispatch(getCompaniesAction(localPage))
+    }, [])
+
+    const cards = useSelector((state: RootState) => state.companies.companies)
+
+    const totalItems = useSelector((state: RootState) => state.companies.meta?.totalItems)
+    const itemCount = useSelector((state: RootState) => state.companies.meta?.itemCount)
+
+    const firstElement = ((itemCount * localPage) - itemCount) + 1
+    const endElement = (itemCount * localPage)
+
+
+    const cardsList = cards?.map(card => <Card key={card.id}
+                                                   name={card.name}
+                                                   city={card.city}
+                                                   phone={card.phone}
+                                                   score={card.score}
+                                                   country={card.country}
+                                                   revenue={card.revenue}
+                                                   primaryIndustry={card.primaryIndustry[0]}/>)
+
 
     return (
         <>
@@ -37,19 +72,19 @@ export const SearchFoundPanel = () => {
                     </Item>
                 </Items>
                 <Navigation>
-                    <TextNavigation>1-12 of 32</TextNavigation>
-                    <LeftArray src={leftArray}/>
-                    <RightArray src={rightArray}/>
+                    <LeftArray src={leftArray} onClick={showPreviousPage}/>
+                    <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
+                    <RightArray src={rightArray} onClick={showNextPage}/>
                 </Navigation>
             </SettingsPanel>
             <Cards>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+                {cardsList}
             </Cards>
+            <MobileNavigation>
+                <LeftArray src={leftArray} onClick={showPreviousPage}/>
+                <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
+                <RightArray src={rightArray} onClick={showNextPage}/>
+            </MobileNavigation>
         </>
     )
 }
@@ -84,7 +119,8 @@ const Items = styled.div`
   display: flex;
   align-items: center;
   margin-left: 60px;
-  @media (max-width: 650px) {
+  
+  @media (max-width: 730px) {
     margin-left: 16px;
   }
 `
@@ -101,28 +137,30 @@ const ItemIcon = styled.img`
   margin-right: 10px;
 `
 const Navigation = styled.div`
-  position: relative;
+  display: flex;
+  margin-right: 60px;
+  @media(max-width: 730px){
+    margin-right: 16px;
+  }
   @media (max-width: 650px) {
     display: none;
   }
 `
 const TextNavigation = styled.span`
-  margin-right: 60px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
   font-weight: 600;
   font-size: 12px;
   line-height: 150%;
   color: #122434;
 `
 const LeftArray = styled.img`
-  position: absolute;
-  top: 0;
-  left: -25px;
+ 
   cursor: pointer;
 `
 const RightArray = styled.img`
-  position: absolute;
-  top: 0;
-  left: 65px;
+
   cursor: pointer;
 `
 const Cards = styled.div`
@@ -132,5 +170,13 @@ const Cards = styled.div`
   @media (max-width: 932px) {
     justify-content: center;
     margin-left: 0;
+  }
+`
+const MobileNavigation = styled.div`
+  display: none;
+  @media (max-width: 650px) {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 30px;
   }
 `

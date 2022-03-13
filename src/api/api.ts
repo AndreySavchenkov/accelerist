@@ -19,7 +19,7 @@ export const authApi = {
 }
 
 export const companiesApi = {
-    getCompaies() {
-        return instance.get("/companies?page=1&limit=32")
+    getCompaies(currentPage:number) {
+        return instance.get(`/companies?page=${currentPage}&limit=6`)
     }
 }
