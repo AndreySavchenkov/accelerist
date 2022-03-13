@@ -148,7 +148,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params}
                                                             />
@@ -187,7 +187,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params}
                                                             />
@@ -228,7 +228,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params} />
                                                         )}
@@ -266,7 +266,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params} />
                                                         )}
@@ -306,7 +306,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params} />
                                                         )}
@@ -344,7 +344,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params} />
                                                         )}
@@ -367,7 +367,7 @@ export const Filter = () => {
                                             render={({...input}) => (
                                                 <>
                                                     <Label>Revenue</Label>
-                                                    <Box sx={{width: 500}}>
+                                                    <Box sx={{width: '100%'}}>
                                                         <Slider
                                                             value={value}
                                                             onChange={handleChange}
@@ -390,7 +390,7 @@ export const Filter = () => {
                                             render={({...input}) => (
                                                 <>
                                                     <Label>Gender</Label>
-                                                    <ToggleContainer style={{width: '95%'}}>
+                                                    <ToggleContainer style={{width: '100%'}}>
                                                         <ToggleItem onClick={() => showGender('male')}
                                                                     isToggle={isMale}>Male</ToggleItem>
                                                         <ToggleItem onClick={() => showGender('female')}
@@ -409,7 +409,7 @@ export const Filter = () => {
                                             render={({...input}) => (
                                                 <>
                                                     <Label>Relations</Label>
-                                                    <ToggleContainer style={{width: '95%'}}>
+                                                    <ToggleContainer style={{width: '100%'}}>
                                                         <ToggleItem onClick={clickHandlerGender}
                                                                     isToggle={isSingle}>Single</ToggleItem>
                                                         <ToggleItem onClick={clickHandlerGender}
@@ -445,7 +445,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params} />
                                                         )}
@@ -483,7 +483,7 @@ export const Filter = () => {
                                                                 {option.title}
                                                             </li>
                                                         )}
-                                                        style={{width: 500}}
+                                                        style={{width: '100%'}}
                                                         renderInput={(params) => (
                                                             <TextField {...params} />
                                                         )}
@@ -506,7 +506,7 @@ export const Filter = () => {
                                             render={({...input}) => (
                                                 <>
                                                     <Label>Age</Label>
-                                                    <Box sx={{width: 500}}>
+                                                    <Box sx={{width: '100%'}}>
                                                         <Slider
                                                             value={age}
                                                             onChange={handleChangeAge}
@@ -531,11 +531,13 @@ export const Filter = () => {
     )
 }
 const Container = styled.div`
-  margin-left: 60px;
-  margin-bottom: 60px;
-  margin-top: 30px;
+  margin: 30px 60px 60px;
   padding: 40px;
   background: #ffffff;
+  @media(max-width: 750px){
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `
 const Title = styled.span`
   font-weight: 600;
@@ -560,9 +562,16 @@ const InnerContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
+  @media(max-width: 750px){
+    flex-direction: column;
+  }
 `
 const OneForm = styled.div`
-  width: 100%;
+  width: 49%;
+  margin-bottom: 16px;
+  @media(max-width: 750px){
+    width: 100%;
+  }
 `
 const CompanyTitle = styled.span`
   padding-top: 34px;
@@ -579,7 +588,12 @@ const Label = styled.span`
   padding-bottom: 4px;
 `
 const ButtonContainer = styled.div`
-
+  @media(max-width: 500px){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 `
 const ButtonSearch = styled.button`
   padding: 12px 0;
@@ -593,7 +607,9 @@ const ButtonSearch = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
-
+  @media(max-width: 500px){
+    width: 100px;
+  }
   &:hover {
     background: #51C2EE;
   }
@@ -620,7 +636,9 @@ const ButtonClose = styled.button`
   border: 1px solid #E8E8E8;
   border-radius: 6px;
   cursor: pointer;
-
+  @media(max-width: 500px){
+    width: 100px;
+  }
   &:hover {
     border: 1px solid #BFBFBF;
   }

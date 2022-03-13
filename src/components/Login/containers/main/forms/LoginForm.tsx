@@ -25,12 +25,11 @@ export const LoginForm = () => {
         setIsShowPassword(!isShowPassword)
     }
 
-    let navigate = useNavigate();
-    const  onSubmit = async(values: Values) => {
+    const navigate = useNavigate();
+
+    const  onSubmit = (values: Values) => {
         dispatch(signInAction(values.email,values.password))
-
-            navigate("/search", { replace: true });
-
+        navigate("/search", { replace: true });
     }
 
     return (
