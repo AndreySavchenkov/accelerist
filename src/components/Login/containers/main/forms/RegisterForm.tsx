@@ -7,6 +7,7 @@ import {Button} from "components/general/Button";
 import {signUpAction} from "redux/login/loginSaga";
 import {useDispatch} from "react-redux";
 import {composeValidators, minValue, required} from "helpers/validation";
+import {useNavigate} from "react-router-dom";
 
 type Values = {
     email: string,
@@ -23,8 +24,11 @@ export const RegisterForm = () => {
         setIsShowPassword(!isShowPassword)
     }
 
+    const navigate = useNavigate()
+
     const onSubmit = (values: Values) => {
         dispatch(signUpAction(values.email, values.password))
+        navigate("/search", {replace: true});
     }
 
     return (
@@ -57,7 +61,7 @@ export const RegisterForm = () => {
                             <Label>Password</Label>
                             <Field
                                 name="password"
-                                validate={composeValidators(required,minValue(6))}
+                                validate={composeValidators(required, minValue(6))}
                                 render={({input, meta}) => (
                                     <>
                                         <InputPassword placeholder='Enter password' {...input}
@@ -115,6 +119,7 @@ const InputEmail = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+
   &:focus {
     outline: 1px solid #2BAEE0;
   }
@@ -130,6 +135,7 @@ const InputPassword = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+
   &:focus {
     outline: 1px solid #2BAEE0;
   }

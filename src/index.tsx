@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createGlobalStyle} from "styled-components";
 import {Provider} from "react-redux";
-import {store} from "./redux/store";
+import {persistor, store} from "./redux/store";
 import {HashRouter} from "react-router-dom";
+import {PersistGate} from "redux-persist/integration/react";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -24,10 +25,12 @@ const GlobalStyle = createGlobalStyle`
 
 ReactDOM.render(
     <Provider store={store}>
-        <HashRouter>
-            <App/>
-        </HashRouter>
-        <GlobalStyle/>
+        <PersistGate loading={null} persistor={persistor}>
+            <HashRouter>
+                <App/>
+            </HashRouter>
+            <GlobalStyle/>
+        </PersistGate>
     </Provider>,
     document.getElementById('root')
 );
