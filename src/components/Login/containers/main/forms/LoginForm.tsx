@@ -7,6 +7,8 @@ import {useDispatch} from "react-redux";
 import {signInAction} from "redux/login/loginSaga";
 import {Link, Navigate, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
+import {AllerSuccessful} from "../../../../general/AllerSuccessful";
+import {AllerError} from "../../../../general/AllertError";
 
 
 
@@ -29,7 +31,7 @@ export const LoginForm = () => {
 
     const  onSubmit = (values: Values) => {
         dispatch(signInAction(values.email,values.password))
-        navigate("/search", { replace: true });
+        navigate("/", { replace: true });
     }
 
     return (
@@ -105,6 +107,8 @@ export const LoginForm = () => {
                     );
                 }}
             />
+            <AllerSuccessful text={'Login was successful'}/>
+            <AllerError text={'Login was unsuccessful'}/>
         </>
     )
 }

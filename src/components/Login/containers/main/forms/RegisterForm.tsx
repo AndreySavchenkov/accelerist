@@ -28,7 +28,7 @@ export const RegisterForm = () => {
 
     const onSubmit = (values: Values) => {
         dispatch(signUpAction(values.email, values.password))
-        navigate("/search", {replace: true});
+        navigate("/", {replace: true});
     }
 
     return (
