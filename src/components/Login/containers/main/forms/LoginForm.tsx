@@ -3,12 +3,13 @@ import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {signInAction} from "redux/login/loginSaga";
 import {Link, Navigate, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {AllerSuccessful} from "../../../../general/AllerSuccessful";
 import {AllerError} from "../../../../general/AllertError";
+import {RootState} from "../../../../../redux/store";
 
 
 
@@ -19,6 +20,7 @@ type Values = {
 }
 
 export const LoginForm = () => {
+    const error = useSelector((state:RootState)=>state.notifications.error);
 
     const [isShowPassword, setIsShowPassword] = useState(false);
     const dispatch = useDispatch();
@@ -107,8 +109,7 @@ export const LoginForm = () => {
                     );
                 }}
             />
-            <AllerSuccessful text={'Login was successful'}/>
-            <AllerError text={'Login was unsuccessful'}/>
+            {error ? <AllerError text={'Login was unsuccessful'}/> : null}
         </>
     )
 }

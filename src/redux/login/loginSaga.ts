@@ -1,6 +1,9 @@
 import {call, put} from "redux-saga/effects";
 import {authApi} from "../../api/api";
 import {signIn, signUp} from "./loginSlice";
+import {toggleError, toggleSuccessful} from "../notifications/notificationsSlice";
+import {wait} from "@testing-library/user-event/dist/utils";
+import {getCompaniesAction} from "../companies/companiesSaga";
 
 
 export function* signInWorkerSaga(action: any):any {
@@ -12,8 +15,15 @@ export function* signInWorkerSaga(action: any):any {
             accessToken: res.data.accessToken,
             user: res.data.user,
         }));
+        yield put(toggleSuccessful())
+        yield call(wait, 5000)
+        yield put(toggleSuccessful())
+        yield put(getCompaniesAction(1))
     } catch (error) {
         console.log(error)
+        yield put(toggleError())
+        yield call(wait, 5000)
+        yield put(toggleError())
     }
 
 }
@@ -33,8 +43,14 @@ export function* signUpWorkerSaga(action: any):any {
             accessToken: res.data.accessToken,
             user: res.data.user,
         }));
+        yield put(toggleSuccessful())
+        yield call(wait, 5000)
+        yield put(toggleSuccessful())
     } catch (error) {
         console.log(error)
+        yield put(toggleError())
+        yield call(wait, 5000)
+        yield put(toggleError())
     }
 
 }

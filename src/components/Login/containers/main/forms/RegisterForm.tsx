@@ -5,9 +5,11 @@ import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {Button} from "components/general/Button";
 import {signUpAction} from "redux/login/loginSaga";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {useNavigate} from "react-router-dom";
+import {AllerError} from "../../../../general/AllertError";
+import {RootState} from "../../../../../redux/store";
 
 type Values = {
     email: string,
@@ -15,6 +17,7 @@ type Values = {
 }
 
 export const RegisterForm = () => {
+    const error = useSelector((state:RootState)=>state.notifications.error);
 
     const dispatch = useDispatch();
 
@@ -87,6 +90,7 @@ export const RegisterForm = () => {
                     </FormContainer>
                 )}
             />
+            {error ? <AllerError text={'Register was unsuccessful'}/> : null}
         </>
     )
 }

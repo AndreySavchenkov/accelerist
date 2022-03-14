@@ -40,11 +40,11 @@ export const AllerError: FC<Props> = ({text}) => {
 
 const Container = styled.div`
   position: absolute;
-  bottom: 10px;
+  top: 0;
   right: 10px;
   display: flex;
   justify-content: space-between;
-  width: 456px;
+  width: 350px;
   border-radius: 6px;
   background: #EAEAEA;
 `
@@ -71,6 +71,8 @@ const SubTitle = styled.span`
   color: #122434;
 `
 const Icon = styled.img`
+  width: 30px;
+  height: 30px;
   margin: 16px;
 `
 const CloseButton = styled.img`

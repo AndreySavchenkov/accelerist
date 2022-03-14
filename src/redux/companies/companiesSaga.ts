@@ -4,7 +4,7 @@ import {getCompanies} from "./companiesSlice";
 
 export function* getCompaniesSaga(action: any):any {
     try{
-        const res = yield call(companiesApi.getCompaies, action.currentPage)
+        const res = yield call(companiesApi.getCompanies, action.currentPage)
         console.log('getCompanies',res.data)
         yield put(getCompanies({companies:res.data.items,meta:res.data.meta}))
     } catch(error){

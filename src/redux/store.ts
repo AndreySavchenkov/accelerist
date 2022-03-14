@@ -7,11 +7,13 @@ import {signInWorkerSaga, signUpWorkerSaga} from "./login/loginSaga";
 import {getCompaniesSaga} from "./companies/companiesSaga";
 import storage from 'redux-persist/lib/storage';
 import {persistStore, persistReducer} from 'redux-persist';
+import notificationsSlice from "./notifications/notificationsSlice";
 
 
 const rootReducer = combineReducers({
     login: loginReducer,
     companies: companiesReducer,
+    notifications: notificationsSlice,
 })
 
 const sagaMiddleware = createSagaMiddleware();

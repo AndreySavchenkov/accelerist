@@ -13,29 +13,23 @@ import {useSelector} from "react-redux";
 import {RootState} from "./redux/store";
 
 
-
 function App() {
 
-    let accessToken = useSelector((state:RootState)=>state.login.accessToken)
+    let accessToken = useSelector((state: RootState) => state.login.accessToken)
+
 
     return (
         <>
-            {accessToken ? (
-
-                <Routes>
-                    {/*<Route path="/" element={<LoginPage/>}>*/}
-                    {/*    <Route index element={<MainForm/>}/>*/}
-                    {/*    <Route path="reset" element={<PasswordReset/>}/>*/}
-                    {/*    <Route path="resend" element={<PasswordResend/>}/>*/}
-                    {/*    <Route path="new" element={<PasswordNew/>}/>*/}
-                    {/*</Route>*/}
-                    <Route path={"/"}  element={<SearchPage/>}>
-                        <Route index element={<SearchFoundPanel/>}/>
-                        <Route path="filter" element={<Filter/>}/>
-                    </Route>
-                </Routes>
-            )
-            :
+            {accessToken ?
+                (
+                    <Routes>
+                        <Route path={"/"} element={<SearchPage/>}>
+                            <Route index element={<SearchFoundPanel/>}/>
+                            <Route path="filter" element={<Filter/>}/>
+                        </Route>
+                    </Routes>
+                )
+                :
                 (
                     <Routes>
                         <Route path="/" element={<LoginPage/>}>
@@ -44,15 +38,9 @@ function App() {
                             <Route path="resend" element={<PasswordResend/>}/>
                             <Route path="new" element={<PasswordNew/>}/>
                         </Route>
-                        {/*<Route path={"/search"}  element={<SearchPage/>}>*/}
-                        {/*    <Route index element={<SearchFoundPanel/>}/>*/}
-                        {/*    <Route path="filter" element={<Filter/>}/>*/}
-                        {/*</Route>*/}
                     </Routes>
-                )}
-
-
-
+                )
+            }
         </>
     );
 }

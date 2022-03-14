@@ -4,9 +4,8 @@ const token = localStorage.getItem('accessToken')
 
 const instance = axios.create({
     baseURL: `https://accelerist.herokuapp.com/api/v1`,
-    headers: {
-        'Authorization': `Bearer ${token}`
-    },
+    timeout: 1000,
+    headers: {'Authorization': `Bearer ${token}`},
 })
 
 export const authApi = {
@@ -19,7 +18,7 @@ export const authApi = {
 }
 
 export const companiesApi = {
-    getCompaies(currentPage:number) {
+    getCompanies(currentPage:number) {
         return instance.get(`/companies?page=${currentPage}&limit=6`)
     }
 }

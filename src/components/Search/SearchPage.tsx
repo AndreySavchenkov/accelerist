@@ -3,25 +3,32 @@ import styled from "styled-components";
 import {SearchHeader} from "./SearchHeader";
 import {SearchPanel} from "./SearchPanel";
 import {Outlet} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
+import {AllerSuccessful} from "../general/AllerSuccessful";
 
 
 
 export const SearchPage = () => {
-
+    const successful = useSelector((state:RootState)=>state.notifications.successful);
 
 
     return (
-        <div>
-            <SearchHeader/>
-            <SearchPanel/>
-            <Container>
-                <InnerContainer>
-                    <SearchContainer>
-                        <Outlet/>
-                    </SearchContainer>
-                </InnerContainer>
-            </Container>
-        </div>
+        <>
+            <div>
+                <SearchHeader/>
+                <SearchPanel/>
+                <Container>
+                    <InnerContainer>
+                        <SearchContainer>
+                            <Outlet/>
+                        </SearchContainer>
+                    </InnerContainer>
+                </Container>
+            </div>
+            {successful ? <AllerSuccessful text={'Login was successful. Please reload app'}/> : null}
+        </>
+
     )
 }
 
