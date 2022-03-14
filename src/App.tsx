@@ -29,7 +29,7 @@ function App() {
                     {/*    <Route path="resend" element={<PasswordResend/>}/>*/}
                     {/*    <Route path="new" element={<PasswordNew/>}/>*/}
                     {/*</Route>*/}
-                    <Route path={"/search"}  element={<SearchPage/>}>
+                    <Route path={"/"}  element={<SearchPage/>}>
                         <Route index element={<SearchFoundPanel/>}/>
                         <Route path="filter" element={<Filter/>}/>
                     </Route>

@@ -75,7 +75,7 @@ export type Meta = {
 
 type InitialState = {
     companies: Companies
-    meta:Meta
+    meta: Meta
 }
 
 const initialState = {} as InitialState
@@ -84,7 +84,7 @@ const companiesSlice = createSlice({
     name: 'companies',
     initialState,
     reducers: {
-        getCompanies(state, action: PayloadAction<{ companies: Companies, meta:Meta }>) {
+        getCompanies(state, action: PayloadAction<{ companies: Companies, meta: Meta }>) {
             state.companies = action.payload.companies
             state.meta = action.payload.meta
         },
