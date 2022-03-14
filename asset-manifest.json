@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/accelerist/static/css/main.073c9b0a.css",
-    "main.js": "/accelerist/static/js/main.95248c35.js",
+    "main.js": "/accelerist/static/js/main.988015c8.js",
     "static/js/787.e0fa5844.chunk.js": "/accelerist/static/js/787.e0fa5844.chunk.js",
     "static/media/loginBackground.jpg": "/accelerist/static/media/loginBackground.24c1ab40189abdb29fdc.jpg",
     "index.html": "/accelerist/index.html",
     "static/media/hiddenPassword.svg": "/accelerist/static/media/hiddenPassword.e4537af7281b073365fc67ee17511125.svg",
     "main.073c9b0a.css.map": "/accelerist/static/css/main.073c9b0a.css.map",
-    "main.95248c35.js.map": "/accelerist/static/js/main.95248c35.js.map",
+    "main.988015c8.js.map": "/accelerist/static/js/main.988015c8.js.map",
     "787.e0fa5844.chunk.js.map": "/accelerist/static/js/787.e0fa5844.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.95248c35.js"
+    "static/js/main.988015c8.js"
   ]
 }
