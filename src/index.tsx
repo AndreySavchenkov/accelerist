@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {createGlobalStyle} from "styled-components";
 import {Provider} from "react-redux";
 import {persistor, store} from "./redux/store";
-import {HashRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 import {PersistGate} from "redux-persist/integration/react";
 
 const GlobalStyle = createGlobalStyle`
@@ -26,9 +26,9 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-            <HashRouter>
+            <BrowserRouter>
                 <App/>
-            </HashRouter>
+            </BrowserRouter>
             <GlobalStyle/>
         </PersistGate>
     </Provider>,

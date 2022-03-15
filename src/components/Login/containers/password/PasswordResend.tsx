@@ -1,12 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import {Button} from "../../../general/Button";
 import {LinkToLogin} from "../../../general/LinkToLogin";
 import {LinkToSupport} from "../../../general/LinkToSapport";
 import {ButtonTimer} from "../../../general/ButtonTimer";
+import {Button} from "../../../general/Button";
 
 export const PasswordResend = () => {
+    const [timer, setTimer] = useState(59);
 
+    useEffect(() => {
+        if (timer >= 1) {
+            setTimeout(() => setTimer(timer - 1), 1000)
+        }
+    })
 
     return (
         <>
@@ -14,7 +20,9 @@ export const PasswordResend = () => {
                 <Container>
                     <Title>Password Reset</Title>
                     <Text>Enter your email to receive instructions on how to reset your password.</Text>
-                    <ButtonTimer text={"00:36"}/>
+                    {
+                        (timer === 0) ? <Button text={'Resend'}/> : <ButtonTimer text={`00:${timer}`}/>
+                    }
                 </Container>
                 <LinkToSupport/>
             </MainContainer>

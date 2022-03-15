@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
 import {LoginPage} from "./components/Login/LoginPage";
-import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {SearchPage} from "./components/Search/SearchPage";
 import {MainForm} from "./components/Login/containers/main/MainForm";
 import {PasswordReset} from "./components/Login/containers/password/PasswordReset";
@@ -36,7 +36,7 @@ function App() {
                             <Route index element={<MainForm/>}/>
                             <Route path="reset" element={<PasswordReset/>}/>
                             <Route path="resend" element={<PasswordResend/>}/>
-                            <Route path="new" element={<PasswordNew/>}/>
+                            <Route path="change_password" element={<PasswordNew/>}/>
                         </Route>
                     </Routes>
                 )

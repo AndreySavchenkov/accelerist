@@ -6,6 +6,8 @@ import showPassword from "../../../../assets/img/showPassword.png";
 import hiddenPassword from "../../../../assets/img/hiddenPassword.svg";
 import {LinkToSupport} from "../../../general/LinkToSapport";
 import {composeValidators, minValue, required} from "../../../../helpers/validation";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 type Values = {
     password: string,
@@ -19,8 +21,28 @@ export const PasswordNew = () => {
         setIsShowPassword(!isShowPassword)
     }
 
+    // get a password change token from URL
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop: any) => searchParams.get(prop),
+    });
+    //@ts-ignore
+    let passwordResetToken = params.passwordResetToken;
+    localStorage.setItem('passwordResetToken', passwordResetToken)
+
+    const instanceResetPassword = axios.create({
+        baseURL: `https://accelerist.herokuapp.com/api/v1`,
+        timeout: 60000,
+        headers: {'Authorization': `Bearer ${passwordResetToken}`},
+    })
+
+    const resetPassword = (password: string) => {
+        return instanceResetPassword.post('/auth/change_password/change', {password, passwordConfirmation: password})
+    }
+    const navigate = useNavigate();
+
     const onSubmit = (values: Values) => {
-        console.log(values)
+        resetPassword(values.password)
+        navigate("/", { replace: true });
     }
 
     return (
@@ -37,7 +59,7 @@ export const PasswordNew = () => {
                                     <Label>Password</Label>
                                     <Field
                                         name="password"
-                                        validate={composeValidators(required,minValue(6))}
+                                        validate={composeValidators(required, minValue(6))}
                                         render={({input, meta}) => (
                                             <>
                                                 <InputPassword placeholder='Enter password' {...input}
@@ -48,7 +70,8 @@ export const PasswordNew = () => {
                                                                        backgroundColor: 'rgb(255, 242, 242)'
                                                                    }
                                                                    : undefined}/>
-                                                {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
+                                                {meta.touched && meta.error &&
+                                                <ErrorMessage>{meta.error}</ErrorMessage>}
                                             </>
                                         )}
                                     />
@@ -95,6 +118,7 @@ const InputPassword = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+
   &:focus {
     outline: 1px solid #2BAEE0;
   }

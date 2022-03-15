@@ -5,9 +5,8 @@ import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {signInAction} from "redux/login/loginSaga";
-import {Link, Navigate, useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
-import {AllerSuccessful} from "../../../../general/AllerSuccessful";
 import {AllerError} from "../../../../general/AllertError";
 import {RootState} from "../../../../../redux/store";
 
@@ -109,7 +108,7 @@ export const LoginForm = () => {
                     );
                 }}
             />
-            {error ? <AllerError text={'Login was unsuccessful'}/> : null}
+            {error ? <AllerError text={'Email or password is incorrect'}/> : null}
         </>
     )
 }

@@ -60,3 +60,20 @@ export const signUpAction = (email: string, password: string) => ({
     email,
     password
 })
+
+export function* sendEmailWorkerSaga(action: any):any {
+    try{
+        yield call(authApi.sendEmail, action.email);
+        yield put(toggleSuccessful())
+        yield call(wait, 5000)
+        yield put(toggleSuccessful())
+    }catch(error){
+        yield put(toggleError())
+        yield call(wait, 5000)
+        yield put(toggleError())
+    }
+}
+export const sendEmailAction = (email:string) => ({
+    type: 'SAGA/SEND_EMAIL',
+    email
+})

@@ -4,6 +4,12 @@ import {Field, Form} from "react-final-form";
 import {Button} from "../../../general/Button";
 import {LinkToLogin} from "../../../general/LinkToLogin";
 import {composeValidators, required} from "../../../../helpers/validation";
+import {useDispatch, useSelector} from "react-redux";
+import {sendEmailAction} from "../../../../redux/login/loginSaga";
+import {RootState} from "../../../../redux/store";
+import {AllerError} from "../../../general/AllertError";
+import {AllerSuccessful} from "../../../general/AllerSuccessful";
+import {useNavigate} from "react-router-dom";
 
 type Values = {
     email: string,
@@ -11,8 +17,13 @@ type Values = {
 
 export const PasswordReset = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const onSubmit = (values: Values) => {
         console.log(values)
+        dispatch(sendEmailAction(values.email));
+        navigate('/resend', {replace: true})
     }
 
     return (
@@ -107,6 +118,7 @@ const InputEmail = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+
   &:focus {
     outline: 1px solid #2BAEE0;
   }
