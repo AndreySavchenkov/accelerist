@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import bigLogo from "assets/img/searchBigLogo.png";
 import smallLogo from "assets/img/searchSmallLogo.png"
@@ -6,9 +6,12 @@ import profileLog from "assets/img/profileLogo.png"
 import menuIcon from "assets/img/menu.png"
 import closeButton from "assets/img/closeButton.png"
 
-export const SearchHeader = () => {
+type Props = {
+    isShowMenu: boolean,
+    setShowMenu: (isShowMenu:boolean) => void
+}
 
-    const [isShowMenu, setShowMenu] = useState(false);
+export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
 
     const showMenu = () => {
         setShowMenu(!isShowMenu);
@@ -166,7 +169,7 @@ const MenuBurgerContainer = styled.div`
   width: 330px;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 999;
   height: 100vh;
   background: #fff;
   @media (max-width: 440px) {
@@ -196,10 +199,10 @@ const MenuBurgerProfile = styled.div`
   cursor: pointer;
 `
 const BackgroundMenu = styled.div`
-    position: absolute;
+  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, .5);
 `

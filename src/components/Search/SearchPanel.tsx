@@ -1,12 +1,14 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import logoZoom from "assets/img/zoom-out.png"
 import logoSlider from "assets/img/sliders.png"
 import {Link} from "react-router-dom";
 
-
-export const SearchPanel = () => {
+type Props = {
+    isShowMenu: boolean;
+}
+export const SearchPanel:FC<Props> = ({isShowMenu}) => {
 
     const onSubmit = () => {
 
@@ -23,8 +25,9 @@ export const SearchPanel = () => {
                             <Field
                                 name="search"
                                 render={({input, meta}) => (
-                                    <>
-                                        <InputText {...input}
+                                    !isShowMenu ?
+                                        <>
+                                         <InputText {...input}
                                                    type={"text"}
                                                    style={meta.touched && meta.error ?
                                                        {
@@ -36,7 +39,7 @@ export const SearchPanel = () => {
                                         {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
                                         <LogoZoom src={logoZoom}/>
                                         <Link to="filter"><LogoSlider src={logoSlider}/></Link>
-                                    </>
+                                        </> : null
                                 )}
                             />
                         </FormContainer>

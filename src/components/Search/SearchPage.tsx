@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {SearchHeader} from "./SearchHeader";
 import {SearchPanel} from "./SearchPanel";
@@ -8,23 +8,23 @@ import {RootState} from "../../redux/store";
 import {AllerSuccessful} from "../general/AllerSuccessful";
 
 
-
 export const SearchPage = () => {
     const successful = useSelector((state:RootState)=>state.notifications.successful);
-
+    const [isShowMenu, setShowMenu] = useState(false);
 
     return (
         <>
             <div>
-                <SearchHeader/>
-                <SearchPanel/>
-                <Container>
+                <SearchHeader isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
+                <SearchPanel isShowMenu={isShowMenu}/>
+                {!isShowMenu ?
+                 <Container>
                     <InnerContainer>
                         <SearchContainer>
                             <Outlet/>
                         </SearchContainer>
                     </InnerContainer>
-                </Container>
+                </Container> : null}
             </div>
             {successful ? <AllerSuccessful text={'Login was successful. Please reload app'}/> : null}
         </>
