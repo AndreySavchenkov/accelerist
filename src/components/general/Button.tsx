@@ -3,12 +3,13 @@ import styled from "styled-components";
 
 type Props = {
     text: string
+    clickHandler?: () => void
 }
 
-export const Button: FC<Props> = ({text,}) => {
+export const Button: FC<Props> = ({text, clickHandler}) => {
     return (
         <>
-            <ButtonBody type="submit">{text}</ButtonBody>
+            <ButtonBody onClick={clickHandler} type="submit">{text}</ButtonBody>
         </>
     )
 }

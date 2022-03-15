@@ -23,6 +23,7 @@ export const PasswordReset = () => {
     const onSubmit = (values: Values) => {
         console.log(values)
         dispatch(sendEmailAction(values.email));
+        localStorage.setItem('emailReset', values.email)
         navigate('/resend', {replace: true})
     }
 

@@ -42,7 +42,8 @@ export const PasswordNew = () => {
 
     const onSubmit = (values: Values) => {
         resetPassword(values.password)
-        navigate("/", { replace: true });
+        localStorage.setItem('passwordReset', values.password)
+        navigate("/", {replace: true});
     }
 
     return (

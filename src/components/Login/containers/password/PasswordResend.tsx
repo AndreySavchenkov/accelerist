@@ -4,9 +4,12 @@ import {LinkToLogin} from "../../../general/LinkToLogin";
 import {LinkToSupport} from "../../../general/LinkToSapport";
 import {ButtonTimer} from "../../../general/ButtonTimer";
 import {Button} from "../../../general/Button";
+import {useDispatch} from "react-redux";
+import {sendEmailAction} from "../../../../redux/login/loginSaga";
 
 export const PasswordResend = () => {
     const [timer, setTimer] = useState(59);
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (timer >= 1) {
@@ -14,14 +17,22 @@ export const PasswordResend = () => {
         }
     })
 
+    const clickHandler = () => {
+        const email = localStorage.getItem('emailReset')
+        if(email) {
+            dispatch(sendEmailAction(email));
+            setTimer(59)
+        }
+    }
+
     return (
         <>
             <MainContainer>
                 <Container>
                     <Title>Password Reset</Title>
-                    <Text>Enter your email to receive instructions on how to reset your password.</Text>
+                    <Text>A link was sent to your email to confirm password reset and create a new one</Text>
                     {
-                        (timer === 0) ? <Button text={'Resend'}/> : <ButtonTimer text={`00:${timer}`}/>
+                        (timer === 0) ? <Button clickHandler={clickHandler} text={'Resend'}/> : <ButtonTimer text={`00:${timer}`}/>
                     }
                 </Container>
                 <LinkToSupport/>
