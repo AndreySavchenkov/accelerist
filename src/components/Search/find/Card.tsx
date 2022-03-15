@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import styled from "styled-components";
 import appleLogo from "assets/img/apple.png"
 import heart from "assets/img/heart.png"
-import {formatNumber} from "../../../helpers/functions";
+import {formatNumber} from "helpers/functions";
 
 type Props = {
     name: string

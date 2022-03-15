@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import {LinkToLogin} from "../../../general/LinkToLogin";
-import {LinkToSupport} from "../../../general/LinkToSapport";
-import {ButtonTimer} from "../../../general/ButtonTimer";
-import {Button} from "../../../general/Button";
+import {LinkToLogin} from "components/general/LinkToLogin";
+import {LinkToSupport} from "components/general/LinkToSapport";
+import {ButtonTimer} from "components/general/ButtonTimer";
+import {Button} from "components/general/Button";
 import {useDispatch} from "react-redux";
-import {sendEmailAction} from "../../../../redux/login/loginSaga";
+import {sendEmailAction} from "redux/login/loginSaga";
 
 export const PasswordResend = () => {
     const [timer, setTimer] = useState(59);
@@ -32,7 +32,8 @@ export const PasswordResend = () => {
                     <Title>Password Reset</Title>
                     <Text>A link was sent to your email to confirm password reset and create a new one</Text>
                     {
-                        (timer === 0) ? <Button clickHandler={clickHandler} text={'Resend'}/> : <ButtonTimer text={`00:${timer}`}/>
+                        (timer === 0) ?
+                            <Button clickHandler={clickHandler} text={'Resend'}/> : <ButtonTimer text={`00:${timer}`}/>
                     }
                 </Container>
                 <LinkToSupport/>

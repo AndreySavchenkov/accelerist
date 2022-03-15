@@ -1,9 +1,9 @@
 import {call, put} from "redux-saga/effects";
-import {authApi} from "../../api/api";
+import {authApi} from "api/api";
 import {signIn, signUp} from "./loginSlice";
-import {toggleError, toggleSuccessful} from "../notifications/notificationsSlice";
+import {toggleError, toggleSuccessful} from "redux/notifications/notificationsSlice";
 import {wait} from "@testing-library/user-event/dist/utils";
-import {getCompaniesAction} from "../companies/companiesSaga";
+import {getCompaniesAction} from "redux/companies/companiesSaga";
 
 
 export function* signInWorkerSaga(action: any):any {

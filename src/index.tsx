@@ -26,9 +26,9 @@ const GlobalStyle = createGlobalStyle`
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-            <BrowserRouter>
+            <HashRouter>
                 <App/>
-            </BrowserRouter>
+            </HashRouter>
             <GlobalStyle/>
         </PersistGate>
     </Provider>,

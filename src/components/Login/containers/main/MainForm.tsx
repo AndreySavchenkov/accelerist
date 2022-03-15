@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import {LoginForm} from "./forms/LoginForm";
-import registrationLink from "../../../../assets/img/registraionLink.png";
+import registrationLink from "assets/img/registraionLink.png";
 import {RegisterForm} from "./forms/RegisterForm";
 
 type toggleItemProps = {

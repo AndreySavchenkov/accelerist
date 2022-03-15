@@ -7,8 +7,8 @@ import leftArray from "assets/img/arrayLeft.png"
 import rightArray from "assets/img/arrayRight.png"
 import {Card} from "./Card";
 import {useDispatch, useSelector} from "react-redux";
-import {getCompaniesAction} from "../../../redux/companies/companiesSaga";
-import {RootState} from "../../../redux/store";
+import {getCompaniesAction} from "redux/companies/companiesSaga";
+import {RootState} from "redux/store";
 
 
 

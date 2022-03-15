@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import {Button} from "../../../general/Button";
-import {LinkToLogin} from "../../../general/LinkToLogin";
-import {composeValidators, required} from "../../../../helpers/validation";
-import {useDispatch, useSelector} from "react-redux";
-import {sendEmailAction} from "../../../../redux/login/loginSaga";
-import {RootState} from "../../../../redux/store";
-import {AllerError} from "../../../general/AllertError";
-import {AllerSuccessful} from "../../../general/AllerSuccessful";
+import {Button} from "components/general/Button";
+import {LinkToLogin} from "components/general/LinkToLogin";
+import {composeValidators, required} from "helpers/validation";
+import {useDispatch} from "react-redux";
+import {sendEmailAction} from "redux/login/loginSaga";
 import {useNavigate} from "react-router-dom";
 
 type Values = {
@@ -21,7 +18,6 @@ export const PasswordReset = () => {
     const navigate = useNavigate();
 
     const onSubmit = (values: Values) => {
-        console.log(values)
         dispatch(sendEmailAction(values.email));
         localStorage.setItem('emailReset', values.email)
         navigate('/resend', {replace: true})

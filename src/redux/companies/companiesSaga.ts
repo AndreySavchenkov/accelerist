@@ -1,4 +1,4 @@
-import {companiesApi} from "../../api/api";
+import {companiesApi} from "api/api";
 import {call, put} from "redux-saga/effects";
 import {getCompanies} from "./companiesSlice";
 

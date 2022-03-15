@@ -4,8 +4,8 @@ import {SearchHeader} from "./SearchHeader";
 import {SearchPanel} from "./SearchPanel";
 import {Outlet} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
-import {AllerSuccessful} from "../general/AllerSuccessful";
+import {RootState} from "redux/store";
+import {AllerSuccessful} from "components/general/AllerSuccessful";
 
 
 export const SearchPage = () => {

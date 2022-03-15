@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import {ToggleContainer, ToggleItem} from "../../Login/containers/main/MainForm";
+import {ToggleContainer, ToggleItem} from "components/Login/containers/main/MainForm";
 import {Field, Form} from "react-final-form";
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
