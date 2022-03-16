@@ -100,6 +100,33 @@ export const Filter = () => {
         {title: 'Entertainment and Recrea..'},
         {title: 'Bars and Food Sevices'},
     ];
+    const primaryIndutryData = [
+        {title: "Food & Beverage"},
+        {title: "Restaurants"},
+        {title: "Electricity, Oil & Gas"},
+        {title: "Freight & Logistics Services"},
+        {title: "Barber Shops & Beauty Salons"},
+        {title: "Grocery Retail"},
+        {title: "Mobile App Developement"},
+        {title: "Record, Video & Book Stores"},
+        {title: "Freight & Logistics Services"},
+        {title: "Chemicals & Related Products"},
+        {title: "Car & Truck Rental"},
+        {title: "Apparel & Accessories Retail"},
+        {title: "Internet Service Providers, Website Hosting & Internet-related Services"},
+        {title: "Publishing"},
+        {title: "Broadcasting"},
+        {title: "Customer Relationship Management (CRM) Software"},
+        {title: "Motor Vehicles"},
+        {title: "Investment Banking"},
+        {title: "Office Products Retail & Distribution"},
+        {title: "Home Improvement & Hardware Retail"},
+        {title: "Management Consulting"},
+        {title: "Medical & Surgical Hospitals"},
+        {title: "Medical & Surgical Hospitals"},
+
+
+    ]
 
     const [industry, setIndustry] = useState([{title: ''}])
     const [location, setLocation] = useState([{title: ''}])
@@ -135,7 +162,7 @@ export const Filter = () => {
                                                     <Autocomplete
                                                         multiple
                                                         id="industry"
-                                                        options={industryData}
+                                                        options={primaryIndutryData}
                                                         getOptionLabel={(option) => option.title}
                                                         renderOption={(props, option, {selected}) => (
                                                             <li {...props}>

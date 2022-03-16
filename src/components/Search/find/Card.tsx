@@ -3,8 +3,10 @@ import styled from "styled-components";
 import appleLogo from "assets/img/apple.png"
 import heart from "assets/img/heart.png"
 import {formatNumber} from "helpers/functions";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
+    id: string
     name: string
     city: string
     phone: string
@@ -14,41 +16,46 @@ type Props = {
     primaryIndustry: string
 }
 
-export const Card:FC<Props> = ({name,revenue,phone,score,country, city,primaryIndustry}) => {
+export const Card: FC<Props> = ({name, revenue, phone, score, country, city, primaryIndustry, id}) => {
 
+    const navigate = useNavigate();
+
+    const showProfile = () => {
+        navigate(`${id}`);
+    }
 
     return (
-            <Container>
-                <Ranking>
-                    <ContainerLogo>
-                        <Logo src={appleLogo}/>
-                    </ContainerLogo>
-                    <ContainerInfo>
-                        <Title>Priority Ranking</Title>
-                        <Subtitle>{score}</Subtitle>
-                    </ContainerInfo>
-                </Ranking>
-                <MainContainer>
-                    <MainTitle>{name}</MainTitle>
-                    <MainAddress>{country}, {city}</MainAddress>
-                    <MainPhone>{phone}</MainPhone>
-                    <InnerContainer>
-                        <FocusContainer>
-                            <FocusTitle>CSR Focus</FocusTitle>
-                            <FocusInfo>{primaryIndustry}</FocusInfo>
-                        </FocusContainer>
-                        <BorderLine></BorderLine>
-                        <RevenueContainer>
-                            <RevenueTitle>Revenue</RevenueTitle>
-                            <RevenuePrice>$ {formatNumber(revenue)}</RevenuePrice>
-                        </RevenueContainer>
-                    </InnerContainer>
-                    <ButtonsContainer>
-                        <FavoriteButton src={heart}/>
-                        <ProfileButton>Profile</ProfileButton>
-                    </ButtonsContainer>
-                </MainContainer>
-            </Container>
+        <Container>
+            <Ranking>
+                <ContainerLogo>
+                    <Logo src={appleLogo}/>
+                </ContainerLogo>
+                <ContainerInfo>
+                    <Title>Priority Ranking</Title>
+                    <Subtitle>{score}</Subtitle>
+                </ContainerInfo>
+            </Ranking>
+            <MainContainer>
+                <MainTitle>{name}</MainTitle>
+                <MainAddress>{country}, {city}</MainAddress>
+                <MainPhone>{phone}</MainPhone>
+                <InnerContainer>
+                    <FocusContainer>
+                        <FocusTitle>CSR Focus</FocusTitle>
+                        <FocusInfo>{primaryIndustry}</FocusInfo>
+                    </FocusContainer>
+                    <BorderLine></BorderLine>
+                    <RevenueContainer>
+                        <RevenueTitle>Revenue</RevenueTitle>
+                        <RevenuePrice>$ {formatNumber(revenue)}</RevenuePrice>
+                    </RevenueContainer>
+                </InnerContainer>
+                <ButtonsContainer>
+                    <FavoriteButton src={heart}/>
+                    <ProfileButton onClick={showProfile}>Profile</ProfileButton>
+                </ButtonsContainer>
+            </MainContainer>
+        </Container>
     )
 }
 

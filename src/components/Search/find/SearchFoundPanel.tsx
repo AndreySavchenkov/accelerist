@@ -44,6 +44,7 @@ export const SearchFoundPanel = () => {
 
 
     const cardsList = cards?.map(card => <Card key={card.id}
+                                                    id={card.id}
                                                    name={card.name}
                                                    city={card.city}
                                                    phone={card.phone}
@@ -55,7 +56,7 @@ export const SearchFoundPanel = () => {
 
     return (
         <>
-            <Text>Found 32 companies</Text>
+            <Text>Found {totalItems} companies</Text>
             <SettingsPanel>
                 <Items>
                     <Item>

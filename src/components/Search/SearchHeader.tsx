@@ -5,6 +5,8 @@ import smallLogo from "assets/img/searchSmallLogo.png"
 import profileLog from "assets/img/profileLogo.png"
 import menuIcon from "assets/img/menu.png"
 import closeButton from "assets/img/closeButton.png"
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
 
 type Props = {
     isShowMenu: boolean,
@@ -12,6 +14,7 @@ type Props = {
 }
 
 export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
+    const email = useSelector((state:RootState)=>state.login.user.email)
 
     const showMenu = () => {
         setShowMenu(!isShowMenu);
@@ -36,7 +39,7 @@ export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
                     <ProfileLogoContainer>
                         <ProfileLogo src={profileLog}/>
                     </ProfileLogoContainer>
-                    <ProfileText>United Nations</ProfileText>
+                    <ProfileText>{email}</ProfileText>
                 </Profile>
                 <MenuBurgerIcon src={menuIcon} onClick={showMenu}/>
                 {
@@ -56,7 +59,7 @@ export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
                                     <ProfileLogoContainer>
                                         <ProfileLogo src={profileLog}/>
                                     </ProfileLogoContainer>
-                                    <ProfileText>United Nations</ProfileText>
+                                    <ProfileText>{email}</ProfileText>
                                 </MenuBurgerProfile>
                             </MenuBurgerContainer>
                         </BackgroundMenu> : ''
