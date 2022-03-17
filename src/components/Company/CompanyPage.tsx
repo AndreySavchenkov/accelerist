@@ -31,7 +31,15 @@ export const CompanyPage: FC = () => {
                                 <ProfileContainer>
                                     <Company name={company.name} primaryIndustry={company.primaryIndustry}/>
                                     <CompanyContainer>
-                                        <CompanyDescription employeeCount={company.employeeCount} revenue={company.revenue} descriptionList={company.descriptionList}/>
+                                        <CompanyDescription employeeCount={company.employeeCount}
+                                                            country={company.country}
+                                                            state={company.state}
+                                                            city={company.city}
+                                                            street={company.street}
+                                                            revenue={company.revenue}
+                                                            descriptionList={company.descriptionList}
+                                                            website={company.website}
+                                                            phone={company.phone}/>
                                     </CompanyContainer>
                                 </ProfileContainer> : '***profile not found***'
 

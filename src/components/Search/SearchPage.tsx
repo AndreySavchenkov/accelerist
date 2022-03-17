@@ -3,13 +3,11 @@ import styled from "styled-components";
 import {SearchHeader} from "./SearchHeader";
 import {SearchPanel} from "./SearchPanel";
 import {Outlet} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {RootState} from "redux/store";
-import {AllerSuccessful} from "components/general/AllerSuccessful";
+
 
 
 export const SearchPage = () => {
-    const successful = useSelector((state:RootState)=>state.notifications.successful);
+    // const successful = useSelector((state:RootState)=>state.notifications.successful);
     const [isShowMenu, setShowMenu] = useState(false);
 
     return (
@@ -26,7 +24,7 @@ export const SearchPage = () => {
                     </InnerContainer>
                 </Container> : null}
             </div>
-            {successful ? <AllerSuccessful text={'Login was successful. Please reload app'}/> : null}
+            {/*{successful ? <AllerSuccessful text={'Login was successful. Please reload app'}/> : null}*/}
         </>
 
     )
