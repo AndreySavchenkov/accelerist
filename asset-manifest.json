@@ -1,17 +1,23 @@
 {
   "files": {
     "main.css": "/accelerist/static/css/main.073c9b0a.css",
-    "main.js": "/accelerist/static/js/main.174e077a.js",
+    "main.js": "/accelerist/static/js/main.4ced486e.js",
     "static/js/787.e0fa5844.chunk.js": "/accelerist/static/js/787.e0fa5844.chunk.js",
     "static/media/loginBackground.jpg": "/accelerist/static/media/loginBackground.24c1ab40189abdb29fdc.jpg",
+    "static/media/imgScoop.png": "/accelerist/static/media/imgScoop.33ba755f26e3bc5395ed.png",
+    "static/media/news1.png": "/accelerist/static/media/news1.1e810107be46654a765e.png",
+    "static/media/news4.png": "/accelerist/static/media/news4.3dbffc9db2ecd9472928.png",
+    "static/media/news5.png": "/accelerist/static/media/news5.949666317fd0b6c5b17d.png",
+    "static/media/news3.png": "/accelerist/static/media/news3.2a5ddf7223ecd1a40b1e.png",
+    "static/media/news6.png": "/accelerist/static/media/news6.f85b6ce8aee2c876ccf4.png",
     "index.html": "/accelerist/index.html",
     "static/media/hiddenPassword.svg": "/accelerist/static/media/hiddenPassword.e4537af7281b073365fc67ee17511125.svg",
     "main.073c9b0a.css.map": "/accelerist/static/css/main.073c9b0a.css.map",
-    "main.174e077a.js.map": "/accelerist/static/js/main.174e077a.js.map",
+    "main.4ced486e.js.map": "/accelerist/static/js/main.4ced486e.js.map",
     "787.e0fa5844.chunk.js.map": "/accelerist/static/js/787.e0fa5844.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.174e077a.js"
+    "static/js/main.4ced486e.js"
   ]
 }
