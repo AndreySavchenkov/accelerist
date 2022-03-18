@@ -1,59 +1,75 @@
 import React, {useState} from "react";
-import Chart from 'react-apexcharts'
+import Chart from "react-apexcharts";
 import styled from "styled-components";
 
+export const SecondaryDonut = () => {
 
-export const Donut = () => {
-
-    const [isActive, setIsActive] = useState('Gender');
+    const [isActive, setIsActive] = useState('Nonprofits');
 
     const changeActiveElement = (element: string) => {
         setIsActive(element)
     }
 
     const getCurrentState = () => {
-        if (isActive === 'Gender') {
+        if (isActive === 'Affinities') {
             return {
                 options: {
-                    series: [35, 65],
-                    labels: ['Male', 'Female'],
-                    colors: ['#54A4FA', '#1D7CF7'],
+                    series: [65, 25,10],
+                    labels: ['affinit 1', 'affinit 2', 'affinit 3'],
+                    colors: ['#54A4FA', '#1D7CF7', '#1560D4'],
+                    fontColors:['#fff','#fff', '#fff'],
                     legend: {
                         show: false
                     }
                 }
             }
         }
-        if (isActive === 'Income') {
+        if (isActive === 'Nonprofits') {
             return {
                 options: {
-                    series: [45, 55],
-                    labels: ['Male', 'Female'],
-                    colors: ['#54A4FA', '#1D7CF7'],
+                    series: [30, 15,12,10,8,7,6,5,3,3],
+                    labels: ['Peta', 'Pastafits','Morris Animal','Animal Quality','Oregon Humane Society','Baltimore Humane Society','Austin Pets Alive','The Climate Project','Creative Commons','Other'],
+                    colors: ['#112764', '#09318F','#0E47B1','#1560D4','#1D7CF7','#54A4FA','#76BCFC','#A4D7FE','#D1EDFE','#EAEAEA'],
+                    fontColors:['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#000','#000','#000'],
                     legend: {
                         show: false
                     }
                 }
             }
         }
-        if (isActive === 'Age') {
+        if (isActive === 'Purchasing') {
             return {
                 options: {
                     series: [15, 35, 20, 15, 5],
-                    labels: ['18-25', '26-35', '36-45', '46-55', '55+'],
+                    labels: ['item1', 'item2', 'item3', 'item4', 'item5'],
                     colors: ['#0E47B1', '#112764', '#09318F', '#1560D4', '#1D7CF7'],
+                    fontColors:['#fff','#fff','#fff','#fff','#fff'],
                     legend: {
                         show: false
                     }
                 }
             }
         }
-        if (isActive === 'Ethnicity') {
+        if (isActive === 'Brands') {
             return {
                 options: {
                     series: [25, 25, 30, 20],
-                    labels: ['Asia', 'India', 'America', 'Europe'],
+                    labels: ['item1', 'item2', 'item3', 'item4'],
                     colors: ['#0E47B1', '#112764', '#09318F', '#1560D4'],
+                    fontColors:['#fff','#fff','#fff','#fff'],
+                    legend: {
+                        show: false
+                    }
+                }
+            }
+        }
+        if (isActive === 'Interests') {
+            return {
+                options: {
+                    series: [35, 25, 20, 30],
+                    labels: ['item1', 'item2', 'item3', 'item4'],
+                    colors: ['#0E47B1', '#112764', '#09318F', '#1560D4'],
+                    fontColors:['#fff','#fff','#fff','#fff'],
                     legend: {
                         show: false
                     }
@@ -66,14 +82,16 @@ export const Donut = () => {
         <>
             <Main>
                 <Header>
-                    {(isActive === 'Gender') ? <HeaderItemsAcive>Gender</HeaderItemsAcive> :
-                        <HeaderItems onClick={() => changeActiveElement('Gender')}>Gender</HeaderItems>}
-                    {(isActive === 'Income') ? <HeaderItemsAcive>Income</HeaderItemsAcive> :
-                        <HeaderItems onClick={() => changeActiveElement('Income')}>Income</HeaderItems>}
-                    {(isActive === 'Age') ? <HeaderItemsAcive>Age</HeaderItemsAcive> :
-                        <HeaderItems onClick={() => changeActiveElement('Age')}>Age</HeaderItems>}
-                    {(isActive === 'Ethnicity') ? <HeaderItemsAcive>Ethnicity</HeaderItemsAcive> :
-                        <HeaderItems onClick={() => changeActiveElement('Ethnicity')}>Ethnicity</HeaderItems>}
+                    {(isActive === 'Affinities') ? <HeaderItemsAcive>Affinities</HeaderItemsAcive> :
+                        <HeaderItems onClick={() => changeActiveElement('Affinities')}>Affinities</HeaderItems>}
+                    {(isActive === 'Nonprofits') ? <HeaderItemsAcive>Nonprofits</HeaderItemsAcive> :
+                        <HeaderItems onClick={() => changeActiveElement('Nonprofits')}>Nonprofits</HeaderItems>}
+                    {(isActive === 'Purchasing') ? <HeaderItemsAcive>Purchasing</HeaderItemsAcive> :
+                        <HeaderItems onClick={() => changeActiveElement('Purchasing')}>Purchasing</HeaderItems>}
+                    {(isActive === 'Brands') ? <HeaderItemsAcive>Brands</HeaderItemsAcive> :
+                        <HeaderItems onClick={() => changeActiveElement('Brands')}>Brands</HeaderItems>}
+                    {(isActive === 'Interests') ? <HeaderItemsAcive>Interests</HeaderItemsAcive> :
+                        <HeaderItems onClick={() => changeActiveElement('Interests')}>Interests</HeaderItems>}
                 </Header>
 
                 <div className="donut" style={{margin: '30px 0'}}>
@@ -84,36 +102,36 @@ export const Donut = () => {
             </Main>
             <Footer>
                 {
-                    getCurrentState()?.options.labels.map((item,index) =>
-                        <FooterItem key={index} style={{backgroundColor: `${getCurrentState()?.options.colors[index]}`}}>
+                    getCurrentState()?.options.labels.map((item, index) =>
+                        <FooterItem key={index}
+                                    style={{backgroundColor: `${getCurrentState()?.options.colors[index]}`, color: `${getCurrentState()?.options?.fontColors[index]}`}}>
                             <ItemText>{getCurrentState()?.options.labels[index]}</ItemText>
                             <ItemNumber>{getCurrentState()?.options.series[index]}%</ItemNumber>
                         </FooterItem>)
                 }
             </Footer>
-
         </>
     )
-
 }
+
 const ItemNumber = styled.span`
   font-weight: 600;
   font-size: 12px;
-  color: #FFFFFF;
 `
 const ItemText = styled.span`
   margin-right: 8px;
   font-weight: 400;
   font-size: 12px;
-  color: #FFFFFF;
 `
 const FooterItem = styled.div`
   margin-right: 6px;
+  margin-bottom: 8px;
   padding: 6px 20px;
   border-radius: 19px;
 `
 const Footer = styled.footer`
   display: flex;
+  flex-wrap: wrap;
   background: #F7FCFF;
   border-radius: 0px 0px 6px 6px;
   border: 1px solid #E8E8E8;
@@ -164,4 +182,3 @@ const HeaderItemsAcive = styled.p`
   cursor: pointer;
   padding-bottom: 9px;
 `
-

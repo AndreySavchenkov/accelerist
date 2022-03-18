@@ -10,6 +10,8 @@ import goal3 from "assets/img/goal03.png";
 import goal4 from "assets/img/goal04.png";
 import goal5 from "assets/img/goal06.png";
 import {Donut} from "./Donut";
+import {SecondaryDonut} from "./SecondaryDonut";
+import {Structure} from "./Structure";
 
 type Props = {
     descriptionList: string
@@ -45,6 +47,7 @@ export const CompanyDescription: FC<Props> = ({
             <Title>Business Description Products</Title>
             <Description>Description</Description>
             <Text>{descriptionList}</Text>
+            <Structure/>
             <Description>Reported</Description>
             <ReportedContainer>
                 <RevenueContainer>
@@ -227,8 +230,10 @@ export const CompanyDescription: FC<Props> = ({
                 and lists represent the highest indexing (or most above average) attributes and preferences of this
                 dataset.
             </DemographicsText>
-            <Description>Primary Information</Description>
+            <Description style={{marginTop: '32px'}}>Primary Information</Description>
             <Donut/>
+            <Description style={{marginTop: '32px'}}>Secondary Information</Description>
+            <SecondaryDonut/>
         </Container>
     )
 }

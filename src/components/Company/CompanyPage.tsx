@@ -7,6 +7,7 @@ import {RootState} from "../../redux/store";
 import {ProfilePanel} from "./ProfilePanel";
 import {Company} from "./Company";
 import {CompanyDescription} from "./CompanyDescription";
+import {AsideMenu} from "./AsideMenu";
 
 
 export const CompanyPage: FC = () => {
@@ -26,31 +27,39 @@ export const CompanyPage: FC = () => {
             <ProfilePanel/>
             <Container>
                 <InnerContainer>
-                        {company ?
+                    {company ?
 
-                                <ProfileContainer>
-                                    <Company name={company.name} primaryIndustry={company.primaryIndustry}/>
-                                    <CompanyContainer>
-                                        <CompanyDescription employeeCount={company.employeeCount}
-                                                            country={company.country}
-                                                            state={company.state}
-                                                            city={company.city}
-                                                            street={company.street}
-                                                            revenue={company.revenue}
-                                                            descriptionList={company.descriptionList}
-                                                            website={company.website}
-                                                            phone={company.phone}/>
-                                    </CompanyContainer>
-                                </ProfileContainer> : '***profile not found***'
+                        <ProfileContainer>
+                            <Company name={company.name} primaryIndustry={company.primaryIndustry}/>
+                            <Box>
+                                <CompanyContainer>
+                                    <CompanyDescription employeeCount={company.employeeCount}
+                                                        country={company.country}
+                                                        state={company.state}
+                                                        city={company.city}
+                                                        street={company.street}
+                                                        revenue={company.revenue}
+                                                        descriptionList={company.descriptionList}
+                                                        website={company.website}
+                                                        phone={company.phone}/>
 
-                        }
+
+                                </CompanyContainer>
+                                <AsideMenu/>
+                            </Box>
+                        </ProfileContainer> : '***profile not found***'
+                    }
+
                 </InnerContainer>
             </Container>
         </>
     )
 }
 
-
+const Box = styled.div`
+  display: flex;
+  width: 100%;
+`
 const Container = styled.div`
   display: flex;
   background: #F9F9F9;
@@ -68,6 +77,7 @@ const ProfileContainer = styled.div`
   width: 100%;
   background: #fff;
   margin-left: 60px;
+  margin-bottom: 50px;
 `
 const CompanyContainer = styled.div`
   max-width: 790px;

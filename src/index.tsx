@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 14px;
   }
 
-  body {
+  body,div,p,span,a,header,main,footer,li,ul {
     font-family: 'Rubik', sans-serif;
   }
 `
