@@ -7,6 +7,7 @@ import menuIcon from "assets/img/menu.png"
 import closeButton from "assets/img/closeButton.png"
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
+import {Link} from 'react-router-dom';
 
 type Props = {
     isShowMenu: boolean,
@@ -27,12 +28,12 @@ export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
                     <Logo src={bigLogo}/>
                     <LogoSmall src={smallLogo}/>
                     <Nav>
-                        <Link href="#">Dashboard</Link>
-                        <Link href="#">Audience</Link>
-                        <Link href="#">Pricing</Link>
-                        <Link href="#">Prospecting</Link>
-                        <Link href="#">ROI</Link>
-                        <Link href="#">Upgrade Membership</Link>
+                        <CustomLink to={'dashboard'}>Dashboard</CustomLink>
+                        <CustomLink to={''}>Audience</CustomLink>
+                        <CustomLink to={''}>Pricing</CustomLink>
+                        <CustomLink to={''}>Prospecting</CustomLink>
+                        <CustomLink to={''}>ROI</CustomLink>
+                        <CustomLink to={''}>Upgrade Membership</CustomLink>
                     </Nav>
                 </LogoAndMenu>
                 <Profile>
@@ -48,12 +49,12 @@ export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
                             <MenuBurgerContainer>
                                 <CloseButton src={closeButton} onClick={showMenu}/>
                                 <MenuBurgerNav>
-                                    <Link href="#">Dashboard</Link>
-                                    <Link href="#">Audience</Link>
-                                    <Link href="#">Pricing</Link>
-                                    <Link href="#">Prospecting</Link>
-                                    <Link href="#">ROI</Link>
-                                    <Link href="#">Upgrade Membership</Link>
+                                    <CustomLink to={'dashboard'}>Dashboard</CustomLink>
+                                    <CustomLink to={''}>Audience</CustomLink>
+                                    <CustomLink to={''}>Pricing</CustomLink>
+                                    <CustomLink to={''}>Prospecting</CustomLink>
+                                    <CustomLink to={''}>ROI</CustomLink>
+                                    <CustomLink to={''}>Upgrade Membership</CustomLink>
                                 </MenuBurgerNav>
                                 <MenuBurgerProfile>
                                     <ProfileLogoContainer>
@@ -110,7 +111,7 @@ const Nav = styled.nav`
   }
 
 `
-const Link = styled.a`
+const CustomLink = styled(Link)`
   margin-right: 28px;
   font-weight: 400;
   text-decoration: none;
@@ -125,6 +126,7 @@ const Link = styled.a`
 
   &:active, &:hover {
     color: #000;
+    border-bottom: 1px solid #000;
   }
 `
 const Profile = styled.div`

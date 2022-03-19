@@ -12,6 +12,7 @@ import {Filter} from "./components/Search/filter/Filter";
 import {useSelector} from "react-redux";
 import {RootState} from "./redux/store";
 import {CompanyPage} from "./components/Company/CompanyPage";
+import {Dashboard} from "./components/Dashboard/Dashboard";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                             <Route index element={<SearchFoundPanel/>}/>
                             <Route path="filter" element={<Filter/>}/>
                         </Route>
+                        <Route path="dashboard" element={<Dashboard/>}/>
                         <Route path=":id" element={<CompanyPage/>} />
                     </Routes>
                 )
