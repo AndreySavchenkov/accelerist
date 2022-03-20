@@ -1,10 +1,14 @@
 {
   "files": {
     "main.css": "/accelerist/static/css/main.073c9b0a.css",
-    "main.js": "/accelerist/static/js/main.4ced486e.js",
+    "main.js": "/accelerist/static/js/main.6983d767.js",
     "static/js/787.e0fa5844.chunk.js": "/accelerist/static/js/787.e0fa5844.chunk.js",
     "static/media/loginBackground.jpg": "/accelerist/static/media/loginBackground.24c1ab40189abdb29fdc.jpg",
+    "static/media/navigator4.png": "/accelerist/static/media/navigator4.9b0cdbc3e5a2e376e38b.png",
+    "static/media/navigator2.png": "/accelerist/static/media/navigator2.20d9cfa15dd86e6a9152.png",
+    "static/media/navigator1.png": "/accelerist/static/media/navigator1.e67d4a2f474ed63e8584.png",
     "static/media/imgScoop.png": "/accelerist/static/media/imgScoop.33ba755f26e3bc5395ed.png",
+    "static/media/navigator3.png": "/accelerist/static/media/navigator3.653b2f95c313618acf91.png",
     "static/media/news1.png": "/accelerist/static/media/news1.1e810107be46654a765e.png",
     "static/media/news4.png": "/accelerist/static/media/news4.3dbffc9db2ecd9472928.png",
     "static/media/news5.png": "/accelerist/static/media/news5.949666317fd0b6c5b17d.png",
@@ -13,11 +17,11 @@
     "index.html": "/accelerist/index.html",
     "static/media/hiddenPassword.svg": "/accelerist/static/media/hiddenPassword.e4537af7281b073365fc67ee17511125.svg",
     "main.073c9b0a.css.map": "/accelerist/static/css/main.073c9b0a.css.map",
-    "main.4ced486e.js.map": "/accelerist/static/js/main.4ced486e.js.map",
+    "main.6983d767.js.map": "/accelerist/static/js/main.6983d767.js.map",
     "787.e0fa5844.chunk.js.map": "/accelerist/static/js/787.e0fa5844.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.4ced486e.js"
+    "static/js/main.6983d767.js"
   ]
 }
