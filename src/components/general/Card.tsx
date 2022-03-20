@@ -21,7 +21,7 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
     const navigate = useNavigate();
 
     const showProfile = () => {
-        navigate(`${id}`);
+        navigate(`/${id}`);
     }
 
     return (
@@ -66,7 +66,7 @@ const Container = styled.div`
   margin-bottom: 24px;
   margin-right: 24px;
   display: flex;
-  max-width: 475px;
+  max-width: 470px;
   width: 100%;
   background: #fff;
   @media (max-width: 1204px) {

@@ -68,7 +68,7 @@ export const Reports = () => {
 }
 const Line = styled.div`
   margin-left: 42px;
-  width: 500px;
+  width: 92%;
   height: 1px;
   background: #EEEEEE;
 `
@@ -161,6 +161,6 @@ const Container = styled.div`
 `
 const MainContainer = styled.div`
   display: flex;
-  width: 49%;
+  width: calc(49% + 3px);
   flex-direction: column;
 `

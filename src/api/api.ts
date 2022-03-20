@@ -10,7 +10,6 @@ const instance = axios.create({
 })
 
 
-
 export const authApi = {
     signIn(email: string, password: string) {
         return axios.post("https://accelerist.herokuapp.com/api/v1/auth/sign_in", {email, password})
@@ -27,5 +26,8 @@ export const authApi = {
 export const companiesApi = {
     getCompanies(currentPage: number) {
         return instance.get(`/companies?page=${currentPage}&limit=6`)
+    },
+    getFavoriteCompanies(currentPage: number) {
+        return instance.get(`/companies/favorites?page=${currentPage}&limit=6`)
     }
 }

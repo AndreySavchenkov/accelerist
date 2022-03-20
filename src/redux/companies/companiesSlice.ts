@@ -74,8 +74,11 @@ export type Meta = {
 }
 
 type InitialState = {
-    companies: Companies
-    meta: Meta
+    companies: Companies,
+    meta: Meta,
+    favoriteCompanies: Companies,
+    favoriteMeta: Meta,
+
 }
 
 const initialState = {} as InitialState
@@ -88,9 +91,13 @@ const companiesSlice = createSlice({
             state.companies = action.payload.companies
             state.meta = action.payload.meta
         },
+        getFavoriteCompanies(state, action: PayloadAction<{ companies: Companies, meta: Meta }>) {
+            state.favoriteCompanies = action.payload.companies
+            state.favoriteMeta = action.payload.meta
+        },
     }
 })
 
 
-export const {getCompanies} = companiesSlice.actions
+export const {getCompanies,getFavoriteCompanies} = companiesSlice.actions
 export default companiesSlice.reducer

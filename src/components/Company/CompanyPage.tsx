@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import {SearchHeader} from "../Search/SearchHeader";
+import {Header} from "../general/Header";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -23,7 +23,7 @@ export const CompanyPage: FC = () => {
 
     return (
         <>
-            <SearchHeader isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
+            <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
             <ProfilePanel/>
             <Container>
                 <InnerContainer>

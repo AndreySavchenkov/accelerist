@@ -1,13 +1,16 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 
+type Props = {
+    text: string
+}
 
-export const DashboardPanel = () => {
+export const HighPanel:FC<Props> = ({text}) => {
     return (
         <div>
             <Container>
                 <InnerContainer>
-                    <Title>Dashboard</Title>
+                    <Title>{text}</Title>
                 </InnerContainer>
             </Container>
         </div>

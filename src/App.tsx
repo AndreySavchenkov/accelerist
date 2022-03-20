@@ -13,6 +13,8 @@ import {useSelector} from "react-redux";
 import {RootState} from "./redux/store";
 import {CompanyPage} from "./components/Company/CompanyPage";
 import {Dashboard} from "./components/Dashboard/Dashboard";
+import {FavoritesPage} from "./components/Favorites/FavoritesPage";
+import {LittleCard} from "./components/general/LittleCard";
 
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
                             <Route index element={<SearchFoundPanel/>}/>
                             <Route path="filter" element={<Filter/>}/>
                         </Route>
-                        <Route path="dashboard" element={<Dashboard/>}/>
+                        <Route path="/dashboard" element={<Dashboard/>}/>
+                        <Route path="/favorites" element={<FavoritesPage/>}/>
                         <Route path=":id" element={<CompanyPage/>} />
                     </Routes>
                 )
@@ -44,7 +47,6 @@ function App() {
                     </Routes>
                 )
             }
-            {/*<CompanyPage/>*/}
         </>
     );
 }

@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import {SearchHeader} from "../Search/SearchHeader";
+import {Header} from "../general/Header";
 import styled from "styled-components";
-import {DashboardPanel} from "./DashboardPanel";
+import {HighPanel} from "../general/HighPanel";
 import {Race} from "./Race";
 import {Favorites} from "./Favorites";
 import {Reports} from "./Reports";
+import {Navigator} from "./Navigator";
 
 export const Dashboard = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -12,15 +13,15 @@ export const Dashboard = () => {
 
     return (
         <>
-            <SearchHeader isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
-            <DashboardPanel/>
+            <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
+            <HighPanel text={'Dashboard'}/>
             <Container>
                 <InnerContainer>
                     <DashboardContainer>
-                        <HeaderTitleContainer>
+                        <TitleContainer>
                             <Title>Prospecting Sessions</Title>
                             <TextButton>see more</TextButton>
-                        </HeaderTitleContainer>
+                        </TitleContainer>
                         <RowContainer>
                             <Race/>
                             <Race/>
@@ -29,6 +30,11 @@ export const Dashboard = () => {
                             <Favorites/>
                             <Reports/>
                         </RowContainer>
+                        <TitleContainer>
+                            <Title>Prospect Navigator</Title>
+                            <TextButton>see more</TextButton>
+                        </TitleContainer>
+                        <Navigator/>
                     </DashboardContainer>
                 </InnerContainer>
             </Container>
@@ -52,7 +58,7 @@ const Title = styled.span`
   font-size: 24px;
   color: #122434;
 `
-const HeaderTitleContainer = styled.div`
+const TitleContainer = styled.div`
   margin-top: 32px;
   display: flex;
   width: 100%;
@@ -70,6 +76,7 @@ const InnerContainer = styled.div`
 `
 const DashboardContainer = styled.div`
   padding-left: 60px;
+  padding-right: 60px;
   display: flex;
   flex-direction: column;
   max-width: 1200px;

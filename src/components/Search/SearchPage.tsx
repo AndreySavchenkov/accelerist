@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import {SearchHeader} from "./SearchHeader";
+import {Header} from "../general/Header";
 import {SearchPanel} from "./SearchPanel";
 import {Outlet} from "react-router-dom";
 
@@ -13,7 +13,7 @@ export const SearchPage = () => {
     return (
         <>
             <div>
-                <SearchHeader isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
+                <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
                 <SearchPanel isShowMenu={isShowMenu}/>
                 {!isShowMenu ?
                  <Container>

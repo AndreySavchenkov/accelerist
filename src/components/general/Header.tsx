@@ -14,7 +14,7 @@ type Props = {
     setShowMenu: (isShowMenu:boolean) => void
 }
 
-export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
+export const Header: FC<Props> = ({isShowMenu,setShowMenu}) => {
     const email = useSelector((state:RootState)=>state.login.user.email)
 
     const showMenu = () => {
@@ -25,10 +25,10 @@ export const SearchHeader: FC<Props> = ({isShowMenu,setShowMenu}) => {
         <Container>
             <InnerContainer>
                 <LogoAndMenu>
-                    <Logo src={bigLogo}/>
+                    <Link to={'/'}><Logo src={bigLogo}/></Link>
                     <LogoSmall src={smallLogo}/>
                     <Nav>
-                        <CustomLink to={'dashboard'}>Dashboard</CustomLink>
+                        <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
                         <CustomLink to={''}>Audience</CustomLink>
                         <CustomLink to={''}>Pricing</CustomLink>
                         <CustomLink to={''}>Prospecting</CustomLink>

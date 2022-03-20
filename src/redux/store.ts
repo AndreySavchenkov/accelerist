@@ -1,18 +1,19 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga';
-import loginReducer from "./login/loginSlice";
-import companiesReducer from "./companies/companiesSlice"
+import loginSlice from "./login/loginSlice";
+import companiesSlice from "./companies/companiesSlice"
 import {takeEvery} from 'redux-saga/effects'
 import {sendEmailWorkerSaga, signInWorkerSaga, signUpWorkerSaga} from "./login/loginSaga";
-import {getCompaniesSaga} from "./companies/companiesSaga";
+import {getCompaniesSaga, getFavoriteCompaniesSaga} from "./companies/companiesSaga";
 import storage from 'redux-persist/lib/storage';
 import {persistStore, persistReducer} from 'redux-persist';
 import notificationsSlice from "./notifications/notificationsSlice";
 
 
+
 const rootReducer = combineReducers({
-    login: loginReducer,
-    companies: companiesReducer,
+    login: loginSlice,
+    companies: companiesSlice,
     notifications: notificationsSlice,
 })
 
@@ -33,11 +34,14 @@ export const store = configureStore({
         }).concat(sagaMiddleware),
 })
 export const persistor = persistStore(store);
+
 function* rootWatcher() {
     yield takeEvery('SAGA/SIGN_IN', signInWorkerSaga);
     yield takeEvery('SAGA/SIGN_UP', signUpWorkerSaga);
-    yield takeEvery('SAGA/GET_COMPANIES', getCompaniesSaga);
     yield takeEvery('SAGA/SEND_EMAIL', sendEmailWorkerSaga);
+
+    yield takeEvery('SAGA/GET_COMPANIES', getCompaniesSaga);
+    yield takeEvery('SAGA/GET_FAVORITES_COMPANIES', getFavoriteCompaniesSaga);
 }
 
 sagaMiddleware.run(rootWatcher)
