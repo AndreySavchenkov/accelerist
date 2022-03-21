@@ -52,7 +52,7 @@ export const Filter = () => {
     }
 
 
-    const [value, setValue] = React.useState<number[]>([20, 37]);
+    const [value, setValue] = React.useState<number[]>([10000000, 75000000]);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
@@ -100,7 +100,7 @@ export const Filter = () => {
         {title: 'Entertainment and Recrea..'},
         {title: 'Bars and Food Sevices'},
     ];
-    const primaryIndutryData = [
+    const primaryIndustryData = [
         {title: "Food & Beverage"},
         {title: "Restaurants"},
         {title: "Electricity, Oil & Gas"},
@@ -124,8 +124,6 @@ export const Filter = () => {
         {title: "Management Consulting"},
         {title: "Medical & Surgical Hospitals"},
         {title: "Medical & Surgical Hospitals"},
-
-
     ]
 
     const [industry, setIndustry] = useState([{title: ''}])
@@ -137,6 +135,92 @@ export const Filter = () => {
     const [household, setHousehold] = useState([{title: ''}])
     const [ethnicity, setEthnicity] = useState([{title: ''}])
 
+    const marksAge = [
+        {
+            value: 18,
+            label: '18',
+        },
+        {
+            value: 20,
+            label: '20',
+        },
+        {
+            value: 25,
+            label: '25',
+        },
+        {
+            value: 30,
+            label: '30',
+        },
+        {
+            value: 35,
+            label: '35',
+        },
+        {
+            value: 40,
+            label: '40',
+        },
+        {
+            value: 45,
+            label: '45',
+        },
+        {
+            value: 50,
+            label: '50',
+        },
+        {
+            value: 55,
+            label: '55',
+        },
+        {
+            value: 60,
+            label: '60',
+        },
+        {
+            value: 65,
+            label: '65',
+        },
+        {
+            value: 70,
+            label: '70',
+        },
+        {
+            value: 80,
+            label: '70+',
+        },
+    ]
+
+    const revenueMarks = [
+        {
+            value: 10000,
+            label: '10K',
+        },
+        {
+            value: 10000000,
+            label: '10M',
+        },
+        {
+            value: 25000000,
+            label: '25M',
+        },
+        {
+            value: 50000000,
+            label: '50M',
+        },
+        {
+            value: 75000000,
+            label: '75M',
+        },
+        {
+            value: 100000000,
+            label: '100M',
+        },
+        {
+            value: 150000000,
+            label: '100M+',
+        },
+    ]
+
     return (
         <Container>
             <Title>Filters</Title>
@@ -147,6 +231,7 @@ export const Filter = () => {
             <Form
                 onSubmit={onSubmit}
                 render={({handleSubmit}) => {
+
                     return (
                         <MainForm onSubmit={handleSubmit}>
                             <CompanyTitle>Company</CompanyTitle>
@@ -162,7 +247,8 @@ export const Filter = () => {
                                                     <Autocomplete
                                                         multiple
                                                         id="industry"
-                                                        options={primaryIndutryData}
+                                                        options={primaryIndustryData}
+                                                        isOptionEqualToValue={(option, value) => option.title === value.title}
                                                         getOptionLabel={(option) => option.title}
                                                         renderOption={(props, option, {selected}) => (
                                                             <li {...props}>
@@ -398,7 +484,12 @@ export const Filter = () => {
                                                         <Slider
                                                             value={value}
                                                             onChange={handleChange}
+                                                            step={null}
+                                                            min={10000}
+                                                            defaultValue={[10000000,50000000]}
+                                                            max={150000000}
                                                             valueLabelDisplay="auto"
+                                                            marks={revenueMarks}
                                                         />
                                                     </Box>
                                                 </>
@@ -537,7 +628,11 @@ export const Filter = () => {
                                                         <Slider
                                                             value={age}
                                                             onChange={handleChangeAge}
+                                                            step={null}
+                                                            min={18}
+                                                            max={80}
                                                             valueLabelDisplay="auto"
+                                                            marks={marksAge}
                                                         />
                                                     </Box>
                                                 </>
@@ -561,7 +656,7 @@ const Container = styled.div`
   margin: 30px 60px 60px;
   padding: 40px;
   background: #ffffff;
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     margin-left: 5px;
     margin-right: 5px;
   }
@@ -589,14 +684,14 @@ const InnerContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     flex-direction: column;
   }
 `
 const OneForm = styled.div`
   width: 49%;
   margin-bottom: 16px;
-  @media(max-width: 750px){
+  @media (max-width: 750px) {
     width: 100%;
   }
 `
@@ -615,7 +710,7 @@ const Label = styled.span`
   padding-bottom: 4px;
 `
 const ButtonContainer = styled.div`
-  @media(max-width: 500px){
+  @media (max-width: 500px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -634,9 +729,10 @@ const ButtonSearch = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  @media(max-width: 500px){
+  @media (max-width: 500px) {
     width: 100px;
   }
+
   &:hover {
     background: #51C2EE;
   }
@@ -663,9 +759,10 @@ const ButtonClose = styled.button`
   border: 1px solid #E8E8E8;
   border-radius: 6px;
   cursor: pointer;
-  @media(max-width: 500px){
+  @media (max-width: 500px) {
     width: 100px;
   }
+
   &:hover {
     border: 1px solid #BFBFBF;
   }

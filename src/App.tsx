@@ -14,6 +14,7 @@ import {RootState} from "./redux/store";
 import {CompanyPage} from "./components/Company/CompanyPage";
 import {Dashboard} from "./components/Dashboard/Dashboard";
 import {FavoritesPage} from "./components/Favorites/FavoritesPage";
+import {ProspectsPage} from "./components/Prospects/ProspectsPage";
 
 
 
@@ -32,6 +33,7 @@ function App() {
                         </Route>
                         <Route path="/dashboard" element={<Dashboard/>}/>
                         <Route path="/favorites" element={<FavoritesPage/>}/>
+                        <Route path="/prospects" element={<ProspectsPage/>}/>
                         <Route path=":id" element={<CompanyPage/>} />
                     </Routes>
                 )

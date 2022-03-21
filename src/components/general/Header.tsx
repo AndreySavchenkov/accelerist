@@ -31,7 +31,7 @@ export const Header: FC<Props> = ({isShowMenu,setShowMenu}) => {
                         <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
                         <CustomLink to={''}>Audience</CustomLink>
                         <CustomLink to={''}>Pricing</CustomLink>
-                        <CustomLink to={''}>Prospecting</CustomLink>
+                        <CustomLink to={'/prospects'}>Prospecting</CustomLink>
                         <CustomLink to={''}>ROI</CustomLink>
                         <CustomLink to={''}>Upgrade Membership</CustomLink>
                     </Nav>

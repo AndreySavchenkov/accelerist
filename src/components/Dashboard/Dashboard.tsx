@@ -8,6 +8,7 @@ import {Reports} from "./Reports";
 import {Navigator} from "./Navigator";
 import {useDispatch} from "react-redux";
 import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
+import {Link} from "react-router-dom";
 
 export const Dashboard = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -26,7 +27,7 @@ export const Dashboard = () => {
                     <DashboardContainer>
                         <TitleContainer>
                             <Title>Prospecting Sessions</Title>
-                            <TextButton>see more</TextButton>
+                            <TextButton to={'/prospects'}>see more</TextButton>
                         </TitleContainer>
                         <RowContainer>
                             <Race/>
@@ -38,7 +39,7 @@ export const Dashboard = () => {
                         </RowContainer>
                         <TitleContainer>
                             <Title>Prospect Navigator</Title>
-                            <TextButton>see more</TextButton>
+                            <TextButton to={'#'}>see more</TextButton>
                         </TitleContainer>
                         <Navigator/>
                     </DashboardContainer>
@@ -54,10 +55,11 @@ const RowContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `
-const TextButton = styled.span`
+const TextButton = styled(Link)`
   font-size: 12px;
   color: #2BAEE0;
   cursor: pointer;
+  text-decoration: none;
 `
 const Title = styled.span`
   font-weight: 600;

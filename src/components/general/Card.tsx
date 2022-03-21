@@ -30,27 +30,22 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
 
     const [isModal, setIsModal] = useState(false);
 
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const showProfile = () => {
         navigate(`/${id}`);
     }
-
     const showModal = () => {
         setIsModal(true)
     }
-
     const doLike = () => {
         dispatch(doLikeCompanyAction(id))
         setIsModal(false)
     }
-
     const doDislike = () => {
         dispatch(doDislikeCompanyAction(id))
     }
-
 
     return (
         <Container>
