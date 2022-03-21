@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Header} from "../general/Header";
 import styled from "styled-components";
 import {HighPanel} from "../general/HighPanel";
@@ -6,10 +6,16 @@ import {Race} from "./Race";
 import {Favorites} from "./Favorites";
 import {Reports} from "./Reports";
 import {Navigator} from "./Navigator";
+import {useDispatch} from "react-redux";
+import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
 
 export const Dashboard = () => {
     const [isShowMenu, setShowMenu] = useState(false);
+    const dispatch = useDispatch()
 
+    useEffect(()=>{
+        dispatch(getFavoriteCompaniesAction(1))
+    },[dispatch])
 
     return (
         <>
@@ -65,7 +71,7 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   background: #F9F9F9;
 `

@@ -1,25 +1,52 @@
 import {companiesApi} from "api/api";
 import {call, put} from "redux-saga/effects";
-import {getCompanies, getFavoriteCompanies} from "./companiesSlice";
+import {doDislikeCompany, doLikeCompany, getCompanies, getFavoriteCompanies} from "./companiesSlice";
 
-export function* getCompaniesSaga(action: any):any {
-    try{
+export function* getCompaniesWorkerSaga(action: any): any {
+    try {
         const res = yield call(companiesApi.getCompanies, action.currentPage)
-        console.log('getCompanies',res.data)
-        yield put(getCompanies({companies:res.data.items,meta:res.data.meta}))
-    } catch(error){
-        console.log('getCompaniesSaga error ->',error)
+        console.log('getCompanies', res.data)
+        yield put(getCompanies({companies: res.data.items, meta: res.data.meta}))
+    } catch (error) {
+        console.log('getCompaniesWorkerSaga error ->', error)
     }
 }
+
 export const getCompaniesAction = (currentPage: number) => ({type: 'SAGA/GET_COMPANIES', currentPage})
 
-export function* getFavoriteCompaniesSaga(action: any):any {
-    try{
+export function* getFavoriteCompaniesWorkerSaga(action: any): any {
+    try {
         const res = yield call(companiesApi.getFavoriteCompanies, action.currentPage)
-        console.log('getCompanies',res.data)
-        yield put(getFavoriteCompanies({companies:res.data.items,meta:res.data.meta}))
-    } catch(error){
-        console.log('getFavoriteCompaniesSaga error ->',error)
+        console.log('getCompanies', res.data)
+        yield put(getFavoriteCompanies({companies: res.data.items, meta: res.data.meta}))
+    } catch (error) {
+        console.log('getFavoriteCompaniesWorkerSaga error ->', error)
     }
 }
+
 export const getFavoriteCompaniesAction = (currentPage: number) => ({type: 'SAGA/GET_FAVORITES_COMPANIES', currentPage})
+
+export function* doLikeCompanyWorkerSaga(action: any): any {
+    try {
+        yield call(companiesApi.doLikeCompany, action.companyId)
+        yield put(doLikeCompany({companyId:action.companyId}))
+    } catch (error) {
+        console.log('doLikeCompanies error ->', error)
+    }
+}
+
+export const doLikeCompanyAction = (companyId: string) => ({type: 'SAGA/DO_LIKE_COMPANY', companyId});
+
+export function* doDislikeCompanyWorkerSaga(action: any): any {
+    try {
+        yield call(companiesApi.doDislikeCompany, action.companyId)
+        yield put(doDislikeCompany({companyId:action.companyId}))
+        const res = yield call(companiesApi.getFavoriteCompanies, 1)
+        console.log('getCompanies', res.data)
+        yield put(getFavoriteCompanies({companies: res.data.items, meta: res.data.meta}))
+    } catch (error) {
+        console.log('doLikeCompanies error ->', error)
+    }
+}
+
+export const doDislikeCompanyAction = (companyId: string) => ({type: 'SAGA/DO_DISLIKE_COMPANY', companyId});

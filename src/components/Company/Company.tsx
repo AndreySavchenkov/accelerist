@@ -44,7 +44,7 @@ export const Company: FC<Props> = ({name, primaryIndustry}) => {
     )
 }
 
-const Container = styled.div`
+const Container = styled.article`
   display: flex;
   padding: 40px;
   justify-content: space-between;

@@ -14,7 +14,7 @@ import {RootState} from "./redux/store";
 import {CompanyPage} from "./components/Company/CompanyPage";
 import {Dashboard} from "./components/Dashboard/Dashboard";
 import {FavoritesPage} from "./components/Favorites/FavoritesPage";
-import {LittleCard} from "./components/general/LittleCard";
+
 
 
 function App() {

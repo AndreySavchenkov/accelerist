@@ -24,7 +24,7 @@ export const Favorites = () => {
 
                 : <Title to={'/favorites'}>Favorites</Title>}
 
-            {cardsList ?
+            {(cardsList.length > 0) ?
                 <CardsContainer>
                     {cardsList}
                 </CardsContainer>
@@ -112,7 +112,7 @@ const Container = styled.div`
   background-color: #fff;
   border-radius: 6px;
 `
-const MainContainer = styled.div`
+const MainContainer = styled.section`
   display: flex;
   width: calc(49% + 3px);
   flex-direction: column;

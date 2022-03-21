@@ -3,7 +3,7 @@ import {Header} from "../general/Header";
 import {HighPanel} from "../general/HighPanel";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import {getCompaniesAction, getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
+import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
 import {RootState} from "../../redux/store";
 import leftArray from "../../assets/img/arrayLeft.png";
 import rightArray from "../../assets/img/arrayRight.png";
@@ -36,13 +36,21 @@ export const FavoritesPage = () => {
 
     useEffect(() => {
         dispatch(getFavoriteCompaniesAction(localPage))
-    }, [])
+    }, [dispatch,localPage])
 
-    const firstElement = ((itemCount * localPage) - itemCount) + 1
-    const endElement = (itemCount * localPage)
+    let firstElement = ((itemCount * localPage) - itemCount) + 1
+    if(itemCount < 6){
+        firstElement = totalItems - itemCount;
+    }
+
+    let endElement = (itemCount * localPage);
+    if(itemCount < 6){
+        endElement = totalItems
+    }
 
     const cardsList = cards?.map(card => <Card key={card.id}
                                                id={card.id}
+                                               like={card.like}
                                                name={card.name}
                                                city={card.city}
                                                phone={card.phone}
@@ -75,7 +83,7 @@ export const FavoritesPage = () => {
         </>
     )
 }
-const Cards = styled.div`
+const Cards = styled.main`
   margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
@@ -99,7 +107,7 @@ const RightArray = styled.img`
 const LeftArray = styled.img`
   cursor: pointer;
 `
-const Navigation = styled.div`
+const Navigation = styled.nav`
   margin-top: 32px;
   display: flex;
   margin-right: 60px;

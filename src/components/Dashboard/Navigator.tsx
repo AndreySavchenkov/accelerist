@@ -57,12 +57,12 @@ const Img = styled.img`
   width: 256px;
   height: 187px;
 `
-const Item = styled.div`
+const Item = styled.article`
   width: 256px;
   display: flex;
   flex-direction: column;
 `
-const Container = styled.div`
+const Container = styled.section`
   margin-top: 16px;
   margin-bottom: 25px;
   display: flex;

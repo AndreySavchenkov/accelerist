@@ -117,7 +117,7 @@ const NewsImage = styled.img`
   height: 110px;
   border-radius: 8px;
 `
-const NewsContainer = styled.div`
+const NewsContainer = styled.article`
   margin-top: 16px;
   display: flex;
 `
@@ -161,7 +161,7 @@ const Title = styled.span`
   font-size: 16px;
   color: #122434;
 `
-const Container = styled.div`
+const Container = styled.aside`
   position: relative;
   display: flex;
   flex-direction: column;

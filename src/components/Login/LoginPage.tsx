@@ -16,7 +16,7 @@ export const LoginPage = () => {
     )
 }
 
-const Container = styled.div`
+const Container = styled.main`
   position: relative;
   display: flex;
   justify-content: center;

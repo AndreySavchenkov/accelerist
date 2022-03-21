@@ -39,7 +39,7 @@ const InnerContainer = styled.div`
   margin: 0 auto;
   width: 1440px;
 `
-const SearchContainer = styled.div`
+const SearchContainer = styled.main`
   display: flex;
   flex-direction: column;
   max-width: 1200px;

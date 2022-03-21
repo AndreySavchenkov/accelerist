@@ -17,7 +17,7 @@ export const HighPanel:FC<Props> = ({text}) => {
     )
 }
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   align-items: center;
   width: 100%;

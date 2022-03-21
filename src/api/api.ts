@@ -29,5 +29,11 @@ export const companiesApi = {
     },
     getFavoriteCompanies(currentPage: number) {
         return instance.get(`/companies/favorites?page=${currentPage}&limit=6`)
+    },
+    doLikeCompany(companyId: string){
+        return instance.get(`/companies/${companyId}/like`)
+    },
+    doDislikeCompany(companyId: string){
+        return instance.get(`/companies/${companyId}/dislike`)
     }
 }

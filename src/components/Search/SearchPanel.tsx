@@ -61,7 +61,7 @@ const Container = styled.div`
     background: #F9F9F9;
   }
 `
-const InnerContainer = styled.div`
+const InnerContainer = styled.header`
   display: flex;
   align-items: center;
   margin: 0 auto;

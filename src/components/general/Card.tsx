@@ -1,12 +1,22 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import appleLogo from "assets/img/apple.png"
 import heart from "assets/img/heart.png"
+import fullHeart from "assets/img/fullHeart.png"
 import {formatNumber} from "helpers/functions";
 import {useNavigate} from "react-router-dom";
+import {
+    doDislikeCompanyAction,
+    doLikeCompanyAction,
+} from "../../redux/companies/companiesSaga";
+import {useDispatch} from "react-redux";
+import bigHeartFull from "../../assets/img/bigFullHeart.png";
+import {Button} from "./Button";
+import closeImg from "assets/img/closeBlack.png"
 
 type Props = {
     id: string
+    like: boolean
     name: string
     city: string
     phone: string
@@ -16,13 +26,31 @@ type Props = {
     primaryIndustry: string
 }
 
-export const Card: FC<Props> = ({name, revenue, phone, score, country, city, primaryIndustry, id}) => {
+export const Card: FC<Props> = ({name, revenue, phone, score, country, city, primaryIndustry, id, like}) => {
 
+    const [isModal, setIsModal] = useState(false);
+
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const showProfile = () => {
         navigate(`/${id}`);
     }
+
+    const showModal = () => {
+        setIsModal(true)
+    }
+
+    const doLike = () => {
+        dispatch(doLikeCompanyAction(id))
+        setIsModal(false)
+    }
+
+    const doDislike = () => {
+        dispatch(doDislikeCompanyAction(id))
+    }
+
 
     return (
         <Container>
@@ -44,23 +72,107 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
                         <FocusTitle>CSR Focus</FocusTitle>
                         <FocusInfo>{primaryIndustry}</FocusInfo>
                     </FocusContainer>
-                    <BorderLine></BorderLine>
+                    <BorderLine> </BorderLine>
                     <RevenueContainer>
                         <RevenueTitle>Revenue</RevenueTitle>
                         <RevenuePrice>$ {formatNumber(revenue)}</RevenuePrice>
                     </RevenueContainer>
                 </InnerContainer>
                 <ButtonsContainer>
-                    <FavoriteButton src={heart}/>
+                    {
+                        !like ?
+                            <FavoriteButton onClick={showModal} src={heart}/> :
+                            <FavoriteButton onClick={doDislike} src={fullHeart}/>
+                    }
                     <ProfileButton onClick={showProfile}>Profile</ProfileButton>
                 </ButtonsContainer>
             </MainContainer>
+            {isModal ? <ModalContainer>
+                <Modal>
+                    <IconContainer>
+                        <Icon src={bigHeartFull}/>
+                    </IconContainer>
+                    <TextContainer>
+                        <TitleModal>{name} has been added to favorites</TitleModal>
+                        <SubTitleModal> You can see the list of favorites on the dashboard page</SubTitleModal>
+                    </TextContainer>
+                    <ButtonContainer>
+                        <Button clickHandler={doLike} text={'Done'}/>
+                    </ButtonContainer>
+                    <IconClose onClick={()=>setIsModal(false)} src={closeImg}/>
+                </Modal>
+            </ModalContainer> : null}
         </Container>
     )
 }
+const IconClose = styled.img`
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+`
+const ButtonContainer = styled.div`
+  margin-top: 32px;
+  margin-bottom: 24px;
+  width: 285px;
+`
+const SubTitleModal = styled.span`
+  width: 195px;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 150%;
+  text-align: center;
+  color: #122434;
+`
+const TitleModal = styled.span`
+  margin-top: 24px;
+  width: 257px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 145%;
+  text-align: center;
+  color: #122434;
+`
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const Icon = styled.img`
+  display: block;
+  margin: 47px auto;
+`
+const IconContainer = styled.div`
+  width: 100%;
+  background: #F2F2F2;
+  border-radius: 6px 6px 0 0;
+`
+const Modal = styled.div`
+  position: relative;
+  width: 333px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 6px;
+`
+const ModalContainer = styled.div`
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-
-const Container = styled.div`
+`
+const Container = styled.article`
   position: relative;
   padding: 26px 32px;
   margin-bottom: 24px;
@@ -222,6 +334,7 @@ const ButtonsContainer = styled.div`
   }
 `
 const FavoriteButton = styled.img`
+  margin-right: 8px;
   padding: 5px;
   border-radius: 6px;
   border: 1px solid #E8E8E8;

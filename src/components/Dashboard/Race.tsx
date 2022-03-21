@@ -46,7 +46,7 @@ const Activity = styled.span`
   font-size: 12px;
   color: #737373;
 `
-const DateContainer = styled.div`
+const DateContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

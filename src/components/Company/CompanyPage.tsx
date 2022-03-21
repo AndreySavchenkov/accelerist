@@ -18,7 +18,6 @@ export const CompanyPage: FC = () => {
     const params = useParams();
 
     const company = companies.find(item => item.id === params.id)
-    console.log('company->', company)
 
 
     return (
@@ -70,7 +69,7 @@ const InnerContainer = styled.div`
   width: 1440px;
   min-height: 100vh;
 `
-const ProfileContainer = styled.div`
+const ProfileContainer = styled.main`
   display: flex;
   flex-direction: column;
   max-width: 1200px;

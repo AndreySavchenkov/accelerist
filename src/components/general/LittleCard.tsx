@@ -79,7 +79,7 @@ const Logo = styled.img`
 const HeaderContainer = styled.div`
   display: flex;
 `
-const Container = styled.div`
+const Container = styled.article`
   margin-bottom: 16px;
   width: 40%;
   display: flex;

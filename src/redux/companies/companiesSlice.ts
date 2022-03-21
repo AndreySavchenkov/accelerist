@@ -95,9 +95,21 @@ const companiesSlice = createSlice({
             state.favoriteCompanies = action.payload.companies
             state.favoriteMeta = action.payload.meta
         },
+        doLikeCompany(state, action: PayloadAction<{ companyId: string }>) {
+            const findCompany = state.companies.find(item => item.id === action.payload.companyId)
+            if(findCompany){
+                findCompany.like = true
+            }
+        },
+        doDislikeCompany(state, action: PayloadAction<{ companyId: string }>) {
+            const findCompany = state.companies.find(item => item.id === action.payload.companyId)
+            if(findCompany){
+                findCompany.like = false
+            }
+        }
     }
 })
 
 
-export const {getCompanies,getFavoriteCompanies} = companiesSlice.actions
+export const {getCompanies, getFavoriteCompanies,doLikeCompany,doDislikeCompany} = companiesSlice.actions
 export default companiesSlice.reducer

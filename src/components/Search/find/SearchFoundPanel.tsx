@@ -9,7 +9,7 @@ import {Card} from "../../general/Card";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import {RootState} from "redux/store";
-
+import bigHeartFull from "assets/img/bigFullHeart.png"
 
 
 export const SearchFoundPanel = () => {
@@ -22,7 +22,7 @@ export const SearchFoundPanel = () => {
     }
     const showPreviousPage = () => {
         setLocalPage(localPage - 1)
-        if(localPage <= 1){
+        if (localPage <= 1) {
             setLocalPage(1)
         }
         dispatch(getCompaniesAction(localPage - 1))
@@ -44,14 +44,15 @@ export const SearchFoundPanel = () => {
 
 
     const cardsList = cards?.map(card => <Card key={card.id}
-                                                    id={card.id}
-                                                   name={card.name}
-                                                   city={card.city}
-                                                   phone={card.phone}
-                                                   score={card.score}
-                                                   country={card.country}
-                                                   revenue={card.revenue}
-                                                   primaryIndustry={card.primaryIndustry[0]}/>)
+                                               id={card.id}
+                                               like={card.like}
+                                               name={card.name}
+                                               city={card.city}
+                                               phone={card.phone}
+                                               score={card.score}
+                                               country={card.country}
+                                               revenue={card.revenue}
+                                               primaryIndustry={card.primaryIndustry[0]}/>)
 
 
     return (
@@ -120,7 +121,7 @@ const Items = styled.div`
   display: flex;
   align-items: center;
   margin-left: 60px;
-  
+
   @media (max-width: 730px) {
     margin-left: 16px;
   }
@@ -140,7 +141,7 @@ const ItemIcon = styled.img`
 const Navigation = styled.div`
   display: flex;
   margin-right: 60px;
-  @media(max-width: 730px){
+  @media (max-width: 730px) {
     margin-right: 16px;
   }
   @media (max-width: 650px) {
@@ -157,7 +158,7 @@ const TextNavigation = styled.span`
   color: #122434;
 `
 const LeftArray = styled.img`
- 
+
   cursor: pointer;
 `
 const RightArray = styled.img`
