@@ -15,6 +15,7 @@ import {CompanyPage} from "./components/Company/CompanyPage";
 import {Dashboard} from "./components/Dashboard/Dashboard";
 import {FavoritesPage} from "./components/Favorites/FavoritesPage";
 import {ProspectsPage} from "./components/Prospects/ProspectsPage";
+import {ProspectsListPage} from "./components/ProspectsList/ProspectsListPage";
 
 
 
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/dashboard" element={<Dashboard/>}/>
                         <Route path="/favorites" element={<FavoritesPage/>}/>
                         <Route path="/prospects" element={<ProspectsPage/>}/>
+                        <Route path="/prospects/prospects-list" element={<ProspectsListPage/>}/>
                         <Route path=":id" element={<CompanyPage/>} />
                     </Routes>
                 )

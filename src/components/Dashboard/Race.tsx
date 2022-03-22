@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import ava from "assets/img/ava.png";
+import {Link} from "react-router-dom";
 
 export const Race = () => {
     return (
         <RaceContainer>
-            <Title>Race for the Cure</Title>
+            <Title to={'/prospects/prospects-list'}>Race for the Cure</Title>
             <FiltersTitle>Filters</FiltersTitle>
             <FiltersContainer>
                 <Filter>Travel Industry</Filter>
@@ -120,12 +121,13 @@ const FiltersTitle = styled.span`
   font-size: 12px;
   color: #737373;
 `
-const Title = styled.span`
+const Title = styled(Link)`
   font-size: 16px;
   font-weight: 600;
   color: #122434;
   padding-bottom: 9px;
   border-bottom: 1px solid #E8E8E8;
+  text-decoration: none;
 `
 const RaceContainer = styled.div`
   margin-top: 16px;
