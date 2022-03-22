@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import {Header} from "components/general/Header";
 import {HighPanel} from "components/general/HighPanel";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ import leftArray from "assets/img/arrayLeft.png";
 import rightArray from "assets/img/arrayRight.png";
 import {Card} from "components/general/Card";
 
-export const FavoritesPage = () => {
+export const FavoritesPage:FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
     const totalItems = useSelector((state: RootState) => state.companies.favoriteMeta.totalItems);
     const totalPage = useSelector((state: RootState) => state.companies.favoriteMeta.totalPages);

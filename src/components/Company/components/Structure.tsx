@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import logo1 from "assets/img/logo01.png";
 import logo2 from "assets/img/logo02.png";
@@ -6,7 +6,7 @@ import logo3 from "assets/img/logo03.png";
 import logo4 from "assets/img/logo04.png";
 import logo5 from "assets/img/logo05.png";
 
-export const Structure = () => {
+export const Structure:FC = () => {
     const [activeTitle, setActiveTitle] = useState('Similar')
 
     const changeActiveTitle = (title: string) => {

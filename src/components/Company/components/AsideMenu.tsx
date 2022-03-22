@@ -81,6 +81,7 @@ export const AsideMenu = () => {
         </Container>
     )
 }
+
 const NewsLine = styled.div`
   margin-top: 16px;
   margin-left: 82px;

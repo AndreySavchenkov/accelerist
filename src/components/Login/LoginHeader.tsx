@@ -1,8 +1,8 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import headerLogo from "assets/img/headerLogo.png"
 
-export const  LoginHeader = () => {
+export const  LoginHeader:FC = () => {
     return (
         <Container>
             <img src={headerLogo} alt="logo"/>

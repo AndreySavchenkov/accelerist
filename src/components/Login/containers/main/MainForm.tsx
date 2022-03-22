@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {LoginForm} from "./forms/LoginForm";
 import registrationLink from "assets/img/registraionLink.png";
@@ -8,7 +8,7 @@ type toggleItemProps = {
     isToggle: boolean
 }
 
-export const MainForm = () => {
+export const MainForm: FC = () => {
     const [isRegister, setRegister] = useState(true);
     const [isLogin, setLogin] = useState(false);
 
@@ -71,13 +71,15 @@ export const ToggleItem = styled.div<toggleItemProps>`
   font-size: 12px;
   line-height: 150%;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     color: ${props => props.isToggle ? '#122434' : '#122434'};
   }
-  &:disabled{
+
+  &:disabled {
     background-color: ${props => props.isToggle ? '#DCF5FF' : ''};
     color: ${props => props.isToggle ? '#A8BED2' : '#BFBFBF'};
-  } 
+  }
 `
 const FormContainer = styled.div`
   width: 100%;

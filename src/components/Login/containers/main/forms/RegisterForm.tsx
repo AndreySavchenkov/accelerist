@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
@@ -16,8 +16,8 @@ type Values = {
     password: string,
 }
 
-export const RegisterForm = () => {
-    const error = useSelector((state:RootState)=>state.notifications.error);
+export const RegisterForm: FC = () => {
+    const error = useSelector((state: RootState) => state.notifications.error);
 
     const dispatch = useDispatch();
 

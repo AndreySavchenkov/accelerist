@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import {Button} from "components/general/Button";
@@ -13,7 +13,7 @@ type Values = {
     password: string,
 }
 
-export const PasswordNew = () => {
+export const PasswordNew: FC = () => {
 
     const [isShowPassword, setIsShowPassword] = useState(false);
 

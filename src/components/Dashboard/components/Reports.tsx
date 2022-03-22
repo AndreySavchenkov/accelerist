@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import logo1 from "assets/img/logo01.png";
 import logo2 from "assets/img/logo02.png";
@@ -8,7 +8,7 @@ import ava1 from "assets/img/ava1.png";
 import ava2 from "assets/img/ava2.png";
 import ava3 from "assets/img/ava3.png";
 
-export const Reports = () => {
+export const Reports:FC = () => {
     return (
         <MainContainer>
             <Title>Reports</Title>

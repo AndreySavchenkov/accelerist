@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import {Header} from "../general/Header";
 import {HighPanel} from "../general/HighPanel";
 import styled from "styled-components";
@@ -6,7 +6,7 @@ import leftArray from "../../assets/img/arrayLeft.png";
 import rightArray from "../../assets/img/arrayRight.png";
 import {Race} from "../Dashboard/components/Race";
 
-export const ProspectsPage = () => {
+export const ProspectsPage:FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
     const[activeName,setActiveName] = useState('alphabet');
 

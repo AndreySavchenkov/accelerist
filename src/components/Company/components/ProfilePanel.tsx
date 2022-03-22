@@ -1,14 +1,18 @@
 import React from "react";
 import arrayLeft from "assets/img/arrayLeft.png"
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export const ProfilePanel = () => {
+
+    const navigate = useNavigate()
+    const goBack = () => navigate(-1)
+
     return (
         <div>
             <Container>
                 <InnerContainer>
-                    <Link to={'/'}><ArrayLeft src={arrayLeft}/></Link>
+                    <ArrayLeft onClick={goBack} src={arrayLeft}/>
                     <Title>Corparate Profile</Title>
                 </InnerContainer>
             </Container>
@@ -18,6 +22,7 @@ export const ProfilePanel = () => {
 
 const ArrayLeft = styled.img`
   margin-left: 60px;
+  cursor: pointer;
   @media (max-width: 450px) {
     margin-left: 16px;
   }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Header} from "../general/Header";
 import styled from "styled-components";
 import {HighPanel} from "../general/HighPanel";
@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
 import {Link} from "react-router-dom";
 
-export const DashboardPage = () => {
+export const DashboardPage:FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
     const dispatch = useDispatch()
 

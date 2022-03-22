@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, memo, useEffect, useState} from "react";
 import {Header} from "components/general/Header";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
@@ -11,7 +11,7 @@ import {AsideMenu} from "components/Company/components/AsideMenu";
 import {getCompanyByIdAction} from "redux/companies/companiesSaga";
 
 
-export const CompanyPage: FC = () => {
+export const CompanyPage: FC = memo(() => {
     const [isShowMenu, setShowMenu] = useState(false);
     const dispatch = useDispatch();
     const params = useParams();
@@ -23,7 +23,6 @@ export const CompanyPage: FC = () => {
 
     const company = useSelector((state: RootState) => state.companies?.companyById)
 
-
     return (
         <>
             <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
@@ -31,33 +30,29 @@ export const CompanyPage: FC = () => {
             <Container>
                 <InnerContainer>
                     {company ?
-
                         <ProfileContainer>
                             <Company name={company.name} primaryIndustry={company.primaryIndustry}  like={company.like}/>
                             <Box>
                                 <CompanyContainer>
-                                    <CompanyDescription employeeCount={company.employeeCount}
-                                                        country={company.country}
+                                    <CompanyDescription city={company.city}
+                                                        phone={company.phone}
                                                         state={company.state}
-                                                        city={company.city}
                                                         street={company.street}
-                                                        revenue={company.revenue}
-                                                        descriptionList={company.descriptionList}
                                                         website={company.website}
-                                                        phone={company.phone}/>
-
-
+                                                        revenue={company.revenue}
+                                                        country={company.country}
+                                                        employeeCount={company.employeeCount}
+                                                        descriptionList={company.descriptionList}/>
                                 </CompanyContainer>
                                 <AsideMenu/>
                             </Box>
-                        </ProfileContainer> : '***profile not found***'
+                        </ProfileContainer> : '**********************PROFILE NOT FOUND**********************'
                     }
-
                 </InnerContainer>
             </Container>
         </>
     )
-}
+})
 
 const Box = styled.div`
   display: flex;

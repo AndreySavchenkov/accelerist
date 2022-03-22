@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 import logo from "assets/img/apple.png"
 import unfavorite from "assets/img/heart.png"
@@ -13,8 +13,7 @@ type Props = {
     primaryIndustry: string[]
 }
 
-export const Company: FC<Props> = ({name, primaryIndustry,like}) => {
-
+export const Company: FC<Props> = memo(({name, primaryIndustry,like}) => {
 
     return (
         <Container>
@@ -39,7 +38,7 @@ export const Company: FC<Props> = ({name, primaryIndustry,like}) => {
             <Button>Block</Button>
         </Container>
     )
-}
+})
 
 const Container = styled.article`
   display: flex;

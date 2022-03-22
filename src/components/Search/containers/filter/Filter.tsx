@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, memo, useState} from "react";
 import styled from "styled-components";
 import {ToggleContainer, ToggleItem} from "components/Login/containers/main/MainForm";
 import {Field, Form} from "react-final-form";
@@ -11,7 +11,7 @@ import {Box, Slider} from "@mui/material";
 import {Link} from "react-router-dom";
 
 
-export const Filter = () => {
+export const Filter: FC = memo(() => {
     const [isAdvanced, setAdvanced] = useState(true);
     const [isCustomize, setCustomize] = useState(false);
 
@@ -486,7 +486,7 @@ export const Filter = () => {
                                                             onChange={handleChange}
                                                             step={null}
                                                             min={10000}
-                                                            defaultValue={[10000000,50000000]}
+                                                            defaultValue={[10000000, 50000000]}
                                                             max={150000000}
                                                             valueLabelDisplay="auto"
                                                             marks={revenueMarks}
@@ -651,7 +651,8 @@ export const Filter = () => {
             />
         </Container>
     )
-}
+})
+
 const Container = styled.div`
   margin: 30px 60px 60px;
   padding: 40px;

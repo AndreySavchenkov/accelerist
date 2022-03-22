@@ -1,9 +1,9 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import ava from "assets/img/ava.png";
 import {Link} from "react-router-dom";
 
-export const Race = () => {
+export const Race:FC = () => {
     return (
         <RaceContainer>
             <Title to={'/prospects/prospects-list'}>Race for the Cure</Title>

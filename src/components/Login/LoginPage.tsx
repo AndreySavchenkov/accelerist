@@ -1,11 +1,11 @@
-import React from "react";
+import React, {FC} from "react";
 import {LoginHeader} from "./LoginHeader";
 import styled from "styled-components";
 import backgroundLogin from "assets/img/loginBackground.jpg"
 import {Outlet} from "react-router-dom";
 
 
-export const LoginPage = () => {
+export const LoginPage:FC = () => {
     return (
         <>
             <LoginHeader/>

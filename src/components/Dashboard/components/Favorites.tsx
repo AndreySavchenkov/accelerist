@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import heart from "assets/img/bigHeart.png";
 import {Link, useNavigate} from "react-router-dom";
@@ -6,9 +6,9 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../redux/store";
 import {LittleCard} from "../../general/LittleCard";
 
-export const Favorites = () => {
+export const Favorites: FC = () => {
     const navigate = useNavigate();
-    const cards = useSelector((state: RootState)=>state.companies.favoriteCompanies)
+    const cards = useSelector((state: RootState) => state.companies.favoriteCompanies)
 
     const cardsList = cards?.map(card => <LittleCard key={card.id}
                                                      name={card.name}
@@ -20,24 +20,19 @@ export const Favorites = () => {
                 <TitleContainer>
                     <Title to={'/favorites'}>Favorites</Title>
                     <TextButton to={'/favorites'}>see more</TextButton>
-                </TitleContainer>
-
-                : <Title to={'/favorites'}>Favorites</Title>}
-
+                </TitleContainer> : <Title to={'/favorites'}>Favorites</Title>}
             {(cardsList?.length > 0) ?
                 <CardsContainer>
                     {cardsList}
                 </CardsContainer>
-
                 :
-                    <Container>
-                        <Icon src={heart}/>
-                        <Label>No favorite company</Label>
-                        <Info>Go to the search page and add to favorites</Info>
-                        <Button onClick={()=>navigate('/')}>Search</Button>
-                    </Container>
+                <Container>
+                    <Icon src={heart}/>
+                    <Label>No favorite company</Label>
+                    <Info>Go to the search page and add to favorites</Info>
+                    <Button onClick={() => navigate('/')}>Search</Button>
+                </Container>
             }
-
         </MainContainer>
     )
 }

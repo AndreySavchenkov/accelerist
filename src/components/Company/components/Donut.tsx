@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, {FC, memo, useState} from "react";
 import Chart from 'react-apexcharts'
 import styled from "styled-components";
 
 
-export const Donut = () => {
-
+export const Donut:FC = memo(() => {
     const [isActive, setIsActive] = useState('Gender');
 
     const changeActiveElement = (element: string) => {
@@ -91,11 +90,10 @@ export const Donut = () => {
                         </FooterItem>)
                 }
             </Footer>
-
         </>
     )
+})
 
-}
 const ItemNumber = styled.span`
   font-weight: 600;
   font-size: 12px;

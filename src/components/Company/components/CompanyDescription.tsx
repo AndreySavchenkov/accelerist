@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 import {formatNumber} from "../../../helpers/functions";
 import globe from "assets/img/globe.png";
@@ -14,29 +14,28 @@ import {SecondaryDonut} from "./SecondaryDonut";
 import {Structure} from "./Structure";
 
 type Props = {
-    descriptionList: string
+    city: string
+    phone: string
+    state: string
+    street: string
+    country: string
+    website: string
     revenue: string
     employeeCount: number
-    website: string
-    phone: string
-    country: string
-    state: string
-    city: string
-    street: string
+    descriptionList: string
 }
 
-export const CompanyDescription: FC<Props> = ({
-                                                  descriptionList,
-                                                  revenue,
-                                                  employeeCount,
-                                                  website,
-                                                  phone,
-                                                  country,
-                                                  state,
-                                                  city,
-                                                  street,
-                                              }) => {
-
+export const CompanyDescription: FC<Props> = memo(({
+                                                       city,
+                                                       state,
+                                                       phone,
+                                                       street,
+                                                       revenue,
+                                                       website,
+                                                       country,
+                                                       employeeCount,
+                                                       descriptionList,
+                                                   }) => {
 
     const revenueFormat = formatNumber(revenue);
     const employeeFormat = formatNumber(employeeCount);
@@ -236,7 +235,8 @@ export const CompanyDescription: FC<Props> = ({
             <SecondaryDonut/>
         </Container>
     )
-}
+})
+
 const DemographicsText = styled.p`
   font-size: 16px;
   line-height: 155%;

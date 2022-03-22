@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import {Button} from "components/general/Button";
@@ -12,7 +12,7 @@ type Values = {
     email: string,
 }
 
-export const PasswordReset = () => {
+export const PasswordReset: FC = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

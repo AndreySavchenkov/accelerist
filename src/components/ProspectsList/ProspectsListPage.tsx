@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Header} from "../general/Header";
 import {HighPanel} from "../general/HighPanel";
 import styled from "styled-components";
@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {Card} from "../general/Card";
 
-export const ProspectsListPage = () => {
+export const ProspectsListPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
 
     const dispatch = useDispatch();
@@ -21,8 +21,8 @@ export const ProspectsListPage = () => {
 
     const cards = useSelector((state: RootState) => state.companies.companies);
 
-    const cardsList = cards?.map(card => <Card key={card.id}
-                                               id={card.id}
+    const cardsList = cards?.map(card => <Card id={card.id}
+                                               key={card.id}
                                                like={card.like}
                                                name={card.name}
                                                city={card.city}

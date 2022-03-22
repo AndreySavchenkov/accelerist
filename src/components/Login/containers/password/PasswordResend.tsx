@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
 import {LinkToLogin} from "components/general/LinkToLogin";
 import {LinkToSupport} from "components/general/LinkToSapport";
@@ -7,7 +7,7 @@ import {Button} from "components/general/Button";
 import {useDispatch} from "react-redux";
 import {sendEmailAction} from "redux/login/loginSaga";
 
-export const PasswordResend = () => {
+export const PasswordResend:FC = () => {
     const [timer, setTimer] = useState(59);
     const dispatch = useDispatch()
 

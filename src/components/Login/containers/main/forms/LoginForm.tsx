@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import showPassword from "assets/img/showPassword.png";
@@ -11,15 +11,14 @@ import {AllerError} from "../../../../general/AllertError";
 import {RootState} from "../../../../../redux/store";
 
 
-
 type Values = {
     email: string,
     password: string,
     remember: boolean
 }
 
-export const LoginForm = () => {
-    const error = useSelector((state:RootState)=>state.notifications.error);
+export const LoginForm: FC = () => {
+    const error = useSelector((state: RootState) => state.notifications.error);
 
     const [isShowPassword, setIsShowPassword] = useState(false);
     const dispatch = useDispatch();
@@ -30,9 +29,9 @@ export const LoginForm = () => {
 
     const navigate = useNavigate();
 
-    const  onSubmit = (values: Values) => {
-        dispatch(signInAction(values.email,values.password))
-        navigate("/", { replace: true });
+    const onSubmit = (values: Values) => {
+        dispatch(signInAction(values.email, values.password))
+        navigate("/", {replace: true});
     }
 
     return (
@@ -66,7 +65,7 @@ export const LoginForm = () => {
                                 <Label>Password</Label>
                                 <Field
                                     name="password"
-                                    validate={composeValidators(required,minValue(6))}
+                                    validate={composeValidators(required, minValue(6))}
                                     render={({input, meta}) => (
                                         <>
                                             <InputPassword placeholder='Enter password' {...input}
@@ -97,10 +96,12 @@ export const LoginForm = () => {
                                     />
                                     <LabelCheckbox>Remember</LabelCheckbox>
                                 </CheckboxItems>
-                                <Link to="/reset" style={{textDecoration: "none"}}><ForgotText>Forgot Password?</ForgotText></Link>
+                                <Link to="/reset" style={{textDecoration: "none"}}><ForgotText>Forgot
+                                    Password?</ForgotText></Link>
                             </CheckboxContainer>
                             <Text>
-                                I agree that by clicking <LinkCustom>“Registration”</LinkCustom> I accept the <LinkCustom>Terms Of
+                                I agree that by clicking <LinkCustom>“Registration”</LinkCustom> I accept
+                                the <LinkCustom>Terms Of
                                 Service</LinkCustom> and <LinkCustom>Privacy Policy</LinkCustom>
                             </Text>
                             <ButtonBody type="submit">Login</ButtonBody>
@@ -141,6 +142,7 @@ const InputEmail = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+
   &:focus {
     outline: 1px solid #2BAEE0;
   }
@@ -156,6 +158,7 @@ const InputPassword = styled.input`
   font-weight: 400;
   line-height: 155%;
   color: #122434;
+
   &:focus {
     outline: 1px solid #2BAEE0;
   }

@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import logoZoom from "assets/img/zoom-out.png"
@@ -8,10 +8,9 @@ import {Link} from "react-router-dom";
 type Props = {
     isShowMenu: boolean;
 }
-export const SearchPanel:FC<Props> = ({isShowMenu}) => {
+export const SearchPanel: FC<Props> = memo(({isShowMenu}) => {
 
     const onSubmit = () => {
-
     }
 
     return (
@@ -27,18 +26,18 @@ export const SearchPanel:FC<Props> = ({isShowMenu}) => {
                                 render={({input, meta}) => (
                                     !isShowMenu ?
                                         <>
-                                         <InputText {...input}
-                                                   type={"text"}
-                                                   style={meta.touched && meta.error ?
-                                                       {
-                                                           outline: '1px solid #F05658',
-                                                           backgroundColor: 'rgb(255, 242, 242)'
-                                                       }
-                                                       : undefined}
-                                        />
-                                        {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
-                                        <LogoZoom src={logoZoom}/>
-                                        <Link to="filter"><LogoSlider src={logoSlider}/></Link>
+                                            <InputText {...input}
+                                                       type={"text"}
+                                                       style={meta.touched && meta.error ?
+                                                           {
+                                                               outline: '1px solid #F05658',
+                                                               backgroundColor: 'rgb(255, 242, 242)'
+                                                           }
+                                                           : undefined}
+                                            />
+                                            {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
+                                            <LogoZoom src={logoZoom}/>
+                                            <Link to="filter"><LogoSlider src={logoSlider}/></Link>
                                         </> : null
                                 )}
                             />
@@ -49,7 +48,7 @@ export const SearchPanel:FC<Props> = ({isShowMenu}) => {
 
         </Container>
     )
-}
+})
 
 const Container = styled.div`
   display: flex;
@@ -57,7 +56,7 @@ const Container = styled.div`
   width: 100%;
   height: 96px;
   background: #fff;
-  @media(max-width: 650px){
+  @media (max-width: 650px) {
     background: #F9F9F9;
   }
 `

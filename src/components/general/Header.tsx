@@ -29,11 +29,11 @@ export const Header: FC<Props> = ({isShowMenu,setShowMenu}) => {
                     <LogoSmall src={smallLogo}/>
                     <Nav>
                         <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
-                        <CustomLink to={''}>Audience</CustomLink>
-                        <CustomLink to={''}>Pricing</CustomLink>
+                        {/*<CustomLink to={''}>Audience</CustomLink>*/}
+                        {/*<CustomLink to={''}>Pricing</CustomLink>*/}
                         <CustomLink to={'/prospects'}>Prospecting</CustomLink>
-                        <CustomLink to={''}>ROI</CustomLink>
-                        <CustomLink to={''}>Upgrade Membership</CustomLink>
+                        {/*<CustomLink to={''}>ROI</CustomLink>*/}
+                        {/*<CustomLink to={''}>Upgrade Membership</CustomLink>*/}
                     </Nav>
                 </LogoAndMenu>
                 <Profile>

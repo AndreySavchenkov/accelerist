@@ -1,12 +1,11 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Header} from "../general/Header";
 import {SearchPanel} from "./components/SearchPanel";
 import {Outlet} from "react-router-dom";
 
 
-
-export const SearchPage = () => {
+export const SearchPage: FC = () => {
     // const successful = useSelector((state:RootState)=>state.notifications.successful);
     const [isShowMenu, setShowMenu] = useState(false);
 
@@ -16,13 +15,13 @@ export const SearchPage = () => {
                 <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
                 <SearchPanel isShowMenu={isShowMenu}/>
                 {!isShowMenu ?
-                 <Container>
-                    <InnerContainer>
-                        <SearchContainer>
-                            <Outlet/>
-                        </SearchContainer>
-                    </InnerContainer>
-                </Container> : null}
+                    <Container>
+                        <InnerContainer>
+                            <SearchContainer>
+                                <Outlet/>
+                            </SearchContainer>
+                        </InnerContainer>
+                    </Container> : null}
             </div>
             {/*{successful ? <AllerSuccessful text={'Login was successful. Please reload app'}/> : null}*/}
         </>

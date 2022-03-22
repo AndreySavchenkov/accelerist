@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styled from "styled-components";
 import navigator1 from "assets/img/navigator1.png"
 import navigator2 from "assets/img/navigator2.png"
 import navigator3 from "assets/img/navigator3.png"
 import navigator4 from "assets/img/navigator4.png"
 
-export const Navigator = () => {
+export const Navigator:FC = () => {
     return (
         <Container>
             <Item>

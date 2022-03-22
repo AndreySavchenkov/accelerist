@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
 import folderPlus from "assets/img/folder-plus.png"
 import mail from "assets/img/mail.png"
@@ -9,10 +9,11 @@ import {Card} from "../../../general/Card";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import {RootState} from "redux/store";
-import bigHeartFull from "assets/img/bigFullHeart.png"
+import axios from "axios";
 
+export let instance: any = {};
 
-export const SearchFoundPanel = () => {
+export const SearchFoundPanel: FC = () => {
 
     const [localPage, setLocalPage] = useState(1);
 
@@ -31,8 +32,14 @@ export const SearchFoundPanel = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        instance = axios.create({
+            baseURL: `https://accelerist.herokuapp.com/api/v1`,
+            timeout: 60000,
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem('accessToken')},
+        })
         dispatch(getCompaniesAction(localPage))
-    }, [])
+        console.log('localPage -> ', localPage)
+    }, [dispatch, localPage])
 
     const cards = useSelector((state: RootState) => state.companies.companies)
 
@@ -43,8 +50,8 @@ export const SearchFoundPanel = () => {
     const endElement = (itemCount * localPage)
 
 
-    const cardsList = cards?.map(card => <Card key={card.id}
-                                               id={card.id}
+    const cardsList = cards?.map(card => <Card id={card.id}
+                                               key={card.id}
                                                like={card.like}
                                                name={card.name}
                                                city={card.city}
@@ -158,11 +165,9 @@ const TextNavigation = styled.span`
   color: #122434;
 `
 const LeftArray = styled.img`
-
   cursor: pointer;
 `
 const RightArray = styled.img`
-
   cursor: pointer;
 `
 const Cards = styled.div`

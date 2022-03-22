@@ -1,14 +1,5 @@
 import axios from "axios";
-
-const token = localStorage.getItem('accessToken')
-
-
-const instance = axios.create({
-    baseURL: `https://accelerist.herokuapp.com/api/v1`,
-    timeout: 60000,
-    headers: {'Authorization': `Bearer ${token}`},
-})
-
+import {instance} from "../components/Search/containers/find/SearchFoundPanel";
 
 export const authApi = {
     signIn(email: string, password: string) {
@@ -20,7 +11,6 @@ export const authApi = {
     sendEmail(email: string) {
         return axios.post("https://accelerist.herokuapp.com/api/v1/auth/change_password/send_mail", {email})
     },
-
 }
 
 export const companiesApi = {
