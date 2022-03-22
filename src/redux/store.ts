@@ -7,7 +7,7 @@ import {sendEmailWorkerSaga, signInWorkerSaga, signUpWorkerSaga} from "./login/l
 import {
     doDislikeCompanyWorkerSaga,
     doLikeCompanyWorkerSaga,
-    getCompaniesWorkerSaga,
+    getCompaniesWorkerSaga, getCompanyByIdAction, getCompanyByIdWorkerSaga,
     getFavoriteCompaniesWorkerSaga
 } from "./companies/companiesSaga";
 import storage from 'redux-persist/lib/storage';
@@ -46,6 +46,8 @@ function* rootWatcher() {
     yield takeEvery('SAGA/SEND_EMAIL', sendEmailWorkerSaga);
 
     yield takeEvery('SAGA/GET_COMPANIES', getCompaniesWorkerSaga);
+    yield takeEvery('SAGA/GET_COMPANY_BY_ID', getCompanyByIdWorkerSaga);
+
     yield takeEvery('SAGA/GET_FAVORITES_COMPANIES', getFavoriteCompaniesWorkerSaga);
     yield takeEvery('SAGA/DO_LIKE_COMPANY', doLikeCompanyWorkerSaga);
     yield takeEvery('SAGA/DO_DISLIKE_COMPANY', doDislikeCompanyWorkerSaga);

@@ -2,21 +2,21 @@ import React, {useEffect, useState} from "react";
 import {Header} from "../general/Header";
 import styled from "styled-components";
 import {HighPanel} from "../general/HighPanel";
-import {Race} from "./Race";
-import {Favorites} from "./Favorites";
-import {Reports} from "./Reports";
-import {Navigator} from "./Navigator";
+import {Race} from "./components/Race";
+import {Favorites} from "./components/Favorites";
+import {Reports} from "./components/Reports";
+import {Navigator} from "./components/Navigator";
 import {useDispatch} from "react-redux";
 import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
 import {Link} from "react-router-dom";
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
     const [isShowMenu, setShowMenu] = useState(false);
     const dispatch = useDispatch()
 
     useEffect(()=>{
         dispatch(getFavoriteCompaniesAction(1))
-    },[dispatch])
+    },[])
 
     return (
         <>

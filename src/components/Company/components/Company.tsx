@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import styled from "styled-components";
 import logo from "assets/img/apple.png"
 import unfavorite from "assets/img/heart.png"
@@ -8,16 +8,13 @@ import twitter from "assets/img/twitter.png"
 import facebook from "assets/img/facebook.png"
 
 type Props = {
+    like: boolean
     name: string
     primaryIndustry: string[]
 }
 
-export const Company: FC<Props> = ({name, primaryIndustry}) => {
-    const [isFavorite, setIsFavorite] = useState(false);
+export const Company: FC<Props> = ({name, primaryIndustry,like}) => {
 
-    const showFavorite = () => {
-        setIsFavorite(!isFavorite)
-    }
 
     return (
         <Container>
@@ -26,9 +23,9 @@ export const Company: FC<Props> = ({name, primaryIndustry}) => {
                 <InfoContainer>
                     <NameContainer>
                         <Name>{name}</Name>
-                        {isFavorite ?
-                            <FavoriteIcon onClick={showFavorite} src={unfavorite}/> :
-                            <FavoriteIcon onClick={showFavorite} src={favorite}/>
+                        {like ?
+                            <FavoriteIcon  src={favorite}/> :
+                            <FavoriteIcon  src={unfavorite}/>
                         }
                     </NameContainer>
                     <Subtitle>{primaryIndustry[0]}</Subtitle>

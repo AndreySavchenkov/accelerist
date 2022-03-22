@@ -3,8 +3,8 @@ import styled from "styled-components";
 import heart from "assets/img/bigHeart.png";
 import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
-import {LittleCard} from "../general/LittleCard";
+import {RootState} from "../../../redux/store";
+import {LittleCard} from "../../general/LittleCard";
 
 export const Favorites = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const Favorites = () => {
 
                 : <Title to={'/favorites'}>Favorites</Title>}
 
-            {(cardsList.length > 0) ?
+            {(cardsList?.length > 0) ?
                 <CardsContainer>
                     {cardsList}
                 </CardsContainer>

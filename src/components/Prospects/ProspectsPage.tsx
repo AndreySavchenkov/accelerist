@@ -4,7 +4,7 @@ import {HighPanel} from "../general/HighPanel";
 import styled from "styled-components";
 import leftArray from "../../assets/img/arrayLeft.png";
 import rightArray from "../../assets/img/arrayRight.png";
-import {Race} from "../Dashboard/Race";
+import {Race} from "../Dashboard/components/Race";
 
 export const ProspectsPage = () => {
     const [isShowMenu, setShowMenu] = useState(false);

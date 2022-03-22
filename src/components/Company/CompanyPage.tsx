@@ -1,23 +1,27 @@
-import React, {FC, useState} from "react";
-import {Header} from "../general/Header";
+import React, {FC, useEffect, useState} from "react";
+import {Header} from "components/general/Header";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
-import {ProfilePanel} from "./ProfilePanel";
-import {Company} from "./Company";
-import {CompanyDescription} from "./CompanyDescription";
-import {AsideMenu} from "./AsideMenu";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "redux/store";
+import {ProfilePanel} from "components/Company/components/ProfilePanel";
+import {Company} from "components/Company/components/Company";
+import {CompanyDescription} from "components/Company/components/CompanyDescription";
+import {AsideMenu} from "components/Company/components/AsideMenu";
+import {getCompanyByIdAction} from "redux/companies/companiesSaga";
 
 
 export const CompanyPage: FC = () => {
-
     const [isShowMenu, setShowMenu] = useState(false);
-    const companies = useSelector((state: RootState) => state.companies?.companies)
-
+    const dispatch = useDispatch();
     const params = useParams();
 
-    const company = companies.find(item => item.id === params.id)
+    useEffect(() => {
+        //@ts-ignore
+        dispatch(getCompanyByIdAction(params.id))
+    },[])
+
+    const company = useSelector((state: RootState) => state.companies?.companyById)
 
 
     return (
@@ -29,7 +33,7 @@ export const CompanyPage: FC = () => {
                     {company ?
 
                         <ProfileContainer>
-                            <Company name={company.name} primaryIndustry={company.primaryIndustry}/>
+                            <Company name={company.name} primaryIndustry={company.primaryIndustry}  like={company.like}/>
                             <Box>
                                 <CompanyContainer>
                                     <CompanyDescription employeeCount={company.employeeCount}

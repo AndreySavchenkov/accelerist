@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import {Header} from "../general/Header";
-import {SearchPanel} from "./SearchPanel";
+import {SearchPanel} from "./components/SearchPanel";
 import {Outlet} from "react-router-dom";
 
 

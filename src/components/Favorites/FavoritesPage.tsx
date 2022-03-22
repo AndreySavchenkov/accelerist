@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react";
-import {Header} from "../general/Header";
-import {HighPanel} from "../general/HighPanel";
+import React, {useState} from "react";
+import {Header} from "components/general/Header";
+import {HighPanel} from "components/general/HighPanel";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
-import {RootState} from "../../redux/store";
-import leftArray from "../../assets/img/arrayLeft.png";
-import rightArray from "../../assets/img/arrayRight.png";
-import {Card} from "../general/Card";
+import {getFavoriteCompaniesAction} from "redux/companies/companiesSaga";
+import {RootState} from "redux/store";
+import leftArray from "assets/img/arrayLeft.png";
+import rightArray from "assets/img/arrayRight.png";
+import {Card} from "components/general/Card";
 
 export const FavoritesPage = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -15,6 +15,8 @@ export const FavoritesPage = () => {
     const totalPage = useSelector((state: RootState) => state.companies.favoriteMeta.totalPages);
     const itemCount = useSelector((state: RootState) => state.companies.favoriteMeta.itemCount);
     const cards = useSelector((state: RootState) => state.companies.favoriteCompanies)
+
+    const dispatch = useDispatch();
 
     const [localPage, setLocalPage] = useState(1);
 
@@ -31,12 +33,6 @@ export const FavoritesPage = () => {
         }
         dispatch(getFavoriteCompaniesAction(localPage - 1))
     }
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getFavoriteCompaniesAction(localPage))
-    }, [dispatch,localPage])
 
     let firstElement = ((itemCount * localPage) - itemCount) + 1
     if(itemCount < 6){

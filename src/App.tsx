@@ -7,12 +7,12 @@ import {MainForm} from "./components/Login/containers/main/MainForm";
 import {PasswordReset} from "./components/Login/containers/password/PasswordReset";
 import {PasswordResend} from "./components/Login/containers/password/PasswordResend";
 import {PasswordNew} from "./components/Login/containers/password/PasswordNew";
-import {SearchFoundPanel} from "./components/Search/find/SearchFoundPanel";
-import {Filter} from "./components/Search/filter/Filter";
+import {SearchFoundPanel} from "./components/Search/containers/find/SearchFoundPanel";
+import {Filter} from "./components/Search/containers/filter/Filter";
 import {useSelector} from "react-redux";
 import {RootState} from "./redux/store";
 import {CompanyPage} from "./components/Company/CompanyPage";
-import {Dashboard} from "./components/Dashboard/Dashboard";
+import {DashboardPage} from "./components/Dashboard/DashboardPage";
 import {FavoritesPage} from "./components/Favorites/FavoritesPage";
 import {ProspectsPage} from "./components/Prospects/ProspectsPage";
 import {ProspectsListPage} from "./components/ProspectsList/ProspectsListPage";
@@ -32,7 +32,7 @@ function App() {
                             <Route index element={<SearchFoundPanel/>}/>
                             <Route path="filter" element={<Filter/>}/>
                         </Route>
-                        <Route path="/dashboard" element={<Dashboard/>}/>
+                        <Route path="/dashboard" element={<DashboardPage/>}/>
                         <Route path="/favorites" element={<FavoritesPage/>}/>
                         <Route path="/prospects" element={<ProspectsPage/>}/>
                         <Route path="/prospects/prospects-list" element={<ProspectsListPage/>}/>

@@ -5,7 +5,7 @@ import mail from "assets/img/mail.png"
 import upload from "assets/img/upload.png"
 import leftArray from "assets/img/arrayLeft.png"
 import rightArray from "assets/img/arrayRight.png"
-import {Card} from "../../general/Card";
+import {Card} from "../../../general/Card";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import {RootState} from "redux/store";

@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import styled from "styled-components";
-import {formatNumber} from "../../helpers/functions";
+import {formatNumber} from "../../../helpers/functions";
 import globe from "assets/img/globe.png";
 import map from "assets/img/map.png";
 import phoneImg from "assets/img/phone.png";
@@ -34,7 +34,7 @@ export const CompanyDescription: FC<Props> = ({
                                                   country,
                                                   state,
                                                   city,
-                                                  street
+                                                  street,
                                               }) => {
 
 

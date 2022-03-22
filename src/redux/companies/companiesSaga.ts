@@ -1,6 +1,12 @@
 import {companiesApi} from "api/api";
 import {call, put} from "redux-saga/effects";
-import {doDislikeCompany, doLikeCompany, getCompanies, getFavoriteCompanies} from "./companiesSlice";
+import {
+    doDislikeCompany,
+    doLikeCompany,
+    getCompanies,
+    getCompanyById,
+    getFavoriteCompanies
+} from "./companiesSlice";
 
 export function* getCompaniesWorkerSaga(action: any): any {
     try {
@@ -50,3 +56,15 @@ export function* doDislikeCompanyWorkerSaga(action: any): any {
 }
 
 export const doDislikeCompanyAction = (companyId: string) => ({type: 'SAGA/DO_DISLIKE_COMPANY', companyId});
+
+export function* getCompanyByIdWorkerSaga(action: any): any {
+    try {
+        const res = yield call(companiesApi.getCompany, action.companyId)
+        yield put(getCompanyById({company: res.data}) )
+        console.log('getCompanyById', res.data)
+    } catch (error) {
+        console.log('doLikeCompanies error ->', error)
+    }
+}
+
+export const getCompanyByIdAction = (companyId: string) => ({type: 'SAGA/GET_COMPANY_BY_ID', companyId});

@@ -35,5 +35,8 @@ export const companiesApi = {
     },
     doDislikeCompany(companyId: string){
         return instance.get(`/companies/${companyId}/dislike`)
+    },
+    getCompany(companyId: string){
+        return instance.get(`/companies/${companyId}`)
     }
 }

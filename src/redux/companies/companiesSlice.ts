@@ -78,7 +78,7 @@ type InitialState = {
     meta: Meta,
     favoriteCompanies: Companies,
     favoriteMeta: Meta,
-
+    companyById: Company
 }
 
 const initialState = {} as InitialState
@@ -106,10 +106,13 @@ const companiesSlice = createSlice({
             if(findCompany){
                 findCompany.like = false
             }
+        },
+        getCompanyById(state,action: PayloadAction<{company: Company}>){
+            state.companyById = action.payload.company
         }
     }
 })
 
 
-export const {getCompanies, getFavoriteCompanies,doLikeCompany,doDislikeCompany} = companiesSlice.actions
+export const {getCompanies, getFavoriteCompanies,doLikeCompany,doDislikeCompany,getCompanyById} = companiesSlice.actions
 export default companiesSlice.reducer
