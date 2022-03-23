@@ -42,5 +42,5 @@ export {ProspectsPage} from './Prospects'
 
 export {ProspectsListPage} from './ProspectsList'
 
-export { AutocompleteField, primaryIndustryData, SearchPage, SearchPanel, Filter} from './Search'
+export { AutocompleteField, primaryIndustryData, SearchPage, SearchPanel, Filter, SearchFoundPanel} from './Search'
 
