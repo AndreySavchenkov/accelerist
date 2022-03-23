@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/accelerist/static/css/main.073c9b0a.css",
-    "main.js": "/accelerist/static/js/main.413ef9de.js",
+    "main.js": "/accelerist/static/js/main.c5f57497.js",
     "static/js/787.e0fa5844.chunk.js": "/accelerist/static/js/787.e0fa5844.chunk.js",
     "static/media/loginBackground.jpg": "/accelerist/static/media/loginBackground.24c1ab40189abdb29fdc.jpg",
     "static/media/navigator4.png": "/accelerist/static/media/navigator4.9b0cdbc3e5a2e376e38b.png",
@@ -17,11 +17,11 @@
     "index.html": "/accelerist/index.html",
     "static/media/hiddenPassword.svg": "/accelerist/static/media/hiddenPassword.e4537af7281b073365fc67ee17511125.svg",
     "main.073c9b0a.css.map": "/accelerist/static/css/main.073c9b0a.css.map",
-    "main.413ef9de.js.map": "/accelerist/static/js/main.413ef9de.js.map",
+    "main.c5f57497.js.map": "/accelerist/static/js/main.c5f57497.js.map",
     "787.e0fa5844.chunk.js.map": "/accelerist/static/js/787.e0fa5844.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.413ef9de.js"
+    "static/js/main.c5f57497.js"
   ]
 }
