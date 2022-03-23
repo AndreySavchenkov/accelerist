@@ -9,7 +9,7 @@ import logo5 from "assets/img/logo05.png";
 export const Structure:FC = () => {
     const [activeTitle, setActiveTitle] = useState('Similar')
 
-    const changeActiveTitle = (title: string) => {
+    const onTitleClick = (title: string) => {
         setActiveTitle(title)
     }
 
@@ -19,11 +19,11 @@ export const Structure:FC = () => {
             <Text>Sole proprietorship</Text>
             <TitlesContainer>
                 {(activeTitle === 'Similar') ? <ActiveTitle>Similar Companies</ActiveTitle> :
-                    <Title onClick={() => changeActiveTitle('Similar')}>Similar Companies</Title>}
+                    <Title onClick={() => onTitleClick('Similar')}>Similar Companies</Title>}
                 {(activeTitle === 'Parent') ? <ActiveTitle>Parent Company</ActiveTitle> :
-                    <Title onClick={() => changeActiveTitle('Parent')}>Parent Company</Title>}
+                    <Title onClick={() => onTitleClick('Parent')}>Parent Company</Title>}
                 {(activeTitle === 'Subsidiaries') ? <ActiveTitle>Subsidiaries</ActiveTitle> :
-                    <Title onClick={() => changeActiveTitle('Subsidiaries')}>Subsidiaries</Title>}
+                    <Title onClick={() => onTitleClick('Subsidiaries')}>Subsidiaries</Title>}
             </TitlesContainer>
             {(activeTitle === 'Similar') ?
                 <ItemsContainer>

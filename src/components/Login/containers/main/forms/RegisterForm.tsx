@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {useNavigate} from "react-router-dom";
 import {AllerError} from "../../../../general/AllertError";
-import {RootState} from "../../../../../redux/store";
+import {RootStateT} from "../../../../../redux/store";
 
 type Values = {
     email: string,
@@ -17,7 +17,7 @@ type Values = {
 }
 
 export const RegisterForm: FC = () => {
-    const error = useSelector((state: RootState) => state.notifications.error);
+    const error = useSelector((state: RootStateT) => state.notifications.error);
 
     const dispatch = useDispatch();
 

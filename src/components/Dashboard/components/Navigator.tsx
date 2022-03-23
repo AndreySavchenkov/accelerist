@@ -6,6 +6,7 @@ import navigator3 from "assets/img/navigator3.png"
 import navigator4 from "assets/img/navigator4.png"
 
 export const Navigator:FC = () => {
+
     return (
         <Container>
             <Item>

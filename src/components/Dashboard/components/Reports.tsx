@@ -9,6 +9,7 @@ import ava2 from "assets/img/ava2.png";
 import ava3 from "assets/img/ava3.png";
 
 export const Reports:FC = () => {
+
     return (
         <MainContainer>
             <Title>Reports</Title>

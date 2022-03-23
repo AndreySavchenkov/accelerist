@@ -13,7 +13,6 @@ type Values = {
 }
 
 export const PasswordReset: FC = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

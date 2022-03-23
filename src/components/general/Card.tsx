@@ -16,35 +16,31 @@ import closeImg from "assets/img/closeBlack.png"
 
 type Props = {
     id: string
-    like: boolean
     name: string
     city: string
     phone: string
     score: number
+    like: boolean
     country: string
     revenue: string
     primaryIndustry: string
 }
 
 export const Card: FC<Props> = ({name, revenue, phone, score, country, city, primaryIndustry, id, like}) => {
-
     const [isModal, setIsModal] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const showProfile = () => {
-        navigate(`/${id}`);
-    }
-    const showModal = () => {
-        setIsModal(true)
-    }
-    const doLike = () => {
+    const onProfileButtonClick = () => navigate(`/${id}`);
+
+    const onFavoriteButtonClick = () => setIsModal(true);
+
+    const onFavoriteButtonFullClick = () => dispatch(doDislikeCompanyAction(id));
+
+    const onButtonClick = () => {
         dispatch(doLikeCompanyAction(id))
         setIsModal(false)
-    }
-    const doDislike = () => {
-        dispatch(doDislikeCompanyAction(id))
     }
 
     return (
@@ -76,10 +72,10 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
                 <ButtonsContainer>
                     {
                         !like ?
-                            <FavoriteButton onClick={showModal} src={heart}/> :
-                            <FavoriteButton onClick={doDislike} src={fullHeart}/>
+                            <FavoriteButton onClick={onFavoriteButtonClick} src={heart}/> :
+                            <FavoriteButton onClick={onFavoriteButtonFullClick} src={fullHeart}/>
                     }
-                    <ProfileButton onClick={showProfile}>Profile</ProfileButton>
+                    <ProfileButton onClick={onProfileButtonClick}>Profile</ProfileButton>
                 </ButtonsContainer>
             </MainContainer>
             {isModal ? <ModalContainer>
@@ -92,9 +88,9 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
                         <SubTitleModal> You can see the list of favorites on the dashboard page</SubTitleModal>
                     </TextContainer>
                     <ButtonContainer>
-                        <Button clickHandler={doLike} text={'Done'}/>
+                        <Button clickHandler={onButtonClick} text={'Done'}/>
                     </ButtonContainer>
-                    <IconClose onClick={()=>setIsModal(false)} src={closeImg}/>
+                    <IconClose onClick={() => setIsModal(false)} src={closeImg}/>
                 </Modal>
             </ModalContainer> : null}
         </Container>

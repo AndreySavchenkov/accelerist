@@ -1,11 +1,12 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 
 type Props = {
     text: string
 }
 
-export const HighPanel:FC<Props> = ({text}) => {
+export const HighPanel:FC<Props> = memo(({text}) => {
+
     return (
         <div>
             <Container>
@@ -15,7 +16,7 @@ export const HighPanel:FC<Props> = ({text}) => {
             </Container>
         </div>
     )
-}
+})
 
 const Container = styled.section`
   display: flex;

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-export type Company = {
+export type CompanyT = {
     id: string,
     zoomInfoId: null,
     name: string,
@@ -64,8 +64,8 @@ export type Company = {
     favoriteCompanies: [],
     like: boolean
 }
-export type Companies = Company[]
-export type Meta = {
+export type CompaniesT = CompanyT[]
+export type MetaT = {
     currentPage: string
     itemCount: number
     itemsPerPage: string
@@ -73,25 +73,25 @@ export type Meta = {
     totalPages: number
 }
 
-type InitialState = {
-    companies: Companies,
-    meta: Meta,
-    favoriteCompanies: Companies,
-    favoriteMeta: Meta,
-    companyById: Company
+type InitialStateT = {
+    companies: CompaniesT,
+    meta: MetaT,
+    favoriteCompanies: CompaniesT,
+    favoriteMeta: MetaT,
+    companyById: CompanyT
 }
 
-const initialState = {} as InitialState
+const initialState = {} as InitialStateT
 
 const companiesSlice = createSlice({
     name: 'companies',
     initialState,
     reducers: {
-        getCompanies(state, action: PayloadAction<{ companies: Companies, meta: Meta }>) {
+        getCompanies(state, action: PayloadAction<{ companies: CompaniesT, meta: MetaT }>) {
             state.companies = action.payload.companies
             state.meta = action.payload.meta
         },
-        getFavoriteCompanies(state, action: PayloadAction<{ companies: Companies, meta: Meta }>) {
+        getFavoriteCompanies(state, action: PayloadAction<{ companies: CompaniesT, meta: MetaT }>) {
             state.favoriteCompanies = action.payload.companies
             state.favoriteMeta = action.payload.meta
         },
@@ -107,7 +107,7 @@ const companiesSlice = createSlice({
                 findCompany.like = false
             }
         },
-        getCompanyById(state,action: PayloadAction<{company: Company}>){
+        getCompanyById(state,action: PayloadAction<{company: CompanyT}>){
             state.companyById = action.payload.company
         }
     }

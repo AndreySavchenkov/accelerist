@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 import bigLogo from "assets/img/searchBigLogo.png";
 import smallLogo from "assets/img/searchSmallLogo.png"
@@ -6,20 +6,18 @@ import profileLog from "assets/img/profileLogo.png"
 import menuIcon from "assets/img/menu.png"
 import closeButton from "assets/img/closeButton.png"
 import {useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
 import {Link} from 'react-router-dom';
+import {getUserEmail} from "../../selectors/selectors";
 
 type Props = {
     isShowMenu: boolean,
     setShowMenu: (isShowMenu:boolean) => void
 }
 
-export const Header: FC<Props> = ({isShowMenu,setShowMenu}) => {
-    const email = useSelector((state:RootState)=>state.login.user.email)
+export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
+    const email = useSelector(getUserEmail);
 
-    const showMenu = () => {
-        setShowMenu(!isShowMenu);
-    }
+    const toggleShowMenu = () => setShowMenu(!isShowMenu);
 
     return (
         <Container>
@@ -42,12 +40,12 @@ export const Header: FC<Props> = ({isShowMenu,setShowMenu}) => {
                     </ProfileLogoContainer>
                     <ProfileText>{email}</ProfileText>
                 </Profile>
-                <MenuBurgerIcon src={menuIcon} onClick={showMenu}/>
+                <MenuBurgerIcon src={menuIcon} onClick={toggleShowMenu}/>
                 {
                     isShowMenu ?
                         <BackgroundMenu>
                             <MenuBurgerContainer>
-                                <CloseButton src={closeButton} onClick={showMenu}/>
+                                <CloseButton src={closeButton} onClick={toggleShowMenu}/>
                                 <MenuBurgerNav>
                                     <CustomLink to={'dashboard'}>Dashboard</CustomLink>
                                     <CustomLink to={''}>Audience</CustomLink>
@@ -69,7 +67,7 @@ export const Header: FC<Props> = ({isShowMenu,setShowMenu}) => {
             </InnerContainer>
         </Container>
     )
-}
+})
 
 const Container = styled.div`
   display: flex;

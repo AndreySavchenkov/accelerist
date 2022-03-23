@@ -9,6 +9,7 @@ import {sendEmailAction} from "redux/login/loginSaga";
 
 export const PasswordResend:FC = () => {
     const [timer, setTimer] = useState(59);
+
     const dispatch = useDispatch()
 
     useEffect(() => {

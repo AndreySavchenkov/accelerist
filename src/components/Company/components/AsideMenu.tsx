@@ -7,8 +7,10 @@ import news3 from "assets/img/news3.png";
 import news4 from "assets/img/news4.png";
 import news5 from "assets/img/news5.png";
 import news6 from "assets/img/news6.png";
+import {News} from "./News";
 
 export const AsideMenu = () => {
+
     return (
         <Container>
             <Title>Scoop</Title>
@@ -25,59 +27,17 @@ export const AsideMenu = () => {
                 appeal </Subtitle>
             <Date>2 Sep 2020, 13:23</Date>
             <Title style={{marginTop: '24px'}}>News</Title>
-            <NewsContainer>
-                <NewsImage src={news1}/>
-                <NewsInner>
-                    <NewsTitle>The Decline of Clothing Retail Aprelas</NewsTitle>
-                    <NewsSubTitle>The The apparel industry’s appeal has been dwindling for a while</NewsSubTitle>
-                    <NewsDate>2 Sep 2020, 13:23</NewsDate>
-                </NewsInner>
-            </NewsContainer>
+            <News url={news1}/>
             <NewsLine> </NewsLine>
-            <NewsContainer>
-                <NewsImage src={news2}/>
-                <NewsInner>
-                    <NewsTitle>The Decline of Clothing Retail Aprelas</NewsTitle>
-                    <NewsSubTitle>The The apparel industry’s appeal has been dwindling for a while</NewsSubTitle>
-                    <NewsDate>2 Sep 2020, 13:23</NewsDate>
-                </NewsInner>
-            </NewsContainer>
+            <News url={news2}/>
             <NewsLine> </NewsLine>
-            <NewsContainer>
-                <NewsImage src={news3}/>
-                <NewsInner>
-                    <NewsTitle>The Decline of Clothing Retail Aprelas</NewsTitle>
-                    <NewsSubTitle>The The apparel industry’s appeal has been dwindling for a while</NewsSubTitle>
-                    <NewsDate>2 Sep 2020, 13:23</NewsDate>
-                </NewsInner>
-            </NewsContainer>
+            <News url={news3}/>
             <NewsLine> </NewsLine>
-            <NewsContainer>
-                <NewsImage src={news4}/>
-                <NewsInner>
-                    <NewsTitle>The Decline of Clothing Retail Aprelas</NewsTitle>
-                    <NewsSubTitle>The The apparel industry’s appeal has been dwindling for a while</NewsSubTitle>
-                    <NewsDate>2 Sep 2020, 13:23</NewsDate>
-                </NewsInner>
-            </NewsContainer>
+            <News url={news4}/>
             <NewsLine> </NewsLine>
-            <NewsContainer>
-                <NewsImage src={news5}/>
-                <NewsInner>
-                    <NewsTitle>The Decline of Clothing Retail Aprelas</NewsTitle>
-                    <NewsSubTitle>The The apparel industry’s appeal has been dwindling for a while</NewsSubTitle>
-                    <NewsDate>2 Sep 2020, 13:23</NewsDate>
-                </NewsInner>
-            </NewsContainer>
+            <News url={news5}/>
             <NewsLine> </NewsLine>
-            <NewsContainer>
-                <NewsImage src={news6}/>
-                <NewsInner>
-                    <NewsTitle>The Decline of Clothing Retail Aprelas</NewsTitle>
-                    <NewsSubTitle>The The apparel industry’s appeal has been dwindling for a while</NewsSubTitle>
-                    <NewsDate>2 Sep 2020, 13:23</NewsDate>
-                </NewsInner>
-            </NewsContainer>
+            <News url={news6}/>
         </Container>
     )
 }
@@ -88,39 +48,6 @@ const NewsLine = styled.div`
   width: 220px;
   height: 1px;
   background: #E8E8E8;
-`
-const NewsDate = styled.span`
-  margin-top: 12px;
-  font-size: 12px;
-  line-height: 150%;
-  color: #737373;
-`
-const NewsSubTitle = styled.span`
-  margin-top: 8px;
-  font-size: 12px;
-  line-height: 150%;
-  color: #737373;
-`
-const NewsTitle = styled.span`
-  font-size: 12px;
-  line-height: 150%;
-  font-weight: 600;
-  color: #122434;
-`
-const NewsInner = styled.div`
-  margin-left: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-const NewsImage = styled.img`
-  width: 72px;
-  height: 110px;
-  border-radius: 8px;
-`
-const NewsContainer = styled.article`
-  margin-top: 16px;
-  display: flex;
 `
 const Date = styled.span`
   margin-top: 8px;

@@ -1,4 +1,4 @@
-import React, {FC, memo, useState} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {ToggleContainer, ToggleItem} from "components/Login/containers/main/MainForm";
 import {Field, Form} from "react-final-form";
@@ -8,7 +8,7 @@ import {AutocompleteField} from "./components/AutocompleteField";
 import {marksAge, primaryIndustryData, revenueMarks} from "./data/data";
 
 
-export const Filter: FC = memo(() => {
+export const Filter: FC = () => {
     const [isAdvanced, setAdvanced] = useState(true);
     const [isCustomize, setCustomize] = useState(false);
 
@@ -263,7 +263,7 @@ export const Filter: FC = memo(() => {
             />
         </Container>
     )
-})
+}
 
 const Container = styled.div`
   margin: 30px 60px 60px;

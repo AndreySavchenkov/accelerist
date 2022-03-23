@@ -4,13 +4,13 @@ import {Header} from "../general/Header";
 import {SearchPanel} from "./components/SearchPanel";
 import {Outlet} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
 import {AllerSuccessful} from "../general/AllerSuccessful";
+import {getSuccessful} from "../../selectors/selectors";
 
 
 export const SearchPage: FC = () => {
-    const successful = useSelector((state:RootState)=>state.notifications.successful);
     const [isShowMenu, setShowMenu] = useState(false);
+    const successful = useSelector(getSuccessful);
 
     return (
         <>

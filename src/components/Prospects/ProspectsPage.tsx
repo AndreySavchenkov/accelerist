@@ -6,13 +6,11 @@ import leftArray from "../../assets/img/arrayLeft.png";
 import rightArray from "../../assets/img/arrayRight.png";
 import {Race} from "../Dashboard/components/Race";
 
-export const ProspectsPage:FC = () => {
+export const ProspectsPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
-    const[activeName,setActiveName] = useState('alphabet');
+    const [activeName, setActiveName] = useState('alphabet');
 
-    const setActive = (name: string) => {
-        setActiveName(name);
-    }
+    const onMethodClick = (name: string) => setActiveName(name);
 
     const totalItems = 6;
     const firstElement = 1;
@@ -28,9 +26,15 @@ export const ProspectsPage:FC = () => {
                         <Sorting>
                             <SortMethodContainer>
                                 <Title>Sort by</Title>
-                                {!(activeName === 'alphabet') ? <Method onClick={()=>setActive('alphabet')}>Alphabet</Method> : <MethodActive>Alphabet</MethodActive>}
-                                {!(activeName === 'available') ? <Method onClick={()=>setActive('available')}>Prospects Available</Method> : <MethodActive>Prospects Available</MethodActive>}
-                                {!(activeName === 'activity') ? <Method onClick={()=>setActive('activity')}>Last Activity</Method> : <MethodActive>Last Activity</MethodActive>}
+                                {!(activeName === 'alphabet') ?
+                                    <Method onClick={() => onMethodClick('alphabet')}>Alphabet</Method> :
+                                    <MethodActive>Alphabet</MethodActive>}
+                                {!(activeName === 'available') ?
+                                    <Method onClick={() => onMethodClick('available')}>Prospects Available</Method> :
+                                    <MethodActive>Prospects Available</MethodActive>}
+                                {!(activeName === 'activity') ?
+                                    <Method onClick={() => onMethodClick('activity')}>Last Activity</Method> :
+                                    <MethodActive>Last Activity</MethodActive>}
                             </SortMethodContainer>
                             <Navigation>
                                 <LeftArray src={leftArray}/>

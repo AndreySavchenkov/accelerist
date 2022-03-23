@@ -7,7 +7,7 @@ import {sendEmailWorkerSaga, signInWorkerSaga, signUpWorkerSaga} from "./login/l
 import {
     doDislikeCompanyWorkerSaga,
     doLikeCompanyWorkerSaga,
-    getCompaniesWorkerSaga, getCompanyByIdAction, getCompanyByIdWorkerSaga,
+    getCompaniesWorkerSaga, getCompanyByIdWorkerSaga,
     getFavoriteCompaniesWorkerSaga
 } from "./companies/companiesSaga";
 import storage from 'redux-persist/lib/storage';
@@ -56,5 +56,5 @@ function* rootWatcher() {
 sagaMiddleware.run(rootWatcher)
 
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootStateT = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch

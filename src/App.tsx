@@ -10,7 +10,7 @@ import {PasswordNew} from "./components/Login/containers/password/PasswordNew";
 import {SearchFoundPanel} from "./components/Search/containers/find/SearchFoundPanel";
 import {Filter} from "./components/Search/containers/filter/Filter";
 import {useSelector} from "react-redux";
-import {RootState} from "./redux/store";
+import {RootStateT} from "./redux/store";
 import {CompanyPage} from "./components/Company/CompanyPage";
 import {DashboardPage} from "./components/Dashboard/DashboardPage";
 import {FavoritesPage} from "./components/Favorites/FavoritesPage";
@@ -21,7 +21,7 @@ import {ProspectsListPage} from "./components/ProspectsList/ProspectsListPage";
 
 function App() {
 
-    let accessToken = useSelector((state: RootState) => state.login.accessToken)
+    let accessToken = useSelector((state: RootStateT) => state.login.accessToken)
 
     return (
         <>

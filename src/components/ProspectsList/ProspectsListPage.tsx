@@ -7,19 +7,19 @@ import rightArray from "../../assets/img/arrayRight.png";
 import exelLogo from "assets/img/upload.png"
 import {getCompaniesAction} from "../../redux/companies/companiesSaga";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
 import {Card} from "../general/Card";
+import {getCompanies} from "../../selectors/selectors";
 
 export const ProspectsListPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
+
+    const cards = useSelector(getCompanies);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCompaniesAction(1))
     }, [dispatch])
-
-    const cards = useSelector((state: RootState) => state.companies.companies);
 
     const cardsList = cards?.map(card => <Card id={card.id}
                                                key={card.id}

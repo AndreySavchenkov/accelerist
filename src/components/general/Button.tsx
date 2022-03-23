@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -6,11 +6,12 @@ type Props = {
     clickHandler?: () => void
 }
 
-export const Button: FC<Props> = ({text, clickHandler}) => {
+export const Button: FC<Props> = memo(({text, clickHandler}) => {
+
     return (
-            <ButtonBody onClick={clickHandler} type="submit">{text}</ButtonBody>
+        <ButtonBody onClick={clickHandler} type="submit">{text}</ButtonBody>
     )
-}
+})
 
 const ButtonBody = styled.button`
   padding: 12px 0;
@@ -24,13 +25,16 @@ const ButtonBody = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
+
   &:hover {
     background: #51C2EE;
   }
+
   &:focus {
     background: #1DA7DC;
   }
-  &:disabled{
+
+  &:disabled {
     background: #CEEDF9;
     color: #2BAEE0;
   }

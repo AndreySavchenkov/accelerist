@@ -1,21 +1,23 @@
-import React, {FC, useState} from "react";
+import React, {FC, memo, useEffect, useState} from "react";
 import styled from "styled-components";
 import wellDone from "assets/img/wellDone.png"
 import close from "assets/img/closeButton.png"
+import {EMPTY_STRING} from "../../constance";
 
 type Props = {
     text: string
 }
 
-export const AllerSuccessful: FC<Props> = ({text}) => {
-
+export const AllerSuccessful: FC<Props> = memo(({text}) => {
     const [isShow, setIsShow] = useState(true);
 
-    const clickHandler = () => {
+    useEffect(() => {
+        setTimeout(()=>onCloseButtonClick(),5000)
+    })
+
+    const onCloseButtonClick = () => {
         setIsShow(false);
     }
-
-    setTimeout(()=>clickHandler(),5000)
 
     return (
         <>
@@ -29,14 +31,14 @@ export const AllerSuccessful: FC<Props> = ({text}) => {
                                 <SubTitle>{text}</SubTitle>
                             </TextContainer>
                         </InnerContainer>
-                        <CloseButton onClick={clickHandler} src={close}/>
+                        <CloseButton onClick={onCloseButtonClick} src={close}/>
                     </Container>
-                    : ''
+                    : EMPTY_STRING
             }
         </>
 
     )
-}
+})
 
 const Container = styled.div`
   position: absolute;

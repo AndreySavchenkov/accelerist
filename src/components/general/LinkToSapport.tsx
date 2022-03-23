@@ -1,11 +1,8 @@
 import React, {FC} from "react";
 import styled from "styled-components";
 
-export const LinkToSupport: FC = () => {
-    return (
-        <LinkToSupportBody type="submit">Contact Support</LinkToSupportBody>
-    )
-}
+export const LinkToSupport: FC = () => <LinkToSupportBody type="submit">Contact Support</LinkToSupportBody>
+
 
 const LinkToSupportBody = styled.button`
   padding: 10px 24px;

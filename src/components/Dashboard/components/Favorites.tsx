@@ -3,12 +3,13 @@ import styled from "styled-components";
 import heart from "assets/img/bigHeart.png";
 import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {RootState} from "../../../redux/store";
 import {LittleCard} from "../../general/LittleCard";
+import {getFavoriteCompanies} from "../../../selectors/selectors";
 
 export const Favorites: FC = () => {
     const navigate = useNavigate();
-    const cards = useSelector((state: RootState) => state.companies.favoriteCompanies)
+
+    const cards = useSelector(getFavoriteCompanies)
 
     const cardsList = cards?.map(card => <LittleCard key={card.id}
                                                      name={card.name}

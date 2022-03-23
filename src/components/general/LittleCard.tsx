@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import styled from "styled-components";
 import logo from "assets/img/apple.png"
 
@@ -7,7 +7,7 @@ type Props = {
     ranking: number,
 }
 
-export const LittleCard:FC<Props> = ({name,ranking}) => {
+export const LittleCard:FC<Props> = memo(({name,ranking}) => {
 
     return (
         <Container>
@@ -28,7 +28,8 @@ export const LittleCard:FC<Props> = ({name,ranking}) => {
             </Items>
         </Container>
     )
-}
+})
+
 const Circle = styled.div`
   margin-left: 6px;
   margin-right: 6px;

@@ -3,25 +3,25 @@ import {Header} from "components/general/Header";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "redux/store";
 import {ProfilePanel} from "components/Company/components/ProfilePanel";
 import {Company} from "components/Company/components/Company";
 import {CompanyDescription} from "components/Company/components/CompanyDescription";
 import {AsideMenu} from "components/Company/components/AsideMenu";
 import {getCompanyByIdAction} from "redux/companies/companiesSaga";
+import {getCompany} from "../../selectors/selectors";
 
 
 export const CompanyPage: FC = memo(() => {
     const [isShowMenu, setShowMenu] = useState(false);
+
     const dispatch = useDispatch();
     const params = useParams();
 
-    useEffect(() => {
-        //@ts-ignore
-        dispatch(getCompanyByIdAction(params.id))
-    },[])
+    const company = useSelector(getCompany)
 
-    const company = useSelector((state: RootState) => state.companies?.companyById)
+    useEffect(() => {
+        params.id && dispatch(getCompanyByIdAction(params.id))
+    }, [dispatch,params.id])
 
     return (
         <>
@@ -31,7 +31,7 @@ export const CompanyPage: FC = memo(() => {
                 <InnerContainer>
                     {company ?
                         <ProfileContainer>
-                            <Company name={company.name} primaryIndustry={company.primaryIndustry}  like={company.like}/>
+                            <Company name={company.name} primaryIndustry={company.primaryIndustry} like={company.like}/>
                             <Box>
                                 <CompanyContainer>
                                     <CompanyDescription city={company.city}

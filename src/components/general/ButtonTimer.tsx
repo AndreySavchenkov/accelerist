@@ -5,13 +5,8 @@ type Props = {
     text: string
 }
 
-export const ButtonTimer: FC<Props> = ({text}) => {
-    return (
-        <>
-            <ButtonTimerBody type="submit">{text}</ButtonTimerBody>
-        </>
-    )
-}
+export const ButtonTimer: FC<Props> = (({text}) => <ButtonTimerBody type="submit">{text}</ButtonTimerBody>)
+
 
 const ButtonTimerBody = styled.button`
   padding: 12px 0;

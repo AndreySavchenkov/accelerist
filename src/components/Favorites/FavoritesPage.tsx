@@ -4,29 +4,35 @@ import {HighPanel} from "components/general/HighPanel";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import {getFavoriteCompaniesAction} from "redux/companies/companiesSaga";
-import {RootState} from "redux/store";
 import leftArray from "assets/img/arrayLeft.png";
 import rightArray from "assets/img/arrayRight.png";
 import {Card} from "components/general/Card";
+import {
+    getFavoriteCompanies,
+    getFavoriteItemCount,
+    getFavoriteTotalItems,
+    getFavoriteTotalPages
+} from "../../selectors/selectors";
 
 export const FavoritesPage:FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
-    const totalItems = useSelector((state: RootState) => state.companies.favoriteMeta.totalItems);
-    const totalPage = useSelector((state: RootState) => state.companies.favoriteMeta.totalPages);
-    const itemCount = useSelector((state: RootState) => state.companies.favoriteMeta.itemCount);
-    const cards = useSelector((state: RootState) => state.companies.favoriteCompanies)
+    const [localPage, setLocalPage] = useState(1);
+
+    const totalItems = useSelector(getFavoriteTotalItems);
+    const totalPage = useSelector(getFavoriteTotalPages);
+    const itemCount = useSelector(getFavoriteItemCount);
+    const cards = useSelector(getFavoriteCompanies);
 
     const dispatch = useDispatch();
 
-    const [localPage, setLocalPage] = useState(1);
-
-    const showNextPage = () => {
+    const onRightArrayClick = () => {
         if(localPage < totalPage){
             setLocalPage(localPage + 1)
             dispatch(getFavoriteCompaniesAction(localPage + 1))
         }
     }
-    const showPreviousPage = () => {
+
+    const onLeftArrayClick = () => {
         setLocalPage(localPage - 1)
         if (localPage <= 1) {
             setLocalPage(1)
@@ -65,9 +71,9 @@ export const FavoritesPage:FC = () => {
                         <SettingsContainer>
                             <Text>{totalItems} companies</Text>
                             <Navigation>
-                                <LeftArray src={leftArray} onClick={showPreviousPage}/>
+                                <LeftArray src={leftArray} onClick={onLeftArrayClick}/>
                                 <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                                <RightArray src={rightArray} onClick={showNextPage}/>
+                                <RightArray src={rightArray} onClick={onRightArrayClick}/>
                             </Navigation>
                         </SettingsContainer>
                         <Cards>

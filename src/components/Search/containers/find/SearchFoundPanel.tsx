@@ -8,26 +8,17 @@ import rightArray from "assets/img/arrayRight.png"
 import {Card} from "../../../general/Card";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
-import {RootState} from "redux/store";
 import axios from "axios";
+import {getCompanies, getItemCount, getTotalItems} from "../../../../selectors/selectors";
 
 export let instance: any = {};
 
 export const SearchFoundPanel: FC = () => {
-
     const [localPage, setLocalPage] = useState(1);
 
-    const showNextPage = () => {
-        setLocalPage(localPage + 1)
-        dispatch(getCompaniesAction(localPage + 1))
-    }
-    const showPreviousPage = () => {
-        setLocalPage(localPage - 1)
-        if (localPage <= 1) {
-            setLocalPage(1)
-        }
-        dispatch(getCompaniesAction(localPage - 1))
-    }
+    const cards = useSelector(getCompanies)
+    const totalItems = useSelector(getTotalItems)
+    const itemCount = useSelector(getItemCount)
 
     const dispatch = useDispatch()
 
@@ -38,17 +29,23 @@ export const SearchFoundPanel: FC = () => {
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('accessToken')},
         })
         dispatch(getCompaniesAction(localPage))
-        console.log('localPage -> ', localPage)
     }, [dispatch, localPage])
 
-    const cards = useSelector((state: RootState) => state.companies.companies)
+    const onRightArrayClick = () => {
+        setLocalPage(localPage + 1)
+        dispatch(getCompaniesAction(localPage + 1))
+    }
 
-    const totalItems = useSelector((state: RootState) => state.companies.meta?.totalItems)
-    const itemCount = useSelector((state: RootState) => state.companies.meta?.itemCount)
+    const onLeftArrayClick = () => {
+        setLocalPage(localPage - 1)
+        if (localPage <= 1) {
+            setLocalPage(1)
+        }
+        dispatch(getCompaniesAction(localPage - 1))
+    }
 
     const firstElement = ((itemCount * localPage) - itemCount) + 1
     const endElement = (itemCount * localPage)
-
 
     const cardsList = cards?.map(card => <Card id={card.id}
                                                key={card.id}
@@ -81,18 +78,18 @@ export const SearchFoundPanel: FC = () => {
                     </Item>
                 </Items>
                 <Navigation>
-                    <LeftArray src={leftArray} onClick={showPreviousPage}/>
+                    <LeftArray src={leftArray} onClick={onLeftArrayClick}/>
                     <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                    <RightArray src={rightArray} onClick={showNextPage}/>
+                    <RightArray src={rightArray} onClick={onRightArrayClick}/>
                 </Navigation>
             </SettingsPanel>
             <Cards>
                 {cardsList}
             </Cards>
             <MobileNavigation>
-                <LeftArray src={leftArray} onClick={showPreviousPage}/>
+                <LeftArray src={leftArray} onClick={onLeftArrayClick}/>
                 <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                <RightArray src={rightArray} onClick={showNextPage}/>
+                <RightArray src={rightArray} onClick={onRightArrayClick}/>
             </MobileNavigation>
         </>
     )

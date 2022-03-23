@@ -1,11 +1,11 @@
-import React from "react";
+import React, {FC} from "react";
 import arrayLeft from "assets/img/arrayLeft.png"
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 
-export const ProfilePanel = () => {
-
+export const ProfilePanel: FC = () => {
     const navigate = useNavigate()
+
     const goBack = () => navigate(-1)
 
     return (

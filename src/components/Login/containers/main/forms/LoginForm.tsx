@@ -8,7 +8,7 @@ import {signInAction} from "redux/login/loginSaga";
 import {Link, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {AllerError} from "../../../../general/AllertError";
-import {RootState} from "../../../../../redux/store";
+import {RootStateT} from "../../../../../redux/store";
 
 
 type Values = {
@@ -18,7 +18,7 @@ type Values = {
 }
 
 export const LoginForm: FC = () => {
-    const error = useSelector((state: RootState) => state.notifications.error);
+    const error = useSelector((state: RootStateT) => state.notifications.error);
 
     const [isShowPassword, setIsShowPassword] = useState(false);
     const dispatch = useDispatch();

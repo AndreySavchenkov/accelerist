@@ -4,6 +4,7 @@ import ava from "assets/img/ava.png";
 import {Link} from "react-router-dom";
 
 export const Race:FC = () => {
+
     return (
         <RaceContainer>
             <Title to={'/prospects/prospects-list'}>Race for the Cure</Title>

@@ -3,7 +3,6 @@ import Chart from "react-apexcharts";
 import styled from "styled-components";
 
 export const SecondaryDonut = () => {
-
     const [isActive, setIsActive] = useState('Nonprofits');
 
     const changeActiveElement = (element: string) => {

@@ -84,7 +84,7 @@ export const CompanyDescription: FC<Props> = memo(({
                     <Phone>ronald23@gmail.com</Phone>
                     <ButtonContact>Pitch</ButtonContact>
                 </Contact>
-                <ContactLine></ContactLine>
+                <ContactLine> </ContactLine>
                 <Contact>
                     <NameContainer>
                         <Name>Ronald Richards</Name>
@@ -94,7 +94,7 @@ export const CompanyDescription: FC<Props> = memo(({
                     <Phone>ronald23@gmail.com</Phone>
                     <ButtonContact>Pitch</ButtonContact>
                 </Contact>
-                <ContactLine></ContactLine>
+                <ContactLine> </ContactLine>
                 <Contact>
                     <NameContainer>
                         <Name>Ronald Richards</Name>

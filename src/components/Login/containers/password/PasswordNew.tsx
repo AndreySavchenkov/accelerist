@@ -14,17 +14,14 @@ type Values = {
 }
 
 export const PasswordNew: FC = () => {
-
     const [isShowPassword, setIsShowPassword] = useState(false);
 
-    const togglePasswordShow = () => {
-        setIsShowPassword(!isShowPassword)
-    }
+    const navigate = useNavigate();
 
-    // get a password change token from URL
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop: any) => searchParams.get(prop),
     });
+
     //@ts-ignore
     let passwordResetToken = params.passwordResetToken;
     localStorage.setItem('passwordResetToken', passwordResetToken)
@@ -38,12 +35,15 @@ export const PasswordNew: FC = () => {
     const resetPassword = (password: string) => {
         return instanceResetPassword.post('/auth/change_password/change', {password, passwordConfirmation: password})
     }
-    const navigate = useNavigate();
 
-    const onSubmit = (values: Values) => {
-        resetPassword(values.password)
+    const onSubmit = async (values: Values) => {
+        await resetPassword(values.password)
         localStorage.setItem('passwordReset', values.password)
         navigate("/", {replace: true});
+    }
+
+    const onShowPasswordClick = () => {
+        setIsShowPassword(!isShowPassword)
     }
 
     return (
@@ -76,7 +76,7 @@ export const PasswordNew: FC = () => {
                                             </>
                                         )}
                                     />
-                                    <ShowPassword onClick={togglePasswordShow}
+                                    <ShowPassword onClick={onShowPasswordClick}
                                                   src={!isShowPassword ? showPassword : hiddenPassword}/>
                                 </FormItem>
                                 <Button text={"Done"}/>

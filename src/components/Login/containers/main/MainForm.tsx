@@ -12,7 +12,7 @@ export const MainForm: FC = () => {
     const [isRegister, setRegister] = useState(true);
     const [isLogin, setLogin] = useState(false);
 
-    const clickHandler = () => {
+    const onToggleItemClick = () => {
         setRegister(!isRegister);
         setLogin(!isLogin);
     }
@@ -21,8 +21,8 @@ export const MainForm: FC = () => {
         <Container>
             <Title>Welcome to Accelerist</Title>
             <ToggleContainer>
-                <ToggleItem onClick={clickHandler} isToggle={isRegister}>Register</ToggleItem>
-                <ToggleItem onClick={clickHandler} isToggle={isLogin}>Login</ToggleItem>
+                <ToggleItem onClick={onToggleItemClick} isToggle={isRegister}>Register</ToggleItem>
+                <ToggleItem onClick={onToggleItemClick} isToggle={isLogin}>Login</ToggleItem>
             </ToggleContainer>
             <FormContainer>
                 {!isRegister ? <LoginForm/> : <RegisterForm/>}
