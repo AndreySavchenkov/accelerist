@@ -2,13 +2,13 @@ import React, {FC, memo, useEffect, useState} from "react";
 import styled from "styled-components";
 import error from "assets/img/error.png"
 import close from "assets/img/closeButton.png"
-import {EMPTY_STRING} from "../../constance";
+import {EMPTY_STRING} from "constance";
 
 type Props = {
     text: string
 }
 
-export const AllerError: FC<Props> = memo(({text}) => {
+export const AllertError: FC<Props> = memo(({text}) => {
     const [isShow, setIsShow] = useState(true);
 
     useEffect(()=> {

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {LoginHeader} from "./LoginHeader";
+import {LoginHeader} from "components";
 import styled from "styled-components";
 import backgroundLogin from "assets/img/loginBackground.jpg"
 import {Outlet} from "react-router-dom";

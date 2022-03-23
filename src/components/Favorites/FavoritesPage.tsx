@@ -1,18 +1,16 @@
 import React, {FC, useState} from "react";
-import {Header} from "components/general/Header";
-import {HighPanel} from "components/general/HighPanel";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import {getFavoriteCompaniesAction} from "redux/companies/companiesSaga";
 import leftArray from "assets/img/arrayLeft.png";
 import rightArray from "assets/img/arrayRight.png";
-import {Card} from "components/general/Card";
+import {Card, HighPanel,Header } from "components";
 import {
     getFavoriteCompanies,
     getFavoriteItemCount,
     getFavoriteTotalItems,
     getFavoriteTotalPages
-} from "../../selectors/selectors";
+} from "selectors/selectors";
 
 export const FavoritesPage:FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);

@@ -7,7 +7,7 @@ import news3 from "assets/img/news3.png";
 import news4 from "assets/img/news4.png";
 import news5 from "assets/img/news5.png";
 import news6 from "assets/img/news6.png";
-import {News} from "./News";
+import {News} from "components";
 
 export const AsideMenu = () => {
 

@@ -1,0 +1,1 @@
+export {primaryIndustryData} from './data'

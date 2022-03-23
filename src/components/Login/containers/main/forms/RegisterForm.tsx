@@ -8,8 +8,9 @@ import {signUpAction} from "redux/login/loginSaga";
 import {useDispatch, useSelector} from "react-redux";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {useNavigate} from "react-router-dom";
-import {AllerError} from "../../../../general/AllertError";
-import {RootStateT} from "../../../../../redux/store";
+import {AllertError} from "components";
+import {RootStateT} from "redux/store";
+import {EMPTY_STRING} from "../../../../../constance";
 
 type Values = {
     email: string,
@@ -90,7 +91,7 @@ export const RegisterForm: FC = () => {
                     </FormContainer>
                 )}
             />
-            {error ? <AllerError text={'Register was unsuccessful'}/> : null}
+            {error ? <AllertError text={'Register was unsuccessful'}/> : EMPTY_STRING}
         </>
     )
 }

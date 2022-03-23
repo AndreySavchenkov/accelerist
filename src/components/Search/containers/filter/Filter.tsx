@@ -4,7 +4,7 @@ import {ToggleContainer, ToggleItem} from "components/Login/containers/main/Main
 import {Field, Form} from "react-final-form";
 import {Box, Slider} from "@mui/material";
 import {Link} from "react-router-dom";
-import {AutocompleteField} from "./components/AutocompleteField";
+import {AutocompleteField} from "components";
 import {marksAge, primaryIndustryData, revenueMarks} from "./data/data";
 
 

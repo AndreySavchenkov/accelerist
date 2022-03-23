@@ -7,8 +7,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {signInAction} from "redux/login/loginSaga";
 import {Link, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
-import {AllerError} from "../../../../general/AllertError";
-import {RootStateT} from "../../../../../redux/store";
+import {AllertError} from "components";
+import {RootStateT} from "redux/store";
+import {EMPTY_STRING} from "../../../../../constance";
 
 
 type Values = {
@@ -109,7 +110,7 @@ export const LoginForm: FC = () => {
                     );
                 }}
             />
-            {error ? <AllerError text={'Email or password is incorrect'}/> : null}
+            {error ? <AllertError text={'Email or password is incorrect'}/> : EMPTY_STRING}
         </>
     )
 }

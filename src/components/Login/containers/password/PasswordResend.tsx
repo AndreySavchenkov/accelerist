@@ -1,9 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
-import {LinkToLogin} from "components/general/LinkToLogin";
-import {LinkToSupport} from "components/general/LinkToSapport";
-import {ButtonTimer} from "components/general/ButtonTimer";
-import {Button} from "components/general/Button";
+import {Button, ButtonTimer, LinkToSupport, LinkToLogin} from "components";
 import {useDispatch} from "react-redux";
 import {sendEmailAction} from "redux/login/loginSaga";
 

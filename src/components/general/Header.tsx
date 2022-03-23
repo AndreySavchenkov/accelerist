@@ -7,7 +7,8 @@ import menuIcon from "assets/img/menu.png"
 import closeButton from "assets/img/closeButton.png"
 import {useSelector} from "react-redux";
 import {Link} from 'react-router-dom';
-import {getUserEmail} from "../../selectors/selectors";
+import {getUserEmail} from "selectors/selectors";
+import {EMPTY_STRING} from "../../constance";
 
 type Props = {
     isShowMenu: boolean,
@@ -48,11 +49,11 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
                                 <CloseButton src={closeButton} onClick={toggleShowMenu}/>
                                 <MenuBurgerNav>
                                     <CustomLink to={'dashboard'}>Dashboard</CustomLink>
-                                    <CustomLink to={''}>Audience</CustomLink>
-                                    <CustomLink to={''}>Pricing</CustomLink>
-                                    <CustomLink to={''}>Prospecting</CustomLink>
-                                    <CustomLink to={''}>ROI</CustomLink>
-                                    <CustomLink to={''}>Upgrade Membership</CustomLink>
+                                    {/*<CustomLink to={''}>Audience</CustomLink>*/}
+                                    {/*<CustomLink to={''}>Pricing</CustomLink>*/}
+                                    <CustomLink to={'/prospects'}>Prospecting</CustomLink>
+                                    {/*<CustomLink to={''}>ROI</CustomLink>*/}
+                                    {/*<CustomLink to={''}>Upgrade Membership</CustomLink>*/}
                                 </MenuBurgerNav>
                                 <MenuBurgerProfile>
                                     <ProfileLogoContainer>
@@ -61,7 +62,7 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
                                     <ProfileText>{email}</ProfileText>
                                 </MenuBurgerProfile>
                             </MenuBurgerContainer>
-                        </BackgroundMenu> : ''
+                        </BackgroundMenu> : EMPTY_STRING
                 }
 
             </InnerContainer>

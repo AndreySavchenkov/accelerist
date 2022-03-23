@@ -4,6 +4,7 @@ import {Field, Form} from "react-final-form";
 import logoZoom from "assets/img/zoom-out.png"
 import logoSlider from "assets/img/sliders.png"
 import {Link} from "react-router-dom";
+import {EMPTY_STRING} from "../../../constance";
 
 type Props = {
     isShowMenu: boolean;
@@ -38,7 +39,7 @@ export const SearchPanel: FC<Props> = memo(({isShowMenu}) => {
                                             {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
                                             <LogoZoom src={logoZoom}/>
                                             <Link to="filter"><LogoSlider src={logoSlider}/></Link>
-                                        </> : null
+                                        </> : EMPTY_STRING
                                 )}
                             />
                         </FormContainer>

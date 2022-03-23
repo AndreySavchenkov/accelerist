@@ -1,6 +1,6 @@
 import React, {FC, memo} from "react";
 import styled from "styled-components";
-import {formatNumber} from "../../../helpers/functions";
+import {formatNumber} from "helpers/functions";
 import globe from "assets/img/globe.png";
 import map from "assets/img/map.png";
 import phoneImg from "assets/img/phone.png";
@@ -9,9 +9,7 @@ import goal2 from "assets/img/goal02.png";
 import goal3 from "assets/img/goal03.png";
 import goal4 from "assets/img/goal04.png";
 import goal5 from "assets/img/goal06.png";
-import {Donut} from "./Donut";
-import {SecondaryDonut} from "./SecondaryDonut";
-import {Structure} from "./Structure";
+import {Donut, SecondaryDonut, Structure} from "components";
 
 type Props = {
     city: string

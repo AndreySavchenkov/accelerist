@@ -1,10 +1,9 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import {Button} from "components/general/Button";
 import showPassword from "assets/img/showPassword.png";
 import hiddenPassword from "assets/img/hiddenPassword.svg";
-import {LinkToSupport} from "components/general/LinkToSapport";
+import {LinkToSupport, Button} from "components";
 import {composeValidators, minValue, required} from "helpers/validation";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";

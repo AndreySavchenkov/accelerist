@@ -1,13 +1,8 @@
 import React, {FC, useEffect, useState} from "react";
-import {Header} from "../general/Header";
+import {Header, HighPanel, Race, Favorites, Reports, Navigator} from "components";
 import styled from "styled-components";
-import {HighPanel} from "../general/HighPanel";
-import {Race} from "./components/Race";
-import {Favorites} from "./components/Favorites";
-import {Reports} from "./components/Reports";
-import {Navigator} from "./components/Navigator";
 import {useDispatch} from "react-redux";
-import {getFavoriteCompaniesAction} from "../../redux/companies/companiesSaga";
+import {getFavoriteCompaniesAction} from "redux/companies/companiesSaga";
 import {Link} from "react-router-dom";
 
 export const DashboardPage:FC = () => {

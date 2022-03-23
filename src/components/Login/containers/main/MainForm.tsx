@@ -1,8 +1,8 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
-import {LoginForm} from "./forms/LoginForm";
+import {LoginForm, RegisterForm} from "components";
 import registrationLink from "assets/img/registraionLink.png";
-import {RegisterForm} from "./forms/RegisterForm";
+
 
 type toggleItemProps = {
     isToggle: boolean

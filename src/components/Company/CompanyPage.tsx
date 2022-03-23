@@ -1,14 +1,10 @@
 import React, {FC, memo, useEffect, useState} from "react";
-import {Header} from "components/general/Header";
+import {Header, ProfilePanel, Company, CompanyDescription, AsideMenu} from "components";
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {ProfilePanel} from "components/Company/components/ProfilePanel";
-import {Company} from "components/Company/components/Company";
-import {CompanyDescription} from "components/Company/components/CompanyDescription";
-import {AsideMenu} from "components/Company/components/AsideMenu";
 import {getCompanyByIdAction} from "redux/companies/companiesSaga";
-import {getCompany} from "../../selectors/selectors";
+import {getCompany} from "selectors/selectors";
 
 
 export const CompanyPage: FC = memo(() => {
@@ -46,7 +42,7 @@ export const CompanyPage: FC = memo(() => {
                                 </CompanyContainer>
                                 <AsideMenu/>
                             </Box>
-                        </ProfileContainer> : '**********************PROFILE NOT FOUND**********************'
+                        </ProfileContainer> : '**********************Wait Plies**********************'
                     }
                 </InnerContainer>
             </Container>

@@ -1,0 +1,1 @@
+export {ProspectsListPage} from './ProspectsListPage'

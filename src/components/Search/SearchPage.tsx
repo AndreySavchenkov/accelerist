@@ -1,11 +1,10 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
-import {Header} from "../general/Header";
-import {SearchPanel} from "./components/SearchPanel";
 import {Outlet} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {AllerSuccessful} from "../general/AllerSuccessful";
-import {getSuccessful} from "../../selectors/selectors";
+import {AllertSuccessful, SearchPanel, Header} from "components";
+import {getSuccessful} from "selectors/selectors";
+import {EMPTY_STRING} from "constance";
 
 
 export const SearchPage: FC = () => {
@@ -24,9 +23,9 @@ export const SearchPage: FC = () => {
                                 <Outlet/>
                             </SearchContainer>
                         </InnerContainer>
-                    </Container> : null}
+                    </Container> : EMPTY_STRING}
             </div>
-            {successful ? <AllerSuccessful text={'Login process was successful.'}/> : null}
+            {successful ? <AllertSuccessful text={'Login process was successful.'}/> : EMPTY_STRING}
         </>
 
     )

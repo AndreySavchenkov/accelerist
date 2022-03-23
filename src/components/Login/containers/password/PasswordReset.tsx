@@ -1,8 +1,7 @@
 import React, {FC} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import {Button} from "components/general/Button";
-import {LinkToLogin} from "components/general/LinkToLogin";
+import {LinkToLogin, Button} from "components";
 import {composeValidators, required} from "helpers/validation";
 import {useDispatch} from "react-redux";
 import {sendEmailAction} from "redux/login/loginSaga";

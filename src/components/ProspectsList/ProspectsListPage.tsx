@@ -1,14 +1,12 @@
 import React, {FC, useEffect, useState} from "react";
-import {Header} from "../general/Header";
-import {HighPanel} from "../general/HighPanel";
 import styled from "styled-components";
-import leftArray from "../../assets/img/arrayLeft.png";
-import rightArray from "../../assets/img/arrayRight.png";
+import leftArray from "assets/img/arrayLeft.png";
+import rightArray from "assets/img/arrayRight.png";
 import exelLogo from "assets/img/upload.png"
-import {getCompaniesAction} from "../../redux/companies/companiesSaga";
+import {getCompaniesAction} from "redux/companies/companiesSaga";
 import {useDispatch, useSelector} from "react-redux";
-import {Card} from "../general/Card";
-import {getCompanies} from "../../selectors/selectors";
+import {Card, HighPanel, Header} from "components";
+import {getCompanies} from "selectors/selectors";
 
 export const ProspectsListPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);

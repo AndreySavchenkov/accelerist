@@ -3,16 +3,17 @@ import styled from "styled-components";
 import appleLogo from "assets/img/apple.png"
 import heart from "assets/img/heart.png"
 import fullHeart from "assets/img/fullHeart.png"
+import closeImg from "assets/img/closeBlack.png"
+import bigHeartFull from "assets/img/bigFullHeart.png";
 import {formatNumber} from "helpers/functions";
 import {useNavigate} from "react-router-dom";
 import {
     doDislikeCompanyAction,
     doLikeCompanyAction,
-} from "../../redux/companies/companiesSaga";
+} from "redux/companies/companiesSaga";
 import {useDispatch} from "react-redux";
-import bigHeartFull from "../../assets/img/bigFullHeart.png";
-import {Button} from "./Button";
-import closeImg from "assets/img/closeBlack.png"
+import {Button} from "components";
+
 
 type Props = {
     id: string
