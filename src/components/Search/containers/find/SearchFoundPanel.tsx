@@ -1,8 +1,5 @@
 import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
-import folderPlus from "assets/img/folder-plus.png"
-import mail from "assets/img/mail.png"
-import upload from "assets/img/upload.png"
 import leftArray from "assets/img/arrayLeft.png"
 import rightArray from "assets/img/arrayRight.png"
 import {Card} from "components";
@@ -10,8 +7,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import axios from "axios";
 import {getCompanies, getItemCount, getTotalItems} from "selectors/selectors";
+import {FolderPlusIcon} from "../../../../assets/svg/FolderPlusIcon";
+import {UploadFileIcon} from "../../../../assets/svg/UploadFileIcon";
+import {MailIcon} from "../../../../assets/svg/MailIcon";
 
-export let instance:any = {};
+export let instance: any = {};
 
 export const SearchFoundPanel: FC = () => {
     const [localPage, setLocalPage] = useState(1);
@@ -65,15 +65,15 @@ export const SearchFoundPanel: FC = () => {
             <SettingsPanel>
                 <Items>
                     <Item>
-                        <ItemIcon src={folderPlus}/>
+                        <FolderPlusIcon/>
                         Save <TextHiden>List</TextHiden>
                     </Item>
                     <Item>
-                        <ItemIcon src={upload}/>
+                        <UploadFileIcon/>
                         Export <TextHiden>to Excel</TextHiden>
                     </Item>
                     <Item>
-                        <ItemIcon src={mail}/>
+                        <MailIcon/>
                         Accelerist <TextHiden>Support</TextHiden>
                     </Item>
                 </Items>

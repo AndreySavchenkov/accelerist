@@ -1,7 +1,7 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {LoginForm, RegisterForm} from "components";
-import registrationLink from "assets/img/registraionLink.png";
+import {LinkedInIcon} from "../../../../assets/svg/LinkedInIcon";
 
 
 type toggleItemProps = {
@@ -28,7 +28,9 @@ export const MainForm: FC = () => {
                 {!isRegister ? <LoginForm/> : <RegisterForm/>}
             </FormContainer>
             <SomeText>or continue with</SomeText>
-            <RegistrationLink src={registrationLink}/>
+            <RegistrationLink>
+                <LinkedInIcon width={24} height={24}/>
+            </RegistrationLink>
         </Container>
     )
 }
@@ -92,7 +94,10 @@ const SomeText = styled.span`
   text-align: center;
   color: #737373;
 `
-const RegistrationLink = styled.img`
+const RegistrationLink = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 24px;
   width: 24px;
   height: 24px;

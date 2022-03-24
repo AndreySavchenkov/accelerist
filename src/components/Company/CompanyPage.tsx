@@ -42,7 +42,7 @@ export const CompanyPage: FC = memo(() => {
                                 </CompanyContainer>
                                 <AsideMenu/>
                             </Box>
-                        </ProfileContainer> : '**********************Wait Plies**********************'
+                        </ProfileContainer> : '**********************Wait Please**********************'
                     }
                 </InnerContainer>
             </Container>

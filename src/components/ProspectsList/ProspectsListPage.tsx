@@ -2,11 +2,11 @@ import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
 import leftArray from "assets/img/arrayLeft.png";
 import rightArray from "assets/img/arrayRight.png";
-import exelLogo from "assets/img/upload.png"
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import {useDispatch, useSelector} from "react-redux";
 import {Card, HighPanel, Header} from "components";
 import {getCompanies} from "selectors/selectors";
+import {UploadFileIcon} from "../../assets/svg/UploadFileIcon";
 
 export const ProspectsListPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -55,7 +55,7 @@ export const ProspectsListPage: FC = () => {
                         </FiltersContainer>
                         <SettingsContainer>
                             <ExelContainer>
-                                <Logo src={exelLogo}/>
+                                <UploadFileIcon/>
                                 Export to Exel
                             </ExelContainer>
                             <Navigation>

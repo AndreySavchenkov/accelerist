@@ -1,10 +1,10 @@
 import React, {FC, memo} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import logoZoom from "assets/img/zoom-out.png"
-import logoSlider from "assets/img/sliders.png"
 import {Link} from "react-router-dom";
 import {EMPTY_STRING} from "../../../constance";
+import {ZoomIcon} from "../../general/ZoomIcon";
+import {FilterIcon} from "../../../assets/svg/FilterIcon";
 
 type Props = {
     isShowMenu: boolean;
@@ -37,8 +37,10 @@ export const SearchPanel: FC<Props> = memo(({isShowMenu}) => {
                                                            : undefined}
                                             />
                                             {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
-                                            <LogoZoom src={logoZoom}/>
-                                            <Link to="filter"><LogoSlider src={logoSlider}/></Link>
+                                            <LogoZoom>
+                                                <ZoomIcon/>
+                                            </LogoZoom>
+                                            <Link to="filter"><LogoSlider><FilterIcon/></LogoSlider></Link>
                                         </> : EMPTY_STRING
                                 )}
                             />
@@ -116,13 +118,13 @@ const InputText = styled.input`
     width: 100%;
   }
 `
-const LogoSlider = styled.img`
+const LogoSlider = styled.div`
   position: absolute;
   top: 7px;
   right: 40px;
   cursor: pointer;
 `
-const LogoZoom = styled.img`
+const LogoZoom = styled.div`
   position: absolute;
   top: 7px;
   right: 10px;

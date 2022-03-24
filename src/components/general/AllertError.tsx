@@ -3,6 +3,7 @@ import styled from "styled-components";
 import error from "assets/img/error.png"
 import close from "assets/img/closeButton.png"
 import {EMPTY_STRING} from "constance";
+import {CloseIcon} from "../../assets/svg/CloseIcon";
 
 type Props = {
     text: string
@@ -31,7 +32,9 @@ export const AllertError: FC<Props> = memo(({text}) => {
                                 <SubTitle>{text}</SubTitle>
                             </TextContainer>
                         </InnerContainer>
-                        <CloseButton onClick={onCloseButtonClick} src={close}/>
+                        <CloseButton onClick={onCloseButtonClick}>
+                            <CloseIcon/>
+                        </CloseButton>
                     </Container>
                     : EMPTY_STRING
             }
@@ -77,7 +80,7 @@ const Icon = styled.img`
   height: 30px;
   margin: 16px;
 `
-const CloseButton = styled.img`
+const CloseButton = styled.div`
   margin-top: 16px;
   margin-right: 21px;
   width: 10px;

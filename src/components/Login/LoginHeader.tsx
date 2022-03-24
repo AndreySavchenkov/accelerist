@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import styled from "styled-components";
-import headerLogo from "assets/img/headerLogo.png"
+import {HeaderLogo} from "assets/svg/HeaderLogo";
+
 
 
 
@@ -8,7 +9,7 @@ export const LoginHeader: FC = () => {
 
     return (
         <Container>
-            <img src={headerLogo} alt="logo"/>
+            <HeaderLogo/>
         </Container>
     )
 }

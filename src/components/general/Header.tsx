@@ -1,14 +1,14 @@
 import React, {FC, memo} from "react";
 import styled from "styled-components";
-import bigLogo from "assets/img/searchBigLogo.png";
-import smallLogo from "assets/img/searchSmallLogo.png"
-import profileLog from "assets/img/profileLogo.png"
-import menuIcon from "assets/img/menu.png"
-import closeButton from "assets/img/closeButton.png"
 import {useSelector} from "react-redux";
 import {Link} from 'react-router-dom';
 import {getUserEmail} from "selectors/selectors";
 import {EMPTY_STRING} from "constance";
+import {MainHeaderLogo} from "../../assets/svg/MainHeaderLogo";
+import {MainLittleHeaderLogo} from "../../assets/svg/MainLittleHeaderLogo";
+import {UserIcon} from "../../assets/svg/UserIcon";
+import {MenuIcon} from "../../assets/svg/MenuIcon";
+import {CloseIcon} from "../../assets/svg/CloseIcon";
 
 type Props = {
     isShowMenu: boolean,
@@ -24,8 +24,12 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
         <Container>
             <InnerContainer>
                 <LogoAndMenu>
-                    <Link to={'/'}><Logo src={bigLogo}/></Link>
-                    <Link to={'/'}><LogoSmall src={smallLogo}/></Link>
+                    <Logo>
+                        <Link to={'/'}><MainHeaderLogo/></Link>
+                    </Logo>
+                   <LogoSmall>
+                       <Link to={'/'}><MainLittleHeaderLogo/></Link>
+                   </LogoSmall>
                     <Nav>
                         <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
                         {/*<CustomLink to={''}>Audience</CustomLink>*/}
@@ -37,16 +41,20 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
                 </LogoAndMenu>
                 <Profile>
                     <ProfileLogoContainer>
-                        <ProfileLogo src={profileLog}/>
+                        <UserIcon/>
                     </ProfileLogoContainer>
                     <ProfileText>{email}</ProfileText>
                 </Profile>
-                <MenuBurgerIcon src={menuIcon} onClick={toggleShowMenu}/>
+                <div onClick={toggleShowMenu}>
+                    <MenuIcon/>
+                </div>
                 {
                     isShowMenu ?
                         <BackgroundMenu>
                             <MenuBurgerContainer>
-                                <CloseButton src={closeButton} onClick={toggleShowMenu}/>
+                                <CloseButton onClick={toggleShowMenu}>
+                                    <CloseIcon/>
+                                </CloseButton>
                                 <MenuBurgerNav>
                                     <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
                                     {/*<CustomLink to={''}>Audience</CustomLink>*/}
@@ -57,7 +65,7 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
                                 </MenuBurgerNav>
                                 <MenuBurgerProfile>
                                     <ProfileLogoContainer>
-                                        <ProfileLogo src={profileLog}/>
+                                        <UserIcon/>
                                     </ProfileLogoContainer>
                                     <ProfileText>{email}</ProfileText>
                                 </MenuBurgerProfile>
@@ -91,13 +99,13 @@ const LogoAndMenu = styled.div`
   display: flex;
   align-items: center;
 `
-const Logo = styled.img`
+const Logo = styled.div`
   margin-left: 60px;
   @media (max-width: 450px) {
     display: none;
   }
 `
-const LogoSmall = styled.img`
+const LogoSmall = styled.div`
   margin-left: 16px;
   @media (min-width: 450px) {
     display: none;
@@ -180,7 +188,7 @@ const MenuBurgerContainer = styled.div`
     width: 100%;
   }
 `
-const CloseButton = styled.img`
+const CloseButton = styled.div`
   position: absolute;
   top: 31px;
   right: 38px;

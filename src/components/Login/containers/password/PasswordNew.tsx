@@ -1,12 +1,12 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import showPassword from "assets/img/showPassword.png";
-import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {LinkToSupport, Button} from "components";
 import {composeValidators, minValue, required} from "helpers/validation";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {ShowPasswordIcon} from "assets/svg/ShowPasswordIcon";
+import {HidePasswordIcon} from "assets/svg/HidePasswordIcon";
 
 type Values = {
     password: string,
@@ -75,8 +75,9 @@ export const PasswordNew: FC = () => {
                                             </>
                                         )}
                                     />
-                                    <ShowPassword onClick={onShowPasswordClick}
-                                                  src={!isShowPassword ? showPassword : hiddenPassword}/>
+                                    <ShowPassword onClick={onShowPasswordClick}>
+                                        {!isShowPassword ? <HidePasswordIcon/> : <ShowPasswordIcon/>}
+                                    </ShowPassword>
                                 </FormItem>
                                 <Button text={"Done"}/>
                             </FormContainer>
@@ -123,8 +124,11 @@ const InputPassword = styled.input`
     outline: 1px solid #2BAEE0;
   }
 `
-const ShowPassword = styled.img`
+const ShowPassword = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 53px;
   right: 16px;
   z-index: 1;

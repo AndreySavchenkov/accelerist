@@ -1,16 +1,15 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import showPassword from "assets/img/showPassword.png";
-import hiddenPassword from "assets/img/hiddenPassword.svg";
-import {Button} from "components/general/Button";
 import {signUpAction} from "redux/login/loginSaga";
 import {useDispatch, useSelector} from "react-redux";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {useNavigate} from "react-router-dom";
-import {AllertError} from "components";
+import {AllertError, Button} from "components";
 import {RootStateT} from "redux/store";
-import {EMPTY_STRING} from "../../../../../constance";
+import {EMPTY_STRING} from "constance";
+import {ShowPasswordIcon} from "assets/svg/ShowPasswordIcon";
+import {HidePasswordIcon} from "assets/svg/HidePasswordIcon";
 
 type Values = {
     email: string,
@@ -24,7 +23,7 @@ export const RegisterForm: FC = () => {
 
     const [isShowPassword, setIsShowPassword] = useState(false);
 
-    const togglePasswordShow = () => {
+    const onShowPasswordClick = () => {
         setIsShowPassword(!isShowPassword)
     }
 
@@ -80,8 +79,9 @@ export const RegisterForm: FC = () => {
                                     </>
                                 )}
                             />
-                            <ShowPassword onClick={togglePasswordShow}
-                                          src={!isShowPassword ? showPassword : hiddenPassword}/>
+                            <ShowPassword onClick={onShowPasswordClick}>
+                                {!isShowPassword ? <HidePasswordIcon/> : <ShowPasswordIcon/>}
+                            </ShowPassword>
                         </FormItem>
                         <Text>
                             I agree that by clicking <Link>“Registration”</Link> I accept the <Link>Terms Of
@@ -157,8 +157,11 @@ const Link = styled.span`
   font-weight: 600;
   color: #122434;
 `
-const ShowPassword = styled.img`
+const ShowPassword = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 13px;
   right: 16px;
   z-index: 1;

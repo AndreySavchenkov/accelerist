@@ -6,10 +6,9 @@ import {wait} from "@testing-library/user-event/dist/utils";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 
 
-export function* signInWorkerSaga(action: any):any {
-    try{
+export function* signInWorkerSaga(action: any): any {
+    try {
         const res = yield call(authApi.signIn, action.email, action.password);
-        console.log('signIn ->',res.data)
         localStorage.setItem('accessToken', res.data.accessToken)
         yield put(signIn({
             accessToken: res.data.accessToken,
@@ -34,10 +33,9 @@ export const signInAction = (email: string, password: string) => ({
     password
 })
 
-export function* signUpWorkerSaga(action: any):any {
-    try{
+export function* signUpWorkerSaga(action: any): any {
+    try {
         const res = yield call(authApi.signUp, action.email, action.password);
-        console.log('signUp ->',res.data)
         localStorage.setItem('accessToken', res.data.accessToken)
         yield put(signUp({
             accessToken: res.data.accessToken,
@@ -61,19 +59,20 @@ export const signUpAction = (email: string, password: string) => ({
     password
 })
 
-export function* sendEmailWorkerSaga(action: any):any {
-    try{
+export function* sendEmailWorkerSaga(action: any): any {
+    try {
         yield call(authApi.sendEmail, action.email);
         yield put(toggleSuccessful())
         yield call(wait, 5000)
         yield put(toggleSuccessful())
-    }catch(error){
+    } catch (error) {
         yield put(toggleError())
         yield call(wait, 5000)
         yield put(toggleError())
     }
 }
-export const sendEmailAction = (email:string) => ({
+
+export const sendEmailAction = (email: string) => ({
     type: 'SAGA/SEND_EMAIL',
     email
 })

@@ -3,9 +3,9 @@ import styled from "styled-components";
 import logo from "assets/img/apple.png"
 import unfavorite from "assets/img/heart.png"
 import favorite from "assets/img/fullHeart.png"
-import linkedIn from "assets/img/registraionLink.png"
-import twitter from "assets/img/twitter.png"
-import facebook from "assets/img/facebook.png"
+import {LinkedInIcon} from "../../../assets/svg/LinkedInIcon";
+import {FacebookIcon} from "../../../assets/svg/FacebookIcon";
+import {TwitterIcon} from "../../../assets/svg/TwitterIcon";
 
 type Props = {
     like: boolean
@@ -29,9 +29,9 @@ export const Company: FC<Props> = memo(({name, primaryIndustry,like}) => {
                     </NameContainer>
                     <Subtitle>{primaryIndustry[0]}</Subtitle>
                     <SocialContainer>
-                        <SocialItem src={twitter}/>
-                        <SocialItem src={facebook}/>
-                        <SocialItem src={linkedIn}/>
+                        <TwitterIcon/>
+                        <FacebookIcon/>
+                        <LinkedInIcon height={24} width={24}/>
                     </SocialContainer>
                 </InfoContainer>
             </InnerContainer>
@@ -87,7 +87,8 @@ const FavoriteIcon = styled.img`
   cursor: pointer;
 `
 const SocialContainer = styled.div`
-
+  display: flex;
+  align-items: center;
 `
 const SocialItem = styled.img`
   margin-right: 10px;

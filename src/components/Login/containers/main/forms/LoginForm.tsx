@@ -1,15 +1,15 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
-import showPassword from "assets/img/showPassword.png";
-import hiddenPassword from "assets/img/hiddenPassword.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {signInAction} from "redux/login/loginSaga";
 import {Link, useNavigate} from "react-router-dom";
 import {composeValidators, minValue, required} from "helpers/validation";
 import {AllertError} from "components";
 import {RootStateT} from "redux/store";
-import {EMPTY_STRING} from "../../../../../constance";
+import {EMPTY_STRING} from "constance";
+import {ShowPasswordIcon} from "assets/svg/ShowPasswordIcon";
+import {HidePasswordIcon} from "assets/svg/HidePasswordIcon";
 
 
 type Values = {
@@ -24,7 +24,7 @@ export const LoginForm: FC = () => {
     const [isShowPassword, setIsShowPassword] = useState(false);
     const dispatch = useDispatch();
 
-    const togglePasswordShow = () => {
+    const onShowPasswordClick = () => {
         setIsShowPassword(!isShowPassword)
     }
 
@@ -81,8 +81,9 @@ export const LoginForm: FC = () => {
                                         </>
                                     )}
                                 />
-                                <ShowPassword onClick={togglePasswordShow}
-                                              src={!isShowPassword ? showPassword : hiddenPassword}/>
+                                <ShowPassword onClick={onShowPasswordClick}>
+                                    {!isShowPassword ? <HidePasswordIcon/> : <ShowPasswordIcon/>}
+                                </ShowPassword>
                             </FormItem>
                             <CheckboxContainer>
                                 <CheckboxItems>
@@ -176,8 +177,11 @@ const LinkCustom = styled.span`
   font-weight: 600;
   color: #122434;
 `
-const ShowPassword = styled.img`
+const ShowPassword = styled.div`
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 13px;
   right: 16px;
   z-index: 1;

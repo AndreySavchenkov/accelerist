@@ -11,7 +11,6 @@ import {
 export function* getCompaniesWorkerSaga(action: any): any {
     try {
         const res = yield call(companiesApi.getCompanies, action.currentPage)
-        console.log('getCompanies', res.data)
         yield put(getCompanies({companies: res.data.items, meta: res.data.meta}))
     } catch (error) {
         console.log('getCompaniesWorkerSaga error ->', error)
@@ -23,7 +22,6 @@ export const getCompaniesAction = (currentPage: number) => ({type: 'SAGA/GET_COM
 export function* getFavoriteCompaniesWorkerSaga(action: any): any {
     try {
         const res = yield call(companiesApi.getFavoriteCompanies, action.currentPage)
-        console.log('getCompanies', res.data)
         yield put(getFavoriteCompanies({companies: res.data.items, meta: res.data.meta}))
     } catch (error) {
         console.log('getFavoriteCompaniesWorkerSaga error ->', error)
@@ -48,7 +46,6 @@ export function* doDislikeCompanyWorkerSaga(action: any): any {
         yield call(companiesApi.doDislikeCompany, action.companyId)
         yield put(doDislikeCompany({companyId:action.companyId}))
         const res = yield call(companiesApi.getFavoriteCompanies, 1)
-        console.log('getCompanies', res.data)
         yield put(getFavoriteCompanies({companies: res.data.items, meta: res.data.meta}))
     } catch (error) {
         console.log('doLikeCompanies error ->', error)
@@ -61,7 +58,6 @@ export function* getCompanyByIdWorkerSaga(action: any): any {
     try {
         const res = yield call(companiesApi.getCompany, action.companyId)
         yield put(getCompanyById({company: res.data}) )
-        console.log('getCompanyById', res.data)
     } catch (error) {
         console.log('doLikeCompanies error ->', error)
     }
