@@ -11,7 +11,7 @@ import {getCompaniesAction} from "redux/companies/companiesSaga";
 import axios from "axios";
 import {getCompanies, getItemCount, getTotalItems} from "selectors/selectors";
 
-export let instance: any = {};
+export let instance:any = {};
 
 export const SearchFoundPanel: FC = () => {
     const [localPage, setLocalPage] = useState(1);
@@ -25,7 +25,7 @@ export const SearchFoundPanel: FC = () => {
     useEffect(() => {
         instance = axios.create({
             baseURL: `https://accelerist.herokuapp.com/api/v1`,
-            timeout: 60000,
+            timeout: 6000,
             headers: {'Authorization': 'Bearer ' + localStorage.getItem('accessToken')},
         })
         dispatch(getCompaniesAction(localPage))

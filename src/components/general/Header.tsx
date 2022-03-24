@@ -8,7 +8,7 @@ import closeButton from "assets/img/closeButton.png"
 import {useSelector} from "react-redux";
 import {Link} from 'react-router-dom';
 import {getUserEmail} from "selectors/selectors";
-import {EMPTY_STRING} from "../../constance";
+import {EMPTY_STRING} from "constance";
 
 type Props = {
     isShowMenu: boolean,
@@ -25,7 +25,7 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
             <InnerContainer>
                 <LogoAndMenu>
                     <Link to={'/'}><Logo src={bigLogo}/></Link>
-                    <LogoSmall src={smallLogo}/>
+                    <Link to={'/'}><LogoSmall src={smallLogo}/></Link>
                     <Nav>
                         <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
                         {/*<CustomLink to={''}>Audience</CustomLink>*/}
@@ -48,7 +48,7 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
                             <MenuBurgerContainer>
                                 <CloseButton src={closeButton} onClick={toggleShowMenu}/>
                                 <MenuBurgerNav>
-                                    <CustomLink to={'dashboard'}>Dashboard</CustomLink>
+                                    <CustomLink to={'/dashboard'}>Dashboard</CustomLink>
                                     {/*<CustomLink to={''}>Audience</CustomLink>*/}
                                     {/*<CustomLink to={''}>Pricing</CustomLink>*/}
                                     <CustomLink to={'/prospects'}>Prospecting</CustomLink>
