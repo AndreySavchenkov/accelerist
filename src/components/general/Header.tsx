@@ -45,9 +45,9 @@ export const Header: FC<Props> = memo(({isShowMenu,setShowMenu}) => {
                     </ProfileLogoContainer>
                     <ProfileText>{email}</ProfileText>
                 </Profile>
-                <div onClick={toggleShowMenu}>
+                <MenuBurgerIcon onClick={toggleShowMenu}>
                     <MenuIcon/>
-                </div>
+                </MenuBurgerIcon>
                 {
                     isShowMenu ?
                         <BackgroundMenu>
@@ -163,7 +163,7 @@ const ProfileText = styled.span`
   line-height: 150%;
   color: #122434;
 `
-const MenuBurgerIcon = styled.img`
+const MenuBurgerIcon = styled.div`
   margin-right: 28px;
   cursor: pointer;
   @media (min-width: 1040px) {
