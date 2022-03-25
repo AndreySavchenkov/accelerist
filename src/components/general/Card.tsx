@@ -1,10 +1,6 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
-import appleLogo from "assets/img/apple.png"
-import heart from "assets/img/heart.png"
-import fullHeart from "assets/img/fullHeart.png"
 import closeImg from "assets/img/closeBlack.png"
-import bigHeartFull from "assets/img/bigFullHeart.png";
 import {formatNumber} from "helpers/functions";
 import {useNavigate} from "react-router-dom";
 import {
@@ -13,6 +9,8 @@ import {
 } from "redux/companies/companiesSaga";
 import {useDispatch} from "react-redux";
 import {Button} from "components";
+import {AppleLogo, AppleLittleLogo, BigHeartIcon, UnfavoriteIcon, FavoriteIcon} from "assets/svg";
+
 
 
 type Props = {
@@ -48,7 +46,12 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
         <Container>
             <Ranking>
                 <ContainerLogo>
-                    <Logo src={appleLogo}/>
+                    <LogoContainer>
+                        <AppleLogo/>
+                    </LogoContainer>
+                    <LittleLogoContainer>
+                        <AppleLittleLogo/>
+                    </LittleLogoContainer>
                 </ContainerLogo>
                 <ContainerInfo>
                     <Title>Priority Ranking</Title>
@@ -72,9 +75,8 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
                 </InnerContainer>
                 <ButtonsContainer>
                     {
-                        !like ?
-                            <FavoriteButton onClick={onFavoriteButtonClick} src={heart}/> :
-                            <FavoriteButton onClick={onFavoriteButtonFullClick} src={fullHeart}/>
+                        !like ? <UnfavoriteIcon onClick={onFavoriteButtonClick}/>
+                            : <FavoriteIcon onClick={onFavoriteButtonFullClick}/>
                     }
                     <ProfileButton onClick={onProfileButtonClick}>Profile</ProfileButton>
                 </ButtonsContainer>
@@ -82,7 +84,7 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
             {isModal ? <ModalContainer>
                 <Modal>
                     <IconContainer>
-                        <Icon src={bigHeartFull}/>
+                            <BigHeartIcon/>
                     </IconContainer>
                     <TextContainer>
                         <TitleModal>{name} has been added to favorites</TitleModal>
@@ -97,6 +99,17 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
         </Container>
     )
 }
+const LogoContainer = styled.div`
+  @media (max-width: 1204px) {
+    display: none;
+  }
+`
+const LittleLogoContainer = styled.div`
+  display: none;
+  @media (max-width: 1204px) {
+    display: block;
+  }
+`
 const IconClose = styled.img`
   position: absolute;
   top: 18px;
@@ -132,11 +145,11 @@ const TextContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `
-const Icon = styled.img`
-  display: block;
-  margin: 47px auto;
-`
 const IconContainer = styled.div`
+  padding: 47px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   background: #F2F2F2;
   border-radius: 6px 6px 0 0;
@@ -192,12 +205,6 @@ const Ranking = styled.div`
 const ContainerLogo = styled.div`
   padding: 26px 32px;
   border-bottom: 1px solid #E8E8E8;
-`
-const Logo = styled.img`
-  @media (max-width: 1204px) {
-    width: 80px;
-    height: 80px;
-  }
 `
 const ContainerInfo = styled.div`
   display: flex;
@@ -325,25 +332,6 @@ const ButtonsContainer = styled.div`
     left: 10px;
   }
 `
-const FavoriteButton = styled.img`
-  margin-right: 8px;
-  padding: 5px;
-  border-radius: 6px;
-  border: 1px solid #E8E8E8;
-  cursor: pointer;
-
-  &:hover {
-    border: 1px solid #BFBFBF;
-  }
-
-  &:active {
-    border: 1px solid #F05658;
-  }
-
-  @media (max-width: 1204px) {
-    margin-right: 12px;
-  }
-`
 const ProfileButton = styled.div`
   padding: 9px 96px;
   font-size: 12px;
@@ -380,12 +368,4 @@ const BorderLine = styled.div`
   @media (max-width: 1204px) {
     display: none;
   }
-`
-const Circle = styled.div`
-  width: 4px;
-  height: 4px;
-  margin-left: 6px;
-  margin-right: 6px;
-  border-radius: 50%;
-  background: #C4C4C4;
 `

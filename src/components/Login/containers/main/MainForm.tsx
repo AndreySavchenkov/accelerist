@@ -1,8 +1,7 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {LoginForm, RegisterForm} from "components";
-import {LinkedInIcon} from "../../../../assets/svg/LinkedInIcon";
-
+import {LinkedInIcon} from "assets/svg";
 
 type toggleItemProps = {
     isToggle: boolean

@@ -1,8 +1,7 @@
 import React, {FC, memo, useEffect, useState} from "react";
 import styled from "styled-components";
-import wellDone from "assets/img/wellDone.png"
 import {EMPTY_STRING} from "constance";
-import {CloseIcon} from "../../assets/svg/CloseIcon";
+import {CloseIcon, WellDoneIcon} from "assets/svg";
 
 type Props = {
     text: string
@@ -25,7 +24,7 @@ export const AllertSuccessful: FC<Props> = memo(({text}) => {
                 isShow ?
                     <Container>
                         <InnerContainer>
-                            <Icon src={wellDone}/>
+                            <WellDoneIcon/>
                             <TextContainer>
                                 <Title>Well Done!</Title>
                                 <SubTitle>{text}</SubTitle>
@@ -73,11 +72,6 @@ const SubTitle = styled.span`
   font-weight: 400;
   line-height: 150%;
   color: #122434;
-`
-const Icon = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: 16px;
 `
 const CloseButton = styled.div`
   margin-top: 10px;

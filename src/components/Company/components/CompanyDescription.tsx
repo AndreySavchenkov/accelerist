@@ -1,15 +1,9 @@
 import React, {FC, memo} from "react";
 import styled from "styled-components";
 import {formatNumber} from "helpers/functions";
-import globe from "assets/img/globe.png";
-import map from "assets/img/map.png";
-import phoneImg from "assets/img/phone.png";
-import goal1 from "assets/img/goal01.png";
-import goal2 from "assets/img/goal02.png";
-import goal3 from "assets/img/goal03.png";
-import goal4 from "assets/img/goal04.png";
-import goal5 from "assets/img/goal06.png";
 import {Donut, SecondaryDonut, Structure} from "components";
+import {GlobeIcon, PhoneIcon, MapIcon, Goal1, Goal2, Goal5, Goal4, Goal3} from "assets/svg";
+
 
 type Props = {
     city: string
@@ -107,20 +101,20 @@ export const CompanyDescription: FC<Props> = memo(({
             <CompanyContactsContainer>
                 <CompanyContactsInner>
                     <CompanyContactsItem>
-                        <ContactsItemIcon src={globe}/>
+                        <GlobeIcon/>
                         <ContactsItemText>
                             {website}
                         </ContactsItemText>
                     </CompanyContactsItem>
                     <CompanyContactsItem style={{marginLeft: '25px'}}>
-                        <ContactsItemIcon src={phoneImg}/>
+                        <PhoneIcon/>
                         <ContactsItemText>
                             {phone}
                         </ContactsItemText>
                     </CompanyContactsItem>
                 </CompanyContactsInner>
                 <CompanyContactsItem style={{marginTop: '16px'}}>
-                    <ContactsItemIcon src={map}/>
+                    <MapIcon/>
                     <ContactsItemText>
                         {country} {state} {city} {street}
                     </ContactsItemText>
@@ -162,11 +156,11 @@ export const CompanyDescription: FC<Props> = memo(({
             </InvestmentAndFocusContainer>
             <Description>SDG Goal Alignment</Description>
             <GoalContainer>
-                <GoalItem src={goal1}/>
-                <GoalItem src={goal2}/>
-                <GoalItem src={goal3}/>
-                <GoalItem src={goal4}/>
-                <GoalItem src={goal5}/>
+                <Goal1/>
+                <Goal2/>
+                <Goal3/>
+                <Goal4/>
+                <Goal5/>
             </GoalContainer>
             <Description>Contributions</Description>
             <ContributionsContainer>
@@ -266,9 +260,6 @@ const ContributionsContainer = styled.div`
   border: 1px solid #E8E8E8;
   border-radius: 6px;
 `
-const GoalItem = styled.img`
-
-`
 const GoalContainer = styled.div`
   margin-top: 16px;
   display: flex;
@@ -305,12 +296,8 @@ const InvestmentAndFocusContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `
-const ContactsItemIcon = styled.img`
-  margin-right: 12px;
-  width: 20px;
-  height: 20px;
-`
 const ContactsItemText = styled.span`
+  margin-left: 10px;
   font-size: 12px;
   line-height: 150%;
   color: #122434;

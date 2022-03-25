@@ -5,8 +5,7 @@ import {LinkToSupport, Button} from "components";
 import {composeValidators, minValue, required} from "helpers/validation";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import {ShowPasswordIcon} from "assets/svg/ShowPasswordIcon";
-import {HidePasswordIcon} from "assets/svg/HidePasswordIcon";
+import {ShowPasswordIcon, HidePasswordIcon} from "assets/svg";
 
 type Values = {
     password: string,

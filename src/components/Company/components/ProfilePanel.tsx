@@ -1,7 +1,7 @@
 import React, {FC} from "react";
-import arrayLeft from "assets/img/arrayLeft.png"
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+import {ArrowLeftIcon} from "@material-ui/pickers/_shared/icons/ArrowLeftIcon";
 
 export const ProfilePanel: FC = () => {
     const navigate = useNavigate()
@@ -12,7 +12,9 @@ export const ProfilePanel: FC = () => {
         <div>
             <Container>
                 <InnerContainer>
-                    <ArrayLeft onClick={goBack} src={arrayLeft}/>
+                    <ArrowLeft onClick={goBack}>
+                        <ArrowLeftIcon/>
+                    </ArrowLeft>
                     <Title>Corparate Profile</Title>
                 </InnerContainer>
             </Container>
@@ -20,7 +22,7 @@ export const ProfilePanel: FC = () => {
     )
 }
 
-const ArrayLeft = styled.img`
+const ArrowLeft = styled.div`
   margin-left: 60px;
   cursor: pointer;
   @media (max-width: 450px) {

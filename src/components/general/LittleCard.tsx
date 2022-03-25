@@ -1,18 +1,18 @@
 import React, {FC, memo} from "react";
 import styled from "styled-components";
-import logo from "assets/img/apple.png"
+import {AppleLittleLogo} from "assets/svg";
 
 type Props = {
     name: string,
     ranking: number,
 }
 
-export const LittleCard:FC<Props> = memo(({name,ranking}) => {
+export const LittleCard: FC<Props> = memo(({name, ranking}) => {
 
     return (
         <Container>
             <HeaderContainer>
-                <Logo src={logo}/>
+                <AppleLittleLogo/>
                 <DataContainer>
                     <Name>{name}</Name>
                     <Ranking>Priority Ranking {ranking}</Ranking>
@@ -72,10 +72,6 @@ const DataContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
-const Logo = styled.img`
-  width: 48px;
-  height: 48px;
 `
 const HeaderContainer = styled.div`
   display: flex;

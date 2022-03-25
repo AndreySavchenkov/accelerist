@@ -2,9 +2,6 @@ import React, {FC} from "react";
 import styled from "styled-components";
 import {HeaderLogo} from "assets/svg/HeaderLogo";
 
-
-
-
 export const LoginHeader: FC = () => {
 
     return (

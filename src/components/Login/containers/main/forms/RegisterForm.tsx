@@ -8,8 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {AllertError, Button} from "components";
 import {RootStateT} from "redux/store";
 import {EMPTY_STRING} from "constance";
-import {ShowPasswordIcon} from "assets/svg/ShowPasswordIcon";
-import {HidePasswordIcon} from "assets/svg/HidePasswordIcon";
+import {ShowPasswordIcon, HidePasswordIcon} from "assets/svg";
 
 type Values = {
     email: string,

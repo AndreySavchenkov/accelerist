@@ -2,9 +2,8 @@ import React, {FC, memo} from "react";
 import styled from "styled-components";
 import {Field, Form} from "react-final-form";
 import {Link} from "react-router-dom";
-import {EMPTY_STRING} from "../../../constance";
-import {ZoomIcon} from "../../general/ZoomIcon";
-import {FilterIcon} from "../../../assets/svg/FilterIcon";
+import {EMPTY_STRING} from "constance";
+import {ZoomIcon, FilterIcon} from "assets/svg";
 
 type Props = {
     isShowMenu: boolean;

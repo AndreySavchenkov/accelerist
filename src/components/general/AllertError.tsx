@@ -1,9 +1,7 @@
 import React, {FC, memo, useEffect, useState} from "react";
 import styled from "styled-components";
-import error from "assets/img/error.png"
-import close from "assets/img/closeButton.png"
 import {EMPTY_STRING} from "constance";
-import {CloseIcon} from "../../assets/svg/CloseIcon";
+import {CloseIcon, ErrorIcon} from "assets/svg";
 
 type Props = {
     text: string
@@ -26,7 +24,8 @@ export const AllertError: FC<Props> = memo(({text}) => {
                 isShow ?
                     <Container>
                         <InnerContainer>
-                            <Icon src={error}/>
+                            <ErrorIcon/>
+                            {/*<Icon src={error}/>*/}
                             <TextContainer>
                                 <Title>Error!</Title>
                                 <SubTitle>{text}</SubTitle>
@@ -74,11 +73,6 @@ const SubTitle = styled.span`
   font-weight: 400;
   line-height: 150%;
   color: #122434;
-`
-const Icon = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: 16px;
 `
 const CloseButton = styled.div`
   margin-top: 16px;

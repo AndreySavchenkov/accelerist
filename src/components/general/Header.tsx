@@ -4,11 +4,8 @@ import {useSelector} from "react-redux";
 import {Link} from 'react-router-dom';
 import {getUserEmail} from "selectors/selectors";
 import {EMPTY_STRING} from "constance";
-import {MainHeaderLogo} from "../../assets/svg/MainHeaderLogo";
-import {MainLittleHeaderLogo} from "../../assets/svg/MainLittleHeaderLogo";
-import {UserIcon} from "../../assets/svg/UserIcon";
-import {MenuIcon} from "../../assets/svg/MenuIcon";
-import {CloseIcon} from "../../assets/svg/CloseIcon";
+import {MainHeaderLogo, MainLittleHeaderLogo, UserIcon, MenuIcon, CloseIcon} from "assets/svg";
+
 
 type Props = {
     isShowMenu: boolean,
@@ -116,7 +113,6 @@ const Nav = styled.nav`
   @media (max-width: 1040px) {
     display: none;
   }
-
 `
 const CustomLink = styled(Link)`
   margin-right: 28px;
@@ -153,9 +149,6 @@ const ProfileLogoContainer = styled.div`
   width: 36px;
   height: 36px;
   border-radius: 6px;
-`
-const ProfileLogo = styled.img`
-
 `
 const ProfileText = styled.span`
   font-size: 12px;

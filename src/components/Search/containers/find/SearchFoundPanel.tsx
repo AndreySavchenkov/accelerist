@@ -1,15 +1,11 @@
 import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
-import leftArray from "assets/img/arrayLeft.png"
-import rightArray from "assets/img/arrayRight.png"
 import {Card} from "components";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import axios from "axios";
 import {getCompanies, getItemCount, getTotalItems} from "selectors/selectors";
-import {FolderPlusIcon} from "../../../../assets/svg/FolderPlusIcon";
-import {UploadFileIcon} from "../../../../assets/svg/UploadFileIcon";
-import {MailIcon} from "../../../../assets/svg/MailIcon";
+import {FolderPlusIcon, UploadFileIcon, MailIcon, LeftArrowIcon, RightArrowIcon} from "assets/svg";
 
 export let instance: any = {};
 
@@ -31,12 +27,12 @@ export const SearchFoundPanel: FC = () => {
         dispatch(getCompaniesAction(localPage))
     }, [dispatch, localPage])
 
-    const onRightArrayClick = () => {
+    const onRightArrowClick = () => {
         setLocalPage(localPage + 1)
         dispatch(getCompaniesAction(localPage + 1))
     }
 
-    const onLeftArrayClick = () => {
+    const onLeftArrowClick = () => {
         setLocalPage(localPage - 1)
         if (localPage <= 1) {
             setLocalPage(1)
@@ -78,18 +74,26 @@ export const SearchFoundPanel: FC = () => {
                     </Item>
                 </Items>
                 <Navigation>
-                    <LeftArray src={leftArray} onClick={onLeftArrayClick}/>
+                    <LeftArrow onClick={onLeftArrowClick}>
+                        <LeftArrowIcon/>
+                    </LeftArrow>
                     <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                    <RightArray src={rightArray} onClick={onRightArrayClick}/>
+                    <RightArrow onClick={onRightArrowClick}>
+                        <RightArrowIcon/>
+                    </RightArrow>
                 </Navigation>
             </SettingsPanel>
             <Cards>
                 {cardsList}
             </Cards>
             <MobileNavigation>
-                <LeftArray src={leftArray} onClick={onLeftArrayClick}/>
+                <LeftArrow onClick={onLeftArrowClick}>
+                    <LeftArrowIcon/>
+                </LeftArrow>
                 <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                <RightArray src={rightArray} onClick={onRightArrayClick}/>
+                <RightArrow onClick={onRightArrowClick}>
+                    <RightArrowIcon/>
+                </RightArrow>
             </MobileNavigation>
         </>
     )
@@ -139,9 +143,6 @@ const Item = styled.div`
   color: #122434;
   cursor: pointer;
 `
-const ItemIcon = styled.img`
-  margin-right: 10px;
-`
 const Navigation = styled.div`
   display: flex;
   margin-right: 60px;
@@ -161,10 +162,12 @@ const TextNavigation = styled.span`
   line-height: 150%;
   color: #122434;
 `
-const LeftArray = styled.img`
+const LeftArrow = styled.div`
+
   cursor: pointer;
 `
-const RightArray = styled.img`
+const RightArrow = styled.div`
+
   cursor: pointer;
 `
 const Cards = styled.div`

@@ -6,6 +6,7 @@ import logo3 from "assets/img/logo03.png";
 import logo4 from "assets/img/logo04.png";
 import logo5 from "assets/img/logo05.png";
 
+
 export const Structure:FC = () => {
     const [activeTitle, setActiveTitle] = useState('Similar')
 

@@ -1,11 +1,7 @@
 import React, {FC, memo} from "react";
 import styled from "styled-components";
-import logo from "assets/img/apple.png"
-import unfavorite from "assets/img/heart.png"
-import favorite from "assets/img/fullHeart.png"
-import {LinkedInIcon} from "../../../assets/svg/LinkedInIcon";
-import {FacebookIcon} from "../../../assets/svg/FacebookIcon";
-import {TwitterIcon} from "../../../assets/svg/TwitterIcon";
+import {LinkedInIcon, FacebookIcon, TwitterIcon, AppleLogo, FavoriteIcon, UnfavoriteIcon} from "assets/svg";
+
 
 type Props = {
     like: boolean
@@ -13,19 +9,16 @@ type Props = {
     primaryIndustry: string[]
 }
 
-export const Company: FC<Props> = memo(({name, primaryIndustry,like}) => {
+export const Company: FC<Props> = memo(({name, primaryIndustry, like}) => {
 
     return (
         <Container>
             <InnerContainer>
-                <Logo src={logo}/>
+                <AppleLogo/>
                 <InfoContainer>
                     <NameContainer>
                         <Name>{name}</Name>
-                        {like ?
-                            <FavoriteIcon  src={favorite}/> :
-                            <FavoriteIcon  src={unfavorite}/>
-                        }
+                        {like ? <FavoriteIcon/> : <UnfavoriteIcon/>}
                     </NameContainer>
                     <Subtitle>{primaryIndustry[0]}</Subtitle>
                     <SocialContainer>
@@ -52,12 +45,6 @@ const InnerContainer = styled.div`
   display: flex;
   align-items: center;
 `
-const Logo = styled.img`
-  width: 100px;
-  height: 100px;
-  background: #fff;
-  border-radius: 8px;
-`
 const InfoContainer = styled.div`
   margin-left: 24px;
   min-height: 100px;
@@ -66,6 +53,7 @@ const InfoContainer = styled.div`
   flex-direction: column;
 `
 const Name = styled.span`
+  margin-right: 10px;
   font-weight: 600;
   font-size: 24px;
   line-height: 148%;
@@ -80,20 +68,9 @@ const NameContainer = styled.div`
   display: flex;
   align-items: center;
 `
-const FavoriteIcon = styled.img`
-  margin-left: 10px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-`
 const SocialContainer = styled.div`
   display: flex;
   align-items: center;
-`
-const SocialItem = styled.img`
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
 `
 const Button = styled.button`
   padding: 10px 37px;
@@ -105,10 +82,12 @@ const Button = styled.button`
   background: #fff;
   border-radius: 6px;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     border: 1px solid #BFBFBF;
   }
-  &:active{
+
+  &:active {
     border: 1px solid #F05658;
   }
 `

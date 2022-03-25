@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import styled from "styled-components";
-import heart from "assets/img/bigHeart.png";
 import {Link, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {LittleCard} from "components";
 import {getFavoriteCompanies} from "selectors/selectors";
+import {BigEmptyHeartIcon} from "assets/svg";
 
 export const Favorites: FC = () => {
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ export const Favorites: FC = () => {
                 </CardsContainer>
                 :
                 <Container>
-                    <Icon src={heart}/>
+                    <BigEmptyHeartIcon/>
                     <Label>No favorite company</Label>
                     <Info>Go to the search page and add to favorites</Info>
                     <Button onClick={() => navigate('/')}>Search</Button>
@@ -57,7 +57,6 @@ const CardsContainer = styled.div`
 `
 const Button = styled.div`
   margin-top: 32px;
-  //margin-bottom: 120px;
   padding: 10px 100px;
   font-size: 12px;
   text-align: center;
@@ -84,11 +83,6 @@ const Label = styled.span`
   font-weight: 600;
   font-size: 16px;
   color: #122434;
-`
-const Icon = styled.img`
-  //margin-top: 80px;
-  width: 128px;
-  height: 128px;
 `
 const Title = styled(Link)`
   margin-top: 40px;

@@ -1,8 +1,7 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
-import leftArray from "assets/img/arrayLeft.png";
-import rightArray from "assets/img/arrayRight.png";
 import {Race, HighPanel, Header} from "components";
+import {LeftArrowIcon, RightArrowIcon} from "assets/svg";
 
 export const ProspectsPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -35,9 +34,13 @@ export const ProspectsPage: FC = () => {
                                     <MethodActive>Last Activity</MethodActive>}
                             </SortMethodContainer>
                             <Navigation>
-                                <LeftArray src={leftArray}/>
+                                <LeftArrow>
+                                    <LeftArrowIcon/>
+                                </LeftArrow>
                                 <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                                <RightArray src={rightArray}/>
+                                <RightArrow>
+                                    <RightArrowIcon/>
+                                </RightArrow>
                             </Navigation>
                         </Sorting>
                         <RaceContainer>
@@ -69,10 +72,10 @@ const TextNavigation = styled.span`
   line-height: 150%;
   color: #122434;
 `
-const LeftArray = styled.img`
+const LeftArrow = styled.div`
   cursor: pointer;
 `
-const RightArray = styled.img`
+const RightArrow = styled.div`
   cursor: pointer;
 `
 const Navigation = styled.div`

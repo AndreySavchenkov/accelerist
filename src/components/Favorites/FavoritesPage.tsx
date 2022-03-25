@@ -2,8 +2,6 @@ import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import {getFavoriteCompaniesAction} from "redux/companies/companiesSaga";
-import leftArray from "assets/img/arrayLeft.png";
-import rightArray from "assets/img/arrayRight.png";
 import {Card, HighPanel,Header } from "components";
 import {
     getFavoriteCompanies,
@@ -11,6 +9,8 @@ import {
     getFavoriteTotalItems,
     getFavoriteTotalPages
 } from "selectors/selectors";
+import {LeftArrowIcon, RightArrowIcon} from "assets/svg";
+
 
 export const FavoritesPage:FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -23,14 +23,14 @@ export const FavoritesPage:FC = () => {
 
     const dispatch = useDispatch();
 
-    const onRightArrayClick = () => {
+    const onRightArrowClick = () => {
         if(localPage < totalPage){
             setLocalPage(localPage + 1)
             dispatch(getFavoriteCompaniesAction(localPage + 1))
         }
     }
 
-    const onLeftArrayClick = () => {
+    const onLeftArrowClick = () => {
         setLocalPage(localPage - 1)
         if (localPage <= 1) {
             setLocalPage(1)
@@ -69,9 +69,13 @@ export const FavoritesPage:FC = () => {
                         <SettingsContainer>
                             <Text>{totalItems} companies</Text>
                             <Navigation>
-                                <LeftArray src={leftArray} onClick={onLeftArrayClick}/>
+                                <LeftArrow onClick={onLeftArrowClick}>
+                                    <LeftArrowIcon/>
+                                </LeftArrow>
                                 <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                                <RightArray src={rightArray} onClick={onRightArrayClick}/>
+                                <RightArrow onClick={onRightArrowClick}>
+                                    <RightArrowIcon/>
+                                </RightArrow>
                             </Navigation>
                         </SettingsContainer>
                         <Cards>
@@ -101,10 +105,10 @@ const TextNavigation = styled.span`
   line-height: 150%;
   color: #122434;
 `
-const RightArray = styled.img`
+const RightArrow = styled.div`
   cursor: pointer;
 `
-const LeftArray = styled.img`
+const LeftArrow = styled.div`
   cursor: pointer;
 `
 const Navigation = styled.nav`
