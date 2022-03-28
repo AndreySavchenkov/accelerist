@@ -9,6 +9,7 @@ import {EMPTY_STRING} from "constance";
 
 export const SearchPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
+
     const successful = useSelector(getSuccessful);
 
     return (

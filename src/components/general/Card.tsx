@@ -10,22 +10,16 @@ import {
 import {useDispatch} from "react-redux";
 import {Button} from "components";
 import {AppleLogo, AppleLittleLogo, BigHeartIcon, UnfavoriteIcon, FavoriteIcon} from "assets/svg";
-
-
+import {CompanyT} from "../../redux/companies/companiesSlice";
 
 type Props = {
-    id: string
-    name: string
-    city: string
-    phone: string
-    score: number
-    like: boolean
-    country: string
-    revenue: string
-    primaryIndustry: string
+    company: CompanyT
 }
 
-export const Card: FC<Props> = ({name, revenue, phone, score, country, city, primaryIndustry, id, like}) => {
+export const Card: FC<Props> = ({company}) => {
+
+    const {name, revenue, phone, score, country, city, primaryIndustry, id, like} = company;
+
     const [isModal, setIsModal] = useState(false);
 
     const dispatch = useDispatch();
@@ -84,7 +78,7 @@ export const Card: FC<Props> = ({name, revenue, phone, score, country, city, pri
             {isModal ? <ModalContainer>
                 <Modal>
                     <IconContainer>
-                            <BigHeartIcon/>
+                        <BigHeartIcon/>
                     </IconContainer>
                     <TextContainer>
                         <TitleModal>{name} has been added to favorites</TitleModal>

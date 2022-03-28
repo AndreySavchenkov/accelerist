@@ -44,17 +44,7 @@ export const SearchFoundPanel: FC = () => {
     const firstElement = ((itemCount * localPage) - itemCount) + 1
     const endElement = (itemCount * localPage)
 
-    const cardsList = cards?.map(card => <Card id={card.id}
-                                               key={card.id}
-                                               like={card.like}
-                                               name={card.name}
-                                               city={card.city}
-                                               phone={card.phone}
-                                               score={card.score}
-                                               country={card.country}
-                                               revenue={card.revenue}
-                                               primaryIndustry={card.primaryIndustry[0]}/>)
-
+    const cardsList = cards?.map(card => <Card key={card.id} company={card}/>)
 
     return (
         <>
@@ -152,11 +142,9 @@ const TextNavigation = styled.span`
   color: #122434;
 `
 const LeftArrow = styled.div`
-
   cursor: pointer;
 `
 const RightArrow = styled.div`
-
   cursor: pointer;
 `
 const Cards = styled.div`

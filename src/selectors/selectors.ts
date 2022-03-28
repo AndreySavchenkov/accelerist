@@ -1,5 +1,5 @@
-import {RootStateT} from "../redux/store";
-import {CompaniesT, CompanyT} from "../redux/companies/companiesSlice";
+import {RootStateT} from "redux/store";
+import {CompaniesT, CompanyT} from "redux/companies/companiesSlice";
 
 export const getCompany = (state:RootStateT):CompanyT => state.companies?.companyById;
 export const getCompanies = (state:RootStateT):CompaniesT => state.companies.companies;

@@ -3,31 +3,25 @@ import styled from "styled-components";
 import {formatNumber} from "helpers/functions";
 import {Donut, SecondaryDonut, Structure} from "components";
 import {GlobeIcon, PhoneIcon, MapIcon, Goal1, Goal2, Goal5, Goal4, Goal3} from "assets/svg";
-
+import {CompanyT} from "redux/companies/companiesSlice";
 
 type Props = {
-    city: string
-    phone: string
-    state: string
-    street: string
-    country: string
-    website: string
-    revenue: string
-    employeeCount: number
-    descriptionList: string
+    company: CompanyT
 }
 
-export const CompanyDescription: FC<Props> = memo(({
-                                                       city,
-                                                       state,
-                                                       phone,
-                                                       street,
-                                                       revenue,
-                                                       website,
-                                                       country,
-                                                       employeeCount,
-                                                       descriptionList,
-                                                   }) => {
+export const CompanyDescription: FC<Props> = memo(({company}) => {
+
+    const {
+        city,
+        state,
+        phone,
+        street,
+        revenue,
+        website,
+        country,
+        employeeCount,
+        descriptionList,
+    } = company
 
     const revenueFormat = formatNumber(revenue);
     const employeeFormat = formatNumber(employeeCount);

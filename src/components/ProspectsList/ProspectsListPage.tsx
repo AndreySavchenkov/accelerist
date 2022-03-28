@@ -17,16 +17,7 @@ export const ProspectsListPage: FC = () => {
         dispatch(getCompaniesAction(1))
     }, [dispatch])
 
-    const cardsList = cards?.map(card => <Card id={card.id}
-                                               key={card.id}
-                                               like={card.like}
-                                               name={card.name}
-                                               city={card.city}
-                                               phone={card.phone}
-                                               score={card.score}
-                                               country={card.country}
-                                               revenue={card.revenue}
-                                               primaryIndustry={card.primaryIndustry[0]}/>)
+    const cardsList = cards?.map(card => <Card key={card.id} company={card}/>)
 
     const firstElement = 1;
     const endElement = 6;

@@ -30,15 +30,7 @@ export const CompanyPage: FC = memo(() => {
                             <Company name={company.name} primaryIndustry={company.primaryIndustry} like={company.like}/>
                             <Box>
                                 <CompanyContainer>
-                                    <CompanyDescription city={company.city}
-                                                        phone={company.phone}
-                                                        state={company.state}
-                                                        street={company.street}
-                                                        website={company.website}
-                                                        revenue={company.revenue}
-                                                        country={company.country}
-                                                        employeeCount={company.employeeCount}
-                                                        descriptionList={company.descriptionList}/>
+                                    <CompanyDescription company={company}/>
                                 </CompanyContainer>
                                 <AsideMenu/>
                             </Box>
