@@ -2,17 +2,16 @@ import React, {FC, useState} from "react";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import {getFavoriteCompaniesAction} from "redux/companies/companiesSaga";
-import {Card, HighPanel,Header } from "components";
+import {Card, HighPanel, Header, Pagination} from "components";
 import {
     getFavoriteCompanies,
     getFavoriteItemCount,
     getFavoriteTotalItems,
     getFavoriteTotalPages
 } from "selectors/selectors";
-import {LeftArrowIcon, RightArrowIcon} from "assets/svg";
 
 
-export const FavoritesPage:FC = () => {
+export const FavoritesPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
     const [localPage, setLocalPage] = useState(1);
 
@@ -24,7 +23,7 @@ export const FavoritesPage:FC = () => {
     const dispatch = useDispatch();
 
     const onRightArrowClick = () => {
-        if(localPage < totalPage){
+        if (localPage < totalPage) {
             setLocalPage(localPage + 1)
             dispatch(getFavoriteCompaniesAction(localPage + 1))
         }
@@ -39,12 +38,12 @@ export const FavoritesPage:FC = () => {
     }
 
     let firstElement = ((itemCount * localPage) - itemCount) + 1
-    if(itemCount < 6){
+    if (itemCount < 6) {
         firstElement = totalItems - itemCount;
     }
 
     let endElement = (itemCount * localPage);
-    if(itemCount < 6){
+    if (itemCount < 6) {
         endElement = totalItems
     }
 
@@ -68,15 +67,13 @@ export const FavoritesPage:FC = () => {
                     <DashboardContainer>
                         <SettingsContainer>
                             <Text>{totalItems} companies</Text>
-                            <Navigation>
-                                <LeftArrow onClick={onLeftArrowClick}>
-                                    <LeftArrowIcon/>
-                                </LeftArrow>
-                                <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                                <RightArrow onClick={onRightArrowClick}>
-                                    <RightArrowIcon/>
-                                </RightArrow>
-                            </Navigation>
+                            <div style={{marginTop: '27px'}}>
+                                <Pagination endElement={endElement}
+                                            totalItems={totalItems}
+                                            firstElement={firstElement}
+                                            onLeftArrowClick={onLeftArrowClick}
+                                            onRightArrowClick={onRightArrowClick}/>
+                            </div>
                         </SettingsContainer>
                         <Cards>
                             {cardsList}
@@ -94,32 +91,6 @@ const Cards = styled.main`
   @media (max-width: 932px) {
     justify-content: center;
     margin-left: 0;
-  }
-`
-const TextNavigation = styled.span`
-  text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 150%;
-  color: #122434;
-`
-const RightArrow = styled.div`
-  cursor: pointer;
-`
-const LeftArrow = styled.div`
-  cursor: pointer;
-`
-const Navigation = styled.nav`
-  margin-top: 32px;
-  display: flex;
-  margin-right: 60px;
-  @media (max-width: 730px) {
-    margin-right: 16px;
-  }
-  @media (max-width: 650px) {
-    display: none;
   }
 `
 const SettingsContainer = styled.div`

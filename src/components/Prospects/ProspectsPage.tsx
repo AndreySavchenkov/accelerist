@@ -1,7 +1,6 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
-import {Race, HighPanel, Header} from "components";
-import {LeftArrowIcon, RightArrowIcon} from "assets/svg";
+import {Race, HighPanel, Header, Pagination} from "components";
 
 export const ProspectsPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -33,15 +32,7 @@ export const ProspectsPage: FC = () => {
                                     <Method onClick={() => onMethodClick('activity')}>Last Activity</Method> :
                                     <MethodActive>Last Activity</MethodActive>}
                             </SortMethodContainer>
-                            <Navigation>
-                                <LeftArrow>
-                                    <LeftArrowIcon/>
-                                </LeftArrow>
-                                <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                                <RightArrow>
-                                    <RightArrowIcon/>
-                                </RightArrow>
-                            </Navigation>
+                            <Pagination endElement={endElement} totalItems={totalItems} firstElement={firstElement}/>
                         </Sorting>
                         <RaceContainer>
                             <Race/>
@@ -62,30 +53,6 @@ const RaceContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-`
-const TextNavigation = styled.span`
-  text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 150%;
-  color: #122434;
-`
-const LeftArrow = styled.div`
-  cursor: pointer;
-`
-const RightArrow = styled.div`
-  cursor: pointer;
-`
-const Navigation = styled.div`
-  display: flex;
-  @media (max-width: 730px) {
-    margin-right: 16px;
-  }
-  @media (max-width: 650px) {
-    display: none;
-  }
 `
 const Method = styled.span`
   margin-right: 22px;

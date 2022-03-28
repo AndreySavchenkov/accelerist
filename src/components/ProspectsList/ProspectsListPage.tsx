@@ -2,9 +2,9 @@ import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import {useDispatch, useSelector} from "react-redux";
-import {Card, HighPanel, Header} from "components";
+import {Card, HighPanel, Header, Pagination} from "components";
 import {getCompanies} from "selectors/selectors";
-import {UploadFileIcon, LeftArrowIcon, RightArrowIcon} from "assets/svg";
+import {UploadFileIcon} from "assets/svg";
 
 export const ProspectsListPage: FC = () => {
     const [isShowMenu, setShowMenu] = useState(false);
@@ -56,15 +56,9 @@ export const ProspectsListPage: FC = () => {
                                 <UploadFileIcon/>
                                 Export to Exel
                             </ExelContainer>
-                            <Navigation>
-                                <LeftArrow>
-                                    <LeftArrowIcon/>
-                                </LeftArrow>
-                                <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                                <RightArrow>
-                                    <RightArrowIcon/>
-                                </RightArrow>
-                            </Navigation>
+                            <div style={{paddingTop: '22px'}}>
+                                <Pagination endElement={endElement} totalItems={totalItems} firstElement={firstElement}/>
+                            </div>
                         </SettingsContainer>
                         <Cards>
                             {cardsList}
@@ -91,33 +85,6 @@ const ExelContainer = styled.div`
   font-size: 12px;
   line-height: 150%;
   color: #122434;
-`
-const TextNavigation = styled.span`
-  text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 150%;
-  color: #122434;
-`
-const RightArrow = styled.div`
-  cursor: pointer;
-`
-const LeftArrow = styled.div`
-  cursor: pointer;
-`
-const Navigation = styled.nav`
-  margin-top: 32px;
-  display: flex;
-  align-items: center;
-  margin-right: 60px;
-  @media (max-width: 730px) {
-    margin-right: 16px;
-  }
-  @media (max-width: 650px) {
-    display: none;
-  }
 `
 const SettingsContainer = styled.div`
   display: flex;

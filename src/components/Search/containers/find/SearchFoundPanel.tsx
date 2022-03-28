@@ -1,11 +1,12 @@
 import React, {FC, useEffect, useState} from "react";
 import styled from "styled-components";
-import {Card} from "components";
+import {Card, Pagination} from "components";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompaniesAction} from "redux/companies/companiesSaga";
 import axios from "axios";
 import {getCompanies, getItemCount, getTotalItems} from "selectors/selectors";
 import {FolderPlusIcon, UploadFileIcon, MailIcon, LeftArrowIcon, RightArrowIcon} from "assets/svg";
+
 
 export let instance: any = {};
 
@@ -73,15 +74,12 @@ export const SearchFoundPanel: FC = () => {
                         Accelerist <TextHiden>Support</TextHiden>
                     </Item>
                 </Items>
-                <Navigation>
-                    <LeftArrow onClick={onLeftArrowClick}>
-                        <LeftArrowIcon/>
-                    </LeftArrow>
-                    <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                    <RightArrow onClick={onRightArrowClick}>
-                        <RightArrowIcon/>
-                    </RightArrow>
-                </Navigation>
+                <Pagination endElement={endElement}
+                            totalItems={totalItems}
+                            firstElement={firstElement}
+                            onLeftArrowClick={onLeftArrowClick}
+                            onRightArrowClick={onRightArrowClick}/>
+
             </SettingsPanel>
             <Cards>
                 {cardsList}
@@ -143,17 +141,8 @@ const Item = styled.div`
   color: #122434;
   cursor: pointer;
 `
-const Navigation = styled.div`
-  display: flex;
-  margin-right: 60px;
-  @media (max-width: 730px) {
-    margin-right: 16px;
-  }
-  @media (max-width: 650px) {
-    display: none;
-  }
-`
 const TextNavigation = styled.span`
+  padding-top: 3px;
   text-align: center;
   margin-left: 10px;
   margin-right: 10px;

@@ -24,7 +24,8 @@ export {
     LinkToLogin,
     LinkToSupport,
     LittleCard,
-    HighPanel
+    HighPanel,
+    Pagination
 } from './general'
 
 export {
