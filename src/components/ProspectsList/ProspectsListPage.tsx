@@ -7,7 +7,7 @@ import { UploadFileIcon } from 'assets/svg';
 import { Card, HighPanel, Header, Pagination } from 'components';
 import { ONE } from 'constance';
 import { getCompaniesAction } from 'redux/companies/companiesSaga';
-import { getCompanies } from 'selectors/selectors';
+import { getCompanies } from 'redux/selectors/selectors';
 
 export const ProspectsListPage: FC = () => {
   const [isShowMenu, setShowMenu] = useState(false);

@@ -14,7 +14,7 @@ import {
 import { Card, Pagination } from 'components';
 import { ONE } from 'constance';
 import { getCompaniesAction } from 'redux/companies/companiesSaga';
-import { getCompanies, getItemCount, getTotalItems } from 'selectors/selectors';
+import { getCompanies, getItemCount, getTotalItems } from 'redux/selectors/selectors';
 
 export let instance: any = {};
 

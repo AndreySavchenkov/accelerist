@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { AllertSuccessful, SearchPanel, Header } from 'components';
 import { EMPTY_STRING } from 'constance';
-import { getSuccessful } from 'selectors/selectors';
+import { getSuccessful } from 'redux/selectors/selectors';
 
 export const SearchPage: FC = () => {
   const [isShowMenu, setShowMenu] = useState(false);

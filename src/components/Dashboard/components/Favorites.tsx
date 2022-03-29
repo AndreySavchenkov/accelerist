@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { BigEmptyHeartIcon } from 'assets/svg';
 import { LittleCard } from 'components';
-import { getFavoriteCompanies } from 'selectors/selectors';
+import { getFavoriteCompanies } from 'redux/selectors/selectors';
 
 export const Favorites: FC = () => {
   const navigate = useNavigate();

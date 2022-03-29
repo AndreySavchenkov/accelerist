@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import axios from 'axios';
 import { Field, Form } from 'react-final-form';
@@ -8,14 +8,14 @@ import styled from 'styled-components';
 import { ShowPasswordIcon, HidePasswordIcon } from 'assets/svg';
 import { LinkToSupport, Button } from 'components';
 import { composeValidators, minValue, required } from 'helpers/validation';
+import { useShowPassword } from 'hooks/useShowPassword';
 
 type Values = {
   password: string;
 };
 
 export const PasswordNew: FC = () => {
-  const [isShowPassword, setIsShowPassword] = useState(false);
-
+  const { onShowPasswordClick, isShowPassword } = useShowPassword();
   const navigate = useNavigate();
 
   const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -42,10 +42,6 @@ export const PasswordNew: FC = () => {
     await resetPassword(values.password);
     localStorage.setItem('passwordReset', values.password);
     navigate('/', { replace: true });
-  };
-
-  const onShowPasswordClick = (): void => {
-    setIsShowPassword(!isShowPassword);
   };
 
   return (

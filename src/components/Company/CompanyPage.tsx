@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { Header, ProfilePanel, Company, CompanyDescription, AsideMenu } from 'components';
 import { getCompanyByIdAction } from 'redux/companies/companiesSaga';
-import { getCompany } from 'selectors/selectors';
+import { getCompany } from 'redux/selectors/selectors';
 
 const Box = styled.div`
   display: flex;

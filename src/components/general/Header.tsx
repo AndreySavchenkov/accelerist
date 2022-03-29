@@ -12,7 +12,7 @@ import {
   CloseIcon,
 } from 'assets/svg';
 import { EMPTY_STRING } from 'constance';
-import { getUserEmail } from 'selectors/selectors';
+import { getUserEmail } from 'redux/selectors/selectors';
 
 type Props = {
   isShowMenu: boolean;

@@ -18,7 +18,7 @@ import {
   doDislikeCompanyAction,
   doLikeCompanyAction,
 } from 'redux/companies/companiesSaga';
-import { CompanyT } from 'redux/companies/companiesSlice';
+import { CompanyT } from 'redux/companies/type';
 
 type Props = {
   company: CompanyT;

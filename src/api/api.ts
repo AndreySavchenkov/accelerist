@@ -1,20 +1,26 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { GetCompaniesT, GetCompanyT, SignInT, SignUpT } from 'api/types';
 import { instance } from 'components/Search/containers/find/SearchFoundPanel';
 
 export const authApi = {
   signIn(email: string, password: string) {
-    return axios.post<SignInT>('https://accelerist.herokuapp.com/api/v1/auth/sign_in', {
-      email,
-      password,
-    });
+    return axios.post<{ email: string; password: string }, AxiosResponse<SignInT>>(
+      'https://accelerist.herokuapp.com/api/v1/auth/sign_in',
+      {
+        email,
+        password,
+      },
+    );
   },
   signUp(email: string, password: string) {
-    return axios.post<SignUpT>('https://accelerist.herokuapp.com/api/v1/auth/sign_up', {
-      email,
-      password,
-    });
+    return axios.post<{ email: string; password: string }, AxiosResponse<SignUpT>>(
+      'https://accelerist.herokuapp.com/api/v1/auth/sign_up',
+      {
+        email,
+        password,
+      },
+    );
   },
   sendEmail(email: string) {
     return axios.post(

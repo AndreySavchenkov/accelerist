@@ -11,7 +11,7 @@ import {
   getFavoriteItemCount,
   getFavoriteTotalItems,
   getFavoriteTotalPages,
-} from 'selectors/selectors';
+} from 'redux/selectors/selectors';
 
 export const FavoritesPage: FC = () => {
   const [isShowMenu, setShowMenu] = useState(false);

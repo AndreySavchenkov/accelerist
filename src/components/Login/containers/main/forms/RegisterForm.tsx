@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import { Field, Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +9,9 @@ import { ShowPasswordIcon, HidePasswordIcon } from 'assets/svg';
 import { AllertError, Button } from 'components';
 import { EMPTY_STRING } from 'constance';
 import { composeValidators, minValue, required } from 'helpers/validation';
+import { useShowPassword } from 'hooks/useShowPassword';
 import { signUpAction } from 'redux/login/loginSaga';
-import { RootStateT } from 'redux/store';
+import { getError } from 'redux/selectors/selectors';
 
 type Values = {
   email: string;
@@ -18,17 +19,11 @@ type Values = {
 };
 
 export const RegisterForm: FC = () => {
-  const error = useSelector((state: RootStateT) => state.notifications.error);
+  const error = useSelector(getError);
 
   const dispatch = useDispatch();
-
-  const [isShowPassword, setIsShowPassword] = useState(false);
-
-  const onShowPasswordClick = (): void => {
-    setIsShowPassword(!isShowPassword);
-  };
-
   const navigate = useNavigate();
+  const { onShowPasswordClick, isShowPassword } = useShowPassword();
 
   const onSubmit = (values: Values): void => {
     dispatch(signUpAction(values.email, values.password));

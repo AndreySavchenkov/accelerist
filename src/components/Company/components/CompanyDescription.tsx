@@ -14,7 +14,7 @@ import {
 } from 'assets/svg';
 import { Donut, SecondaryDonut, Structure } from 'components';
 import { formatNumber } from 'helpers/functions';
-import { CompanyT } from 'redux/companies/companiesSlice';
+import { CompanyT } from 'redux/companies/type';
 
 type Props = {
   company: CompanyT;
