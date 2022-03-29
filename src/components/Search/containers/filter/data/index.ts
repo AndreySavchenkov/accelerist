@@ -1,1 +1,1 @@
-export {primaryIndustryData} from './data'
+export { primaryIndustryData } from './data';

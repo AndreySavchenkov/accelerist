@@ -1,13 +1,16 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
+
 import './index.css';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
+import { createGlobalStyle } from 'styled-components';
+
 import App from './App';
+import { persistor, store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
-import {createGlobalStyle} from "styled-components";
-import {Provider} from "react-redux";
-import {persistor, store} from "./redux/store";
-import {BrowserRouter, HashRouter} from "react-router-dom";
-import {PersistGate} from "redux-persist/integration/react";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -21,20 +24,18 @@ const GlobalStyle = createGlobalStyle`
   body,div,p,span,a,header,main,footer,li,ul {
     font-family: 'Rubik', sans-serif;
   }
-`
+`;
 
 ReactDOM.render(
-
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <HashRouter>
-                <App/>
-            </HashRouter>
-            <GlobalStyle/>
-        </PersistGate>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+      <GlobalStyle />
+    </PersistGate>
+  </Provider>,
+  document.getElementById('root'),
 );
-
 
 reportWebVitals();

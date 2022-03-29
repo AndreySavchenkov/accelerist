@@ -1,2 +1,2 @@
-export {MainForm} from './MainForm'
-export {LoginForm, RegisterForm} from './forms'
+export { MainForm } from './MainForm';
+export { LoginForm, RegisterForm } from './forms';

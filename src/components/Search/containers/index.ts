@@ -1,2 +1,2 @@
-export {Filter, primaryIndustryData, AutocompleteField} from './filter'
-export {SearchFoundPanel} from './find'
+export { Filter, primaryIndustryData, AutocompleteField } from './filter';
+export { SearchFoundPanel } from './find';

@@ -1,17 +1,17 @@
-import React, {FC, memo} from "react";
-import styled from "styled-components";
+import React, { FC, memo } from 'react';
+
+import styled from 'styled-components';
 
 type Props = {
-    text: string
-    clickHandler?: () => void
-}
+  text: string;
+  clickHandler?: () => void;
+};
 
-export const Button: FC<Props> = memo(({text, clickHandler}) => {
-
-    return (
-        <ButtonBody onClick={clickHandler} type="submit">{text}</ButtonBody>
-    )
-})
+export const Button: FC<Props> = memo(({ text, clickHandler }) => (
+  <ButtonBody onClick={clickHandler} type="submit">
+    {text}
+  </ButtonBody>
+));
 
 const ButtonBody = styled.button`
   padding: 12px 0;
@@ -20,22 +20,22 @@ const ButtonBody = styled.button`
   line-height: 145%;
   text-align: center;
   font-weight: 600;
-  color: #FFFFFF;
-  background: #2BAEE0;
+  color: #ffffff;
+  background: #2baee0;
   border: none;
   border-radius: 6px;
   cursor: pointer;
 
   &:hover {
-    background: #51C2EE;
+    background: #51c2ee;
   }
 
   &:focus {
-    background: #1DA7DC;
+    background: #1da7dc;
   }
 
   &:disabled {
-    background: #CEEDF9;
-    color: #2BAEE0;
+    background: #ceedf9;
+    color: #2baee0;
   }
-`
+`;

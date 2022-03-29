@@ -1,65 +1,70 @@
-import React, {FC, useEffect, useState} from "react";
-import styled from "styled-components";
-import {getCompaniesAction} from "redux/companies/companiesSaga";
-import {useDispatch, useSelector} from "react-redux";
-import {Card, HighPanel, Header, Pagination} from "components";
-import {getCompanies} from "selectors/selectors";
-import {UploadFileIcon} from "assets/svg";
+import React, { FC, useEffect, useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+import { UploadFileIcon } from 'assets/svg';
+import { Card, HighPanel, Header, Pagination } from 'components';
+import { ONE } from 'constance';
+import { getCompaniesAction } from 'redux/companies/companiesSaga';
+import { getCompanies } from 'selectors/selectors';
 
 export const ProspectsListPage: FC = () => {
-    const [isShowMenu, setShowMenu] = useState(false);
+  const [isShowMenu, setShowMenu] = useState(false);
 
-    const cards = useSelector(getCompanies);
+  const cards = useSelector(getCompanies);
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getCompaniesAction(1))
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(getCompaniesAction(ONE));
+  }, [dispatch]);
 
-    const cardsList = cards?.map(card => <Card key={card.id} company={card}/>)
+  const cardsList = cards?.map(card => <Card key={card.id} company={card} />);
 
-    const firstElement = 1;
-    const endElement = 6;
-    const totalItems = 6;
+  const firstElement = 1;
+  const endElement = 6;
+  const totalItems = 6;
 
-    return (
-        <>
-            <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu}/>
-            <HighPanel text={'Race for the Cure'}/>
-            <Container>
-                <InnerContainer>
-                    <ProspectsListContainer>
-                        <CountCompanies>6 Pages</CountCompanies>
-                        <Filters>Filters</Filters>
-                        <FiltersContainer>
-                            <Filter>Travel Industry</Filter>
-                            <Filter>$500-$1B</Filter>
-                            <Filter>National</Filter>
-                            <Filter>Health</Filter>
-                            <Filter>World Wide Fund</Filter>
-                            <Filter>National</Filter>
-                            <Filter>United Nations</Filter>
-                            <Filter>National</Filter>
-                        </FiltersContainer>
-                        <SettingsContainer>
-                            <ExelContainer>
-                                <UploadFileIcon/>
-                                Export to Exel
-                            </ExelContainer>
-                            <div style={{paddingTop: '22px'}}>
-                                <Pagination endElement={endElement} totalItems={totalItems} firstElement={firstElement}/>
-                            </div>
-                        </SettingsContainer>
-                        <Cards>
-                            {cardsList}
-                        </Cards>
-                    </ProspectsListContainer>
-                </InnerContainer>
-            </Container>
-        </>
-    )
-}
+  return (
+    <>
+      <Header isShowMenu={isShowMenu} setShowMenu={setShowMenu} />
+      <HighPanel text="Race for the Cure" />
+      <Container>
+        <InnerContainer>
+          <ProspectsListContainer>
+            <CountCompanies>6 Pages</CountCompanies>
+            <Filters>Filters</Filters>
+            <FiltersContainer>
+              <Filter>Travel Industry</Filter>
+              <Filter>$500-$1B</Filter>
+              <Filter>National</Filter>
+              <Filter>Health</Filter>
+              <Filter>World Wide Fund</Filter>
+              <Filter>National</Filter>
+              <Filter>United Nations</Filter>
+              <Filter>National</Filter>
+            </FiltersContainer>
+            <SettingsContainer>
+              <ExelContainer>
+                <UploadFileIcon />
+                Export to Exel
+              </ExelContainer>
+              <div style={{ paddingTop: '22px' }}>
+                <Pagination
+                  endElement={endElement}
+                  totalItems={totalItems}
+                  firstElement={firstElement}
+                />
+              </div>
+            </SettingsContainer>
+            <Cards>{cardsList}</Cards>
+          </ProspectsListContainer>
+        </InnerContainer>
+      </Container>
+    </>
+  );
+};
 const Cards = styled.main`
   margin-top: 16px;
   display: flex;
@@ -68,7 +73,7 @@ const Cards = styled.main`
     justify-content: center;
     margin-left: 0;
   }
-`
+`;
 const ExelContainer = styled.div`
   margin-top: 24px;
   display: flex;
@@ -76,49 +81,49 @@ const ExelContainer = styled.div`
   font-size: 12px;
   line-height: 150%;
   color: #122434;
-`
+`;
 const SettingsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 const Filter = styled.span`
   margin-right: 8px;
   padding: 6px 10px;
   font-size: 12px;
   line-height: 150%;
   color: #122434;
-  background: #FFFFFF;
-  border: 1px solid #CAF0FF;
+  background: #ffffff;
+  border: 1px solid #caf0ff;
   border-radius: 6px;
-`
+`;
 const FiltersContainer = styled.div`
   margin-left: 15px;
   margin-top: 8px;
   display: flex;
   align-items: center;
-`
+`;
 const Filters = styled.span`
   margin-top: 24px;
   font-size: 12px;
   line-height: 150%;
   color: #737373;
-`
+`;
 const CountCompanies = styled.span`
   margin-top: 32px;
   font-size: 16px;
   line-height: 145%;
   font-weight: 600;
   color: #122434;
-`
+`;
 const Container = styled.div`
   display: flex;
-  background: #F9F9F9;
-`
+  background: #f9f9f9;
+`;
 const InnerContainer = styled.div`
   display: flex;
   margin: 0 auto;
   width: 1440px;
-`
+`;
 const ProspectsListContainer = styled.main`
   padding-left: 60px;
   padding-right: 60px;
@@ -127,4 +132,4 @@ const ProspectsListContainer = styled.main`
   max-width: 1200px;
   width: 100%;
   min-height: 100vh;
-`
+`;

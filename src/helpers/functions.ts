@@ -1,1 +1,2 @@
-export const formatNumber = (data: string | number) => new Intl.NumberFormat('en-US').format(+data)
+export const formatNumber = (data: string | number): any =>
+  new Intl.NumberFormat('en-US').format(+data);

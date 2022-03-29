@@ -1,26 +1,27 @@
-import React, {FC} from "react";
-import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-import {ArrowLeftIcon} from "@material-ui/pickers/_shared/icons/ArrowLeftIcon";
+import React, { FC } from 'react';
+
+import { ArrowLeftIcon } from '@material-ui/pickers/_shared/icons/ArrowLeftIcon';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const ProfilePanel: FC = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    const goBack = () => navigate(-1)
+  const goBack = (): void => navigate(-1);
 
-    return (
-        <div>
-            <Container>
-                <InnerContainer>
-                    <ArrowLeft onClick={goBack}>
-                        <ArrowLeftIcon/>
-                    </ArrowLeft>
-                    <Title>Corparate Profile</Title>
-                </InnerContainer>
-            </Container>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Container>
+        <InnerContainer>
+          <ArrowLeft onClick={goBack}>
+            <ArrowLeftIcon />
+          </ArrowLeft>
+          <Title>Corparate Profile</Title>
+        </InnerContainer>
+      </Container>
+    </div>
+  );
+};
 
 const ArrowLeft = styled.div`
   margin-left: 60px;
@@ -28,7 +29,7 @@ const ArrowLeft = styled.div`
   @media (max-width: 450px) {
     margin-left: 16px;
   }
-`
+`;
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -36,9 +37,9 @@ const Container = styled.div`
   height: 96px;
   background: #fff;
   @media (max-width: 650px) {
-    background: #F9F9F9;
+    background: #f9f9f9;
   }
-`
+`;
 const InnerContainer = styled.div`
   display: flex;
   align-items: center;
@@ -50,7 +51,7 @@ const InnerContainer = styled.div`
   @media (max-width: 450px) {
     padding-left: 16px;
   }
-`
+`;
 const Title = styled.span`
   padding-left: 25px;
   font-size: 32px;
@@ -58,6 +59,6 @@ const Title = styled.span`
   font-weight: 600;
   color: #122434;
   @media (max-width: 450px) {
-    font-size: 24px  ;
+    font-size: 24px;
   }
-`
+`;

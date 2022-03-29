@@ -1,91 +1,100 @@
-import React, {FC, useEffect, useState} from "react";
-import styled from "styled-components";
-import {Card, Pagination} from "components";
-import {useDispatch, useSelector} from "react-redux";
-import {getCompaniesAction} from "redux/companies/companiesSaga";
-import axios from "axios";
-import {getCompanies, getItemCount, getTotalItems} from "selectors/selectors";
-import {FolderPlusIcon, UploadFileIcon, MailIcon, LeftArrowIcon, RightArrowIcon} from "assets/svg";
+import React, { FC, useEffect, useState } from 'react';
 
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+import {
+  FolderPlusIcon,
+  UploadFileIcon,
+  MailIcon,
+  LeftArrowIcon,
+  RightArrowIcon,
+} from 'assets/svg';
+import { Card, Pagination } from 'components';
+import { ONE } from 'constance';
+import { getCompaniesAction } from 'redux/companies/companiesSaga';
+import { getCompanies, getItemCount, getTotalItems } from 'selectors/selectors';
 
 export let instance: any = {};
 
 export const SearchFoundPanel: FC = () => {
-    const [localPage, setLocalPage] = useState(1);
+  const [localPage, setLocalPage] = useState(ONE);
 
-    const cards = useSelector(getCompanies)
-    const totalItems = useSelector(getTotalItems)
-    const itemCount = useSelector(getItemCount)
+  const cards = useSelector(getCompanies);
+  const totalItems = useSelector(getTotalItems);
+  const itemCount = useSelector(getItemCount);
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        instance = axios.create({
-            baseURL: `https://accelerist.herokuapp.com/api/v1`,
-            timeout: 6000,
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem('accessToken')},
-        })
-        dispatch(getCompaniesAction(localPage))
-    }, [dispatch, localPage])
+  useEffect(() => {
+    instance = axios.create({
+      baseURL: `https://accelerist.herokuapp.com/api/v1`,
+      timeout: 6000,
+      headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+    });
+    dispatch(getCompaniesAction(localPage));
+  }, [dispatch, localPage]);
 
-    const onRightArrowClick = () => {
-        setLocalPage(localPage + 1)
-        dispatch(getCompaniesAction(localPage + 1))
+  const onRightArrowClick = (): void => {
+    setLocalPage(localPage + ONE);
+    dispatch(getCompaniesAction(localPage + ONE));
+  };
+
+  const onLeftArrowClick = (): void => {
+    setLocalPage(localPage - ONE);
+    if (localPage <= ONE) {
+      setLocalPage(ONE);
     }
+    dispatch(getCompaniesAction(localPage - ONE));
+  };
 
-    const onLeftArrowClick = () => {
-        setLocalPage(localPage - 1)
-        if (localPage <= 1) {
-            setLocalPage(1)
-        }
-        dispatch(getCompaniesAction(localPage - 1))
-    }
+  const firstElement = itemCount * localPage - itemCount + ONE;
+  const endElement = itemCount * localPage;
 
-    const firstElement = ((itemCount * localPage) - itemCount) + 1
-    const endElement = (itemCount * localPage)
+  const cardsList = cards?.map(card => <Card key={card.id} company={card} />);
 
-    const cardsList = cards?.map(card => <Card key={card.id} company={card}/>)
-
-    return (
-        <>
-            <Text>Found {totalItems} companies</Text>
-            <SettingsPanel>
-                <Items>
-                    <Item>
-                        <FolderPlusIcon/>
-                        Save <TextHiden>List</TextHiden>
-                    </Item>
-                    <Item>
-                        <UploadFileIcon/>
-                        Export <TextHiden>to Excel</TextHiden>
-                    </Item>
-                    <Item>
-                        <MailIcon/>
-                        Accelerist <TextHiden>Support</TextHiden>
-                    </Item>
-                </Items>
-                <Pagination endElement={endElement}
-                            totalItems={totalItems}
-                            firstElement={firstElement}
-                            onLeftArrowClick={onLeftArrowClick}
-                            onRightArrowClick={onRightArrowClick}/>
-
-            </SettingsPanel>
-            <Cards>
-                {cardsList}
-            </Cards>
-            <MobileNavigation>
-                <LeftArrow onClick={onLeftArrowClick}>
-                    <LeftArrowIcon/>
-                </LeftArrow>
-                <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-                <RightArrow onClick={onRightArrowClick}>
-                    <RightArrowIcon/>
-                </RightArrow>
-            </MobileNavigation>
-        </>
-    )
-}
+  return (
+    <>
+      <Text>Found {totalItems} companies</Text>
+      <SettingsPanel>
+        <Items>
+          <Item>
+            <FolderPlusIcon />
+            Save <TextHiden>List</TextHiden>
+          </Item>
+          <Item>
+            <UploadFileIcon />
+            Export <TextHiden>to Excel</TextHiden>
+          </Item>
+          <Item>
+            <MailIcon />
+            Accelerist <TextHiden>Support</TextHiden>
+          </Item>
+        </Items>
+        <Pagination
+          endElement={endElement}
+          totalItems={totalItems}
+          firstElement={firstElement}
+          onLeftArrowClick={onLeftArrowClick}
+          onRightArrowClick={onRightArrowClick}
+        />
+      </SettingsPanel>
+      <Cards>{cardsList}</Cards>
+      <MobileNavigation>
+        <LeftArrow onClick={onLeftArrowClick}>
+          <LeftArrowIcon />
+        </LeftArrow>
+        <TextNavigation>
+          {firstElement} - {endElement} of {totalItems}
+        </TextNavigation>
+        <RightArrow onClick={onRightArrowClick}>
+          <RightArrowIcon />
+        </RightArrow>
+      </MobileNavigation>
+    </>
+  );
+};
 
 const Text = styled.span`
   margin-left: 60px;
@@ -101,18 +110,18 @@ const Text = styled.span`
     margin-bottom: 20px;
     margin-top: 0;
   }
-`
+`;
 const TextHiden = styled.span`
   @media (max-width: 460px) {
     display: none;
   }
-`
+`;
 const SettingsPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
-`
+`;
 const Items = styled.div`
   display: flex;
   align-items: center;
@@ -121,7 +130,7 @@ const Items = styled.div`
   @media (max-width: 730px) {
     margin-left: 16px;
   }
-`
+`;
 const Item = styled.div`
   display: flex;
   align-items: center;
@@ -130,7 +139,7 @@ const Item = styled.div`
   line-height: 150%;
   color: #122434;
   cursor: pointer;
-`
+`;
 const TextNavigation = styled.span`
   padding-top: 3px;
   text-align: center;
@@ -140,13 +149,13 @@ const TextNavigation = styled.span`
   font-size: 12px;
   line-height: 150%;
   color: #122434;
-`
+`;
 const LeftArrow = styled.div`
   cursor: pointer;
-`
+`;
 const RightArrow = styled.div`
   cursor: pointer;
-`
+`;
 const Cards = styled.div`
   margin-left: 60px;
   display: flex;
@@ -155,7 +164,7 @@ const Cards = styled.div`
     justify-content: center;
     margin-left: 0;
   }
-`
+`;
 const MobileNavigation = styled.div`
   display: none;
   @media (max-width: 650px) {
@@ -163,4 +172,4 @@ const MobileNavigation = styled.div`
     margin: 0 auto;
     margin-bottom: 30px;
   }
-`
+`;

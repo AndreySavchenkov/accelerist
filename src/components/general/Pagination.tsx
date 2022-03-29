@@ -1,28 +1,36 @@
-import React, {FC} from 'react';
-import {LeftArrowIcon, RightArrowIcon} from "assets/svg";
-import styled from "styled-components";
+import React, { FC } from 'react';
+
+import styled from 'styled-components';
+
+import { LeftArrowIcon, RightArrowIcon } from 'assets/svg';
 
 type Props = {
-    endElement: number
-    totalItems: number
-    firstElement: number
-    onLeftArrowClick?: () => void
-    onRightArrowClick?: () => void
-}
+  endElement: number;
+  totalItems: number;
+  firstElement: number;
+  onLeftArrowClick?: () => void;
+  onRightArrowClick?: () => void;
+};
 
-export const Pagination: FC<Props> = ({endElement, totalItems, firstElement, onLeftArrowClick, onRightArrowClick}) => {
-    return (
-        <Navigation>
-            <LeftArrow onClick={onLeftArrowClick}>
-                <LeftArrowIcon/>
-            </LeftArrow>
-            <TextNavigation>{firstElement} - {endElement} of {totalItems}</TextNavigation>
-            <RightArrow onClick={onRightArrowClick}>
-                <RightArrowIcon/>
-            </RightArrow>
-        </Navigation>
-    )
-}
+export const Pagination: FC<Props> = ({
+  endElement,
+  totalItems,
+  firstElement,
+  onLeftArrowClick,
+  onRightArrowClick,
+}) => (
+  <Navigation>
+    <LeftArrow onClick={onLeftArrowClick}>
+      <LeftArrowIcon />
+    </LeftArrow>
+    <TextNavigation>
+      {firstElement} - {endElement} of {totalItems}
+    </TextNavigation>
+    <RightArrow onClick={onRightArrowClick}>
+      <RightArrowIcon />
+    </RightArrow>
+  </Navigation>
+);
 
 const TextNavigation = styled.span`
   padding-top: 3px;
@@ -33,13 +41,13 @@ const TextNavigation = styled.span`
   font-size: 12px;
   line-height: 150%;
   color: #122434;
-`
+`;
 const LeftArrow = styled.div`
   cursor: pointer;
-`
+`;
 const RightArrow = styled.div`
   cursor: pointer;
-`
+`;
 const Navigation = styled.div`
   display: flex;
   margin-right: 40px;
@@ -49,4 +57,4 @@ const Navigation = styled.div`
   @media (max-width: 650px) {
     display: none;
   }
-`
+`;

@@ -1,1 +1,1 @@
-export {SearchFoundPanel} from './SearchFoundPanel'
+export { SearchFoundPanel } from './SearchFoundPanel';

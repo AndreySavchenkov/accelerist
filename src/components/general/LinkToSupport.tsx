@@ -1,8 +1,10 @@
-import React, {FC} from "react";
-import styled from "styled-components";
+import React, { FC } from 'react';
 
-export const LinkToSupport: FC = () => <LinkToSupportBody type="submit">Contact Support</LinkToSupportBody>
+import styled from 'styled-components';
 
+export const LinkToSupport: FC = () => (
+  <LinkToSupportBody type="submit">Contact Support</LinkToSupportBody>
+);
 
 const LinkToSupportBody = styled.button`
   padding: 10px 24px;
@@ -12,7 +14,7 @@ const LinkToSupportBody = styled.button`
   line-height: 150%;
   text-align: center;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(18, 36, 52, 0.15);
   border: none;
   border-radius: 6px;
@@ -20,4 +22,4 @@ const LinkToSupportBody = styled.button`
   &:hover {
     background: #122434;
   }
-`
+`;

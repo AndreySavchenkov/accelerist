@@ -1,15 +1,15 @@
-import React, {FC} from "react";
-import styled from "styled-components";
-import {Link} from "react-router-dom";
+import React, { FC } from 'react';
 
-export const LinkToLogin: FC = () => {
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-    return (
-        <LinkToLoginBody type="submit">
-            <Link to="/" style={{textDecoration: "none", color: 'inherit'}}>Return to Login</Link>
-        </LinkToLoginBody>
-    )
-}
+export const LinkToLogin: FC = () => (
+  <LinkToLoginBody type="submit">
+    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+      Return to Login
+    </Link>
+  </LinkToLoginBody>
+);
 
 const LinkToLoginBody = styled.button`
   position: absolute;
@@ -20,7 +20,7 @@ const LinkToLoginBody = styled.button`
   line-height: 150%;
   text-align: center;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   background: rgba(18, 36, 52, 0.15);
   border: none;
   border-radius: 6px;
@@ -28,4 +28,4 @@ const LinkToLoginBody = styled.button`
   &:hover {
     background: #122434;
   }
-`
+`;

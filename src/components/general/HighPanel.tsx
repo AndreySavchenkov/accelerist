@@ -1,22 +1,20 @@
-import React, {FC, memo} from "react";
-import styled from "styled-components";
+import React, { FC, memo } from 'react';
+
+import styled from 'styled-components';
 
 type Props = {
-    text: string
-}
+  text: string;
+};
 
-export const HighPanel:FC<Props> = memo(({text}) => {
-
-    return (
-        <div>
-            <Container>
-                <InnerContainer>
-                    <Title>{text}</Title>
-                </InnerContainer>
-            </Container>
-        </div>
-    )
-})
+export const HighPanel: FC<Props> = memo(({ text }) => (
+  <div>
+    <Container>
+      <InnerContainer>
+        <Title>{text}</Title>
+      </InnerContainer>
+    </Container>
+  </div>
+));
 
 const Container = styled.section`
   display: flex;
@@ -25,9 +23,9 @@ const Container = styled.section`
   height: 96px;
   background: #fff;
   @media (max-width: 650px) {
-    background: #F9F9F9;
+    background: #f9f9f9;
   }
-`
+`;
 const InnerContainer = styled.div`
   display: flex;
   align-items: center;
@@ -39,7 +37,7 @@ const InnerContainer = styled.div`
   @media (max-width: 450px) {
     padding-left: 16px;
   }
-`
+`;
 const Title = styled.span`
   margin-left: 60px;
   font-size: 32px;
@@ -47,6 +45,6 @@ const Title = styled.span`
   font-weight: 600;
   color: #122434;
   @media (max-width: 450px) {
-    font-size: 24px  ;
+    font-size: 24px;
   }
-`
+`;

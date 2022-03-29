@@ -1,71 +1,76 @@
-import React, {FC, useEffect, useState} from "react";
-import styled from "styled-components";
-import {Button, ButtonTimer, LinkToSupport, LinkToLogin} from "components";
-import {useDispatch} from "react-redux";
-import {sendEmailAction} from "redux/login/loginSaga";
+import React, { FC, useEffect, useState } from 'react';
 
-export const PasswordResend:FC = () => {
-    const [timer, setTimer] = useState(59);
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
-    const dispatch = useDispatch()
+import { Button, ButtonTimer, LinkToSupport, LinkToLogin } from 'components';
+import { ONE, TIMER, ZERO } from 'constance';
+import { sendEmailAction } from 'redux/login/loginSaga';
 
-    useEffect(() => {
-        if (timer >= 1) {
-            setTimeout(() => setTimer(timer - 1), 1000)
-        }
-    })
+export const PasswordResend: FC = () => {
+  const [timer, setTimer] = useState(TIMER);
 
-    const clickHandler = () => {
-        const email = localStorage.getItem('emailReset')
-        if(email) {
-            dispatch(sendEmailAction(email));
-            setTimer(59)
-        }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (timer >= ONE) {
+      setTimeout(() => setTimer(timer - ONE), 1000);
     }
+  });
 
-    return (
-        <>
-            <MainContainer>
-                <Container>
-                    <Title>Password Reset</Title>
-                    <Text>A link was sent to your email to confirm password reset and create a new one</Text>
-                    {
-                        (timer === 0) ?
-                            <Button clickHandler={clickHandler} text={'Resend'}/> : <ButtonTimer text={`00:${timer}`}/>
-                    }
-                </Container>
-                <LinkToSupport/>
-            </MainContainer>
-            <LinkToLogin/>
-        </>
+  const clickHandler = (): void => {
+    const email = localStorage.getItem('emailReset');
+    if (email) {
+      dispatch(sendEmailAction(email));
+      setTimer(TIMER);
+    }
+  };
 
-    )
-}
+  return (
+    <>
+      <MainContainer>
+        <Container>
+          <Title>Password Reset</Title>
+          <Text>
+            A link was sent to your email to confirm password reset and create a new one
+          </Text>
+          {timer === ZERO ? (
+            <Button clickHandler={clickHandler} text="Resend" />
+          ) : (
+            <ButtonTimer text={`00:${timer}`} />
+          )}
+        </Container>
+        <LinkToSupport />
+      </MainContainer>
+      <LinkToLogin />
+    </>
+  );
+};
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 374px;
   padding: 40px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 6px;
   @media (max-width: 600px) {
     width: 263px;
   }
-`
+`;
 const Title = styled.span`
   font-weight: 600;
   font-size: 24px;
   line-height: 148%;
   color: #122434;
-`
+`;
 const Text = styled.p`
   margin-top: 8px;
   font-size: 16px;
   line-height: 155%;
   color: #122434;
-`
+`;
