@@ -1,56 +1,67 @@
-import React, {FC, memo} from "react";
-import styled from "styled-components";
-import {Field, Form} from "react-final-form";
-import {Link} from "react-router-dom";
-import {EMPTY_STRING} from "constance";
-import {ZoomIcon, FilterIcon} from "assets/svg";
+import React, { FC, memo } from 'react';
+
+import { Field, Form } from 'react-final-form';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import { ZoomIcon, FilterIcon } from 'assets/svg';
+import { EMPTY_STRING } from 'constance';
 
 type Props = {
-    isShowMenu: boolean;
-}
-export const SearchPanel: FC<Props> = memo(({isShowMenu}) => {
+  isShowMenu: boolean;
+};
+export const SearchPanel: FC<Props> = memo(({ isShowMenu }) => {
+  const onSubmit = ():void => {};
 
-    const onSubmit = () => {
-    }
-
-    return (
-        <Container>
-            <InnerContainer>
-                <Text>Search</Text>
-                <Form
-                    onSubmit={onSubmit}
-                    render={({handleSubmit}) => (
-                        <FormContainer onSubmit={handleSubmit}>
-                            <Field
-                                name="search"
-                                render={({input, meta}) => (
-                                    !isShowMenu ?
-                                        <>
-                                            <InputText {...input}
-                                                       type={"text"}
-                                                       style={meta.touched && meta.error ?
-                                                           {
-                                                               outline: '1px solid #F05658',
-                                                               backgroundColor: 'rgb(255, 242, 242)'
-                                                           }
-                                                           : undefined}
-                                            />
-                                            {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
-                                            <LogoZoom>
-                                                <ZoomIcon/>
-                                            </LogoZoom>
-                                            <Link to="filter"><LogoSlider><FilterIcon/></LogoSlider></Link>
-                                        </> : EMPTY_STRING
-                                )}
-                            />
-                        </FormContainer>
-                    )}
-                />
-            </InnerContainer>
-
-        </Container>
-    )
-})
+  return (
+    <Container>
+      <InnerContainer>
+        <Text>Search</Text>
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <FormContainer onSubmit={handleSubmit}>
+              <Field
+                name="search"
+                render={({ input, meta }) =>
+                  !isShowMenu ? (
+                    <>
+                      <InputText
+                        {...input}
+                        type="text"
+                        style={
+                          meta.touched && meta.error
+                            ? {
+                                outline: '1px solid #F05658',
+                                backgroundColor: 'rgb(255, 242, 242)',
+                              }
+                            : undefined
+                        }
+                      />
+                      {meta.touched && meta.error && (
+                        <ErrorMessage>{meta.error}</ErrorMessage>
+                      )}
+                      <LogoZoom>
+                        <ZoomIcon />
+                      </LogoZoom>
+                      <Link to="filter">
+                        <LogoSlider>
+                          <FilterIcon />
+                        </LogoSlider>
+                      </Link>
+                    </>
+                  ) : (
+                    EMPTY_STRING
+                  )
+                }
+              />
+            </FormContainer>
+          )}
+        />
+      </InnerContainer>
+    </Container>
+  );
+});
 
 const Container = styled.div`
   display: flex;
@@ -59,9 +70,9 @@ const Container = styled.div`
   height: 96px;
   background: #fff;
   @media (max-width: 650px) {
-    background: #F9F9F9;
+    background: #f9f9f9;
   }
-`
+`;
 const InnerContainer = styled.header`
   display: flex;
   align-items: center;
@@ -74,7 +85,7 @@ const InnerContainer = styled.header`
     flex-direction: column;
     align-items: flex-start;
   }
-`
+`;
 const Text = styled.span`
   margin-left: 60px;
   font-weight: 600;
@@ -85,7 +96,7 @@ const Text = styled.span`
     font-size: 16px;
     margin-left: 16px;
   }
-`
+`;
 const FormContainer = styled.form`
   position: relative;
   display: flex;
@@ -100,14 +111,14 @@ const FormContainer = styled.form`
     margin-right: 16px;
     margin-bottom: 20px;
   }
-`
+`;
 const InputText = styled.input`
   display: flex;
   padding-left: 24px;
   padding-right: 70px;
   width: 621px;
   height: 36px;
-  background: #F1F4F5;
+  background: #f1f4f5;
   border-radius: 6px;
   border: none;
   font-size: 12px;
@@ -116,24 +127,24 @@ const InputText = styled.input`
   @media (max-width: 1040px) {
     width: 100%;
   }
-`
+`;
 const LogoSlider = styled.div`
   position: absolute;
   top: 7px;
   right: 40px;
   cursor: pointer;
-`
+`;
 const LogoZoom = styled.div`
   position: absolute;
   top: 7px;
   right: 10px;
   cursor: pointer;
-`
+`;
 const ErrorMessage = styled.span`
-  color: #F05658;
+  color: #f05658;
   font-size: 12px;
   line-height: 150%;
   position: absolute;
   bottom: 19px;
   left: 0;
-`
+`;

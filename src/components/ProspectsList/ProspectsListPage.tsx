@@ -9,6 +9,10 @@ import { ONE } from 'constance';
 import { getCompaniesAction } from 'redux/companies/companiesSaga';
 import { getCompanies } from 'redux/selectors/selectors';
 
+const FIRST_ELEMENT = 1;
+const END_ELEMENT = 6;
+const TOTAL_ELEMENTS = 6;
+
 export const ProspectsListPage: FC = () => {
   const [isShowMenu, setShowMenu] = useState(false);
 
@@ -21,10 +25,6 @@ export const ProspectsListPage: FC = () => {
   }, [dispatch]);
 
   const cardsList = cards?.map(card => <Card key={card.id} company={card} />);
-
-  const firstElement = 1;
-  const endElement = 6;
-  const totalItems = 6;
 
   return (
     <>
@@ -52,9 +52,9 @@ export const ProspectsListPage: FC = () => {
               </ExelContainer>
               <div style={{ paddingTop: '22px' }}>
                 <Pagination
-                  endElement={endElement}
-                  totalItems={totalItems}
-                  firstElement={firstElement}
+                  endElement={END_ELEMENT}
+                  totalItems={TOTAL_ELEMENTS}
+                  firstElement={FIRST_ELEMENT}
                 />
               </div>
             </SettingsContainer>

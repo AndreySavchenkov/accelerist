@@ -11,6 +11,37 @@ import news5 from 'assets/img/news5.png';
 import news6 from 'assets/img/news6.png';
 import { News } from 'components';
 
+export const AsideMenu: FC = () => (
+  <Container>
+    <Title>Scoop</Title>
+    <ImageScoop src={imgScoop} />
+    <TextContainer>
+      <Text>Technology</Text>
+      <Circle> </Circle>
+      <Text>Microsoft</Text>
+      <Circle> </Circle>
+      <Text>Awards</Text>
+    </TextContainer>
+    <Title style={{ marginTop: '16px' }}>The Decline of Clothing Retail</Title>
+    <Subtitle>
+      The apparel industry’s appeal has been dwindling for a while: “In 1977, clothing
+      industry’s appeal{' '}
+    </Subtitle>
+    <Date>2 Sep 2020, 13:23</Date>
+    <Title style={{ marginTop: '24px' }}>News</Title>
+    <News url={news1} />
+    <NewsLine> </NewsLine>
+    <News url={news2} />
+    <NewsLine> </NewsLine>
+    <News url={news3} />
+    <NewsLine> </NewsLine>
+    <News url={news4} />
+    <NewsLine> </NewsLine>
+    <News url={news5} />
+    <NewsLine> </NewsLine>
+    <News url={news6} />
+  </Container>
+);
 const NewsLine = styled.div`
   margin-top: 16px;
   margin-left: 82px;
@@ -64,35 +95,3 @@ const Container = styled.aside`
   flex-direction: column;
   padding: 32px 40px;
 `;
-
-export const AsideMenu: FC = () => (
-  <Container>
-    <Title>Scoop</Title>
-    <ImageScoop src={imgScoop} />
-    <TextContainer>
-      <Text>Technology</Text>
-      <Circle> </Circle>
-      <Text>Microsoft</Text>
-      <Circle> </Circle>
-      <Text>Awards</Text>
-    </TextContainer>
-    <Title style={{ marginTop: '16px' }}>The Decline of Clothing Retail</Title>
-    <Subtitle>
-      The apparel industry’s appeal has been dwindling for a while: “In 1977, clothing
-      industry’s appeal{' '}
-    </Subtitle>
-    <Date>2 Sep 2020, 13:23</Date>
-    <Title style={{ marginTop: '24px' }}>News</Title>
-    <News url={news1} />
-    <NewsLine> </NewsLine>
-    <News url={news2} />
-    <NewsLine> </NewsLine>
-    <News url={news3} />
-    <NewsLine> </NewsLine>
-    <News url={news4} />
-    <NewsLine> </NewsLine>
-    <News url={news5} />
-    <NewsLine> </NewsLine>
-    <News url={news6} />
-  </Container>
-);

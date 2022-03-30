@@ -17,30 +17,28 @@ type Props = {
   primaryIndustry: string[];
 };
 
-export const Company: FC<Props> = memo(({ name, primaryIndustry, like }) => {
-  const firstIndustry = 0;
+const FIRST_INDUSTRY = 0;
 
-  return (
-    <Container>
-      <InnerContainer>
-        <AppleLogo />
-        <InfoContainer>
-          <NameContainer>
-            <Name>{name}</Name>
-            {like ? <FavoriteIcon /> : <UnfavoriteIcon />}
-          </NameContainer>
-          <Subtitle>{primaryIndustry[firstIndustry]}</Subtitle>
-          <SocialContainer>
-            <TwitterIcon />
-            <FacebookIcon />
-            <LinkedInIcon height={24} width={24} />
-          </SocialContainer>
-        </InfoContainer>
-      </InnerContainer>
-      <Button>Block</Button>
-    </Container>
-  );
-});
+export const Company: FC<Props> = memo(({ name, primaryIndustry, like }) => (
+  <Container>
+    <InnerContainer>
+      <AppleLogo />
+      <InfoContainer>
+        <NameContainer>
+          <Name>{name}</Name>
+          {like ? <FavoriteIcon /> : <UnfavoriteIcon />}
+        </NameContainer>
+        <Subtitle>{primaryIndustry[FIRST_INDUSTRY]}</Subtitle>
+        <SocialContainer>
+          <TwitterIcon />
+          <FacebookIcon />
+          <LinkedInIcon height={24} width={24} />
+        </SocialContainer>
+      </InfoContainer>
+    </InnerContainer>
+    <Button>Block</Button>
+  </Container>
+));
 
 const Container = styled.article`
   display: flex;

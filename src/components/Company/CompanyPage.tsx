@@ -48,7 +48,6 @@ export const CompanyPage: FC = memo(() => {
   const company = useSelector(getCompany);
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
     id && dispatch(getCompanyByIdAction(id));
   }, [dispatch, id]);
 

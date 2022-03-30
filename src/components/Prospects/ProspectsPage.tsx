@@ -4,15 +4,15 @@ import styled from 'styled-components';
 
 import { Race, HighPanel, Header, Pagination } from 'components';
 
+const FIRST_ELEMENT = 1;
+const END_ELEMENT = 6;
+const TOTAL_ELEMENTS = 6;
+
 export const ProspectsPage: FC = () => {
   const [isShowMenu, setShowMenu] = useState(false);
   const [activeName, setActiveName] = useState('alphabet');
 
   const onMethodClick = (name: string): void => setActiveName(name);
-
-  const totalItems = 6;
-  const firstElement = 1;
-  const endElement = 6;
 
   return (
     <>
@@ -43,9 +43,9 @@ export const ProspectsPage: FC = () => {
                 )}
               </SortMethodContainer>
               <Pagination
-                endElement={endElement}
-                totalItems={totalItems}
-                firstElement={firstElement}
+                endElement={END_ELEMENT}
+                totalItems={TOTAL_ELEMENTS}
+                firstElement={FIRST_ELEMENT}
               />
             </Sorting>
             <RaceContainer>
