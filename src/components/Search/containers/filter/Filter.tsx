@@ -8,7 +8,11 @@ import styled from 'styled-components';
 import { marksAge, primaryIndustryData, revenueMarks } from './data/data';
 
 import { AutocompleteField } from 'components';
-import { ToggleContainer, ToggleItem } from 'components/Login/containers/main/MainForm';
+import {
+  Toggle,
+  ToggleContainer,
+  ToggleItem,
+} from 'components/Search/containers/filter/components/Toggle';
 import { useGenderToggle } from 'hooks/useGenderToggle';
 import { useToggle } from 'hooks/useToggle';
 
@@ -56,14 +60,14 @@ export const Filter: FC = () => {
   return (
     <Container>
       <Title>Filters</Title>
-      <ToggleContainer>
-        <ToggleItem onClick={onToggleItemClick} isToggle={isAdvanced}>
-          Advanced
-        </ToggleItem>
-        <ToggleItem onClick={onToggleItemClick} isToggle={isCustomize}>
-          Customize
-        </ToggleItem>
-      </ToggleContainer>
+      <Toggle
+        firstItemTitle="Advanced"
+        isFirstItem={isAdvanced}
+        secondItemTitle="Customize"
+        isSecondItem={isCustomize}
+        widthContainer="100"
+        onToggleItemClick={onToggleItemClick}
+      />
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
@@ -188,14 +192,14 @@ export const Filter: FC = () => {
                     render={() => (
                       <>
                         <Label>Relations</Label>
-                        <ToggleContainer style={{ width: '100%' }}>
-                          <ToggleItem onClick={onRelationsClick} isToggle={isSingle}>
-                            Single
-                          </ToggleItem>
-                          <ToggleItem onClick={onRelationsClick} isToggle={isMarried}>
-                            Married
-                          </ToggleItem>
-                        </ToggleContainer>
+                        <Toggle
+                          firstItemTitle="Single"
+                          isFirstItem={isSingle}
+                          secondItemTitle="Married"
+                          isSecondItem={isMarried}
+                          widthContainer="100"
+                          onToggleItemClick={onRelationsClick}
+                        />
                       </>
                     )}
                   />
@@ -380,3 +384,4 @@ const ButtonClose = styled.button`
     color: #e8e8e8;
   }
 `;
+

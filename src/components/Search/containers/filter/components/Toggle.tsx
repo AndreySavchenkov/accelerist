@@ -2,36 +2,36 @@ import React, { FC } from 'react';
 
 import styled from 'styled-components';
 
-import { useToggle } from 'hooks/useToggle';
-
 type toggleItemProps = {
   isToggle: boolean;
 };
 
 type Props = {
   firstItemTitle: string;
+  isFirstItem: boolean;
   secondItemTitle: string;
+  isSecondItem: boolean;
   widthContainer: string;
+  onToggleItemClick: () => void;
 };
 
 export const Toggle: FC<Props> = ({
   firstItemTitle,
+  isFirstItem,
   secondItemTitle,
+  isSecondItem,
   widthContainer,
-}) => {
-  const [isFirst, isSecond, onToggleItemClick] = useToggle();
-
-  return (
-    <ToggleContainer style={{ width: `${widthContainer}%` }}>
-      <ToggleItem onClick={onToggleItemClick} isToggle={isFirst}>
-        {firstItemTitle}
-      </ToggleItem>
-      <ToggleItem onClick={onToggleItemClick} isToggle={isSecond}>
-        {secondItemTitle}
-      </ToggleItem>
-    </ToggleContainer>
-  );
-};
+  onToggleItemClick,
+}) => (
+  <ToggleContainer style={{ width: `${widthContainer}%` }}>
+    <ToggleItem onClick={onToggleItemClick} isToggle={isFirstItem}>
+      {firstItemTitle}
+    </ToggleItem>
+    <ToggleItem onClick={onToggleItemClick} isToggle={isSecondItem}>
+      {secondItemTitle}
+    </ToggleItem>
+  </ToggleContainer>
+);
 
 export const ToggleContainer = styled.div`
   display: flex;

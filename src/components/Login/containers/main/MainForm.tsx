@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 import { LinkedInIcon } from 'assets/svg';
 import { LoginForm, RegisterForm } from 'components';
+import { Toggle } from 'components/Search/containers/filter/components/Toggle';
 import { useToggle } from 'hooks/useToggle';
 
-type toggleItemProps = {
-  isToggle: boolean;
-};
+// type toggleItemProps = {
+//   isToggle: boolean;
+// };
 
 export const MainForm: FC = () => {
   const [isRegister, isLogin, onToggleItemClick] = useToggle();
@@ -16,14 +17,22 @@ export const MainForm: FC = () => {
   return (
     <Container>
       <Title>Welcome to Accelerist</Title>
-      <ToggleContainer>
-        <ToggleItem onClick={onToggleItemClick} isToggle={isRegister}>
-          Register
-        </ToggleItem>
-        <ToggleItem onClick={onToggleItemClick} isToggle={isLogin}>
-          Login
-        </ToggleItem>
-      </ToggleContainer>
+      <Toggle
+        firstItemTitle="Register"
+        isFirstItem={isRegister}
+        secondItemTitle="Login"
+        isSecondItem={isLogin}
+        widthContainer="100"
+        onToggleItemClick={onToggleItemClick}
+      />
+      {/* <ToggleContainer> */}
+      {/*  <ToggleItem onClick={onToggleItemClick} isToggle={isRegister}> */}
+      {/*    Register */}
+      {/*  </ToggleItem> */}
+      {/*  <ToggleItem onClick={onToggleItemClick} isToggle={isLogin}> */}
+      {/*    Login */}
+      {/*  </ToggleItem> */}
+      {/* </ToggleContainer> */}
       <FormContainer>{!isRegister ? <LoginForm /> : <RegisterForm />}</FormContainer>
       <SomeText>or continue with</SomeText>
       <RegistrationLink>
@@ -51,36 +60,36 @@ const Title = styled.span`
   line-height: 148%;
   color: #122434;
 `;
-export const ToggleContainer = styled.div`
-  display: flex;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  width: 100%;
-  height: 40px;
-  background: #f8f8f8;
-`;
-export const ToggleItem = styled.div<toggleItemProps>`
-  background-color: ${props => (props.isToggle ? '#CAF0FF' : '')};
-  color: ${props => (props.isToggle ? '#122434' : '#737373')};
-  border-radius: ${props => (props.isToggle ? '6px' : '')};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 150%;
-  cursor: pointer;
-
-  &:hover {
-    color: ${props => (props.isToggle ? '#122434' : '#122434')};
-  }
-
-  &:disabled {
-    background-color: ${props => (props.isToggle ? '#DCF5FF' : '')};
-    color: ${props => (props.isToggle ? '#A8BED2' : '#BFBFBF')};
-  }
-`;
+// export const ToggleContainer = styled.div`
+//   display: flex;
+//   margin-top: 25px;
+//   margin-bottom: 10px;
+//   width: 100%;
+//   height: 40px;
+//   background: #f8f8f8;
+// `;
+// export const ToggleItem = styled.div<toggleItemProps>`
+//   background-color: ${props => (props.isToggle ? '#CAF0FF' : '')};
+//   color: ${props => (props.isToggle ? '#122434' : '#737373')};
+//   border-radius: ${props => (props.isToggle ? '6px' : '')};
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 50%;
+//   font-weight: normal;
+//   font-size: 12px;
+//   line-height: 150%;
+//   cursor: pointer;
+//
+//   &:hover {
+//     color: ${props => (props.isToggle ? '#122434' : '#122434')};
+//   }
+//
+//   &:disabled {
+//     background-color: ${props => (props.isToggle ? '#DCF5FF' : '')};
+//     color: ${props => (props.isToggle ? '#A8BED2' : '#BFBFBF')};
+//   }
+// `;
 const FormContainer = styled.div`
   width: 100%;
 `;
