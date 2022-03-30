@@ -14,7 +14,13 @@ import {
   ToggleItem,
 } from 'components/Search/containers/filter/components/Toggle';
 import { useGenderToggle } from 'hooks/useGenderToggle';
+import { useSlider } from 'hooks/useSlider';
 import { useToggle } from 'hooks/useToggle';
+
+const MIN_REVENUE = 10000000;
+const MAX_REVENUE = 75000000;
+const MIN_AGE = 30;
+const MAX_AGE = 45;
 
 export const Filter: FC = () => {
   const [industry, setIndustry] = useState();
@@ -26,20 +32,11 @@ export const Filter: FC = () => {
   const [household, setHousehold] = useState();
   const [ethnicity, setEthnicity] = useState();
 
-  const [age, setAge] = React.useState<number[]>([30, 45]);
-  const [value, setValue] = React.useState<number[]>([10000000, 75000000]);
-
   const [isAdvanced, isCustomize, onToggleItemClick] = useToggle();
   const [isSingle, isMarried, onRelationsClick] = useToggle();
   const { isMale, isFemale, isBoth, onGenderClick, showGenderResult } = useGenderToggle();
-
-  const onRevenueChange = (event: Event, newValue: number | number[]): void => {
-    setValue(newValue as number[]);
-  };
-
-  const onAgeChange = (event: Event, newValue: number | number[]): void => {
-    setAge(newValue as number[]);
-  };
+  const [value, onRevenueChange] = useSlider(MIN_REVENUE, MAX_REVENUE);
+  const [age, onAgeChange] = useSlider(MIN_AGE, MAX_AGE);
 
   const onSubmit = (values: any): void => {
     console.log('Form values ->', values);
