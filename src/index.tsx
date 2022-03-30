@@ -1,7 +1,6 @@
 import React from 'react';
 
-import ReactDOM from 'react-dom';
-
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
@@ -26,7 +25,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(
+const container = document.getElementById('root');
+
+const root = ReactDOM.createRoot(container!);
+root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <HashRouter>
@@ -35,7 +37,6 @@ ReactDOM.render(
       <GlobalStyle />
     </PersistGate>
   </Provider>,
-  document.getElementById('root'),
 );
 
 reportWebVitals();
