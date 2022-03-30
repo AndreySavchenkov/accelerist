@@ -384,4 +384,3 @@ const ButtonClose = styled.button`
     color: #e8e8e8;
   }
 `;
-

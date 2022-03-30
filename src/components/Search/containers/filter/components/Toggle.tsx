@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import styled from 'styled-components';
 
@@ -15,22 +15,24 @@ type Props = {
   onToggleItemClick: () => void;
 };
 
-export const Toggle: FC<Props> = ({
-  firstItemTitle,
-  isFirstItem,
-  secondItemTitle,
-  isSecondItem,
-  widthContainer,
-  onToggleItemClick,
-}) => (
-  <ToggleContainer style={{ width: `${widthContainer}%` }}>
-    <ToggleItem onClick={onToggleItemClick} isToggle={isFirstItem}>
-      {firstItemTitle}
-    </ToggleItem>
-    <ToggleItem onClick={onToggleItemClick} isToggle={isSecondItem}>
-      {secondItemTitle}
-    </ToggleItem>
-  </ToggleContainer>
+export const Toggle: FC<Props> = memo(
+  ({
+    firstItemTitle,
+    isFirstItem,
+    secondItemTitle,
+    isSecondItem,
+    widthContainer,
+    onToggleItemClick,
+  }) => (
+    <ToggleContainer style={{ width: `${widthContainer}%` }}>
+      <ToggleItem onClick={onToggleItemClick} isToggle={isFirstItem}>
+        {firstItemTitle}
+      </ToggleItem>
+      <ToggleItem onClick={onToggleItemClick} isToggle={isSecondItem}>
+        {secondItemTitle}
+      </ToggleItem>
+    </ToggleContainer>
+  ),
 );
 
 export const ToggleContainer = styled.div`
