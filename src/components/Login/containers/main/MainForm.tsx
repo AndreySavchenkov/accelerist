@@ -1,22 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import styled from 'styled-components';
 
 import { LinkedInIcon } from 'assets/svg';
 import { LoginForm, RegisterForm } from 'components';
+import { useToggle } from 'hooks/useToggle';
 
 type toggleItemProps = {
   isToggle: boolean;
 };
 
 export const MainForm: FC = () => {
-  const [isRegister, setRegister] = useState(true);
-  const [isLogin, setLogin] = useState(false);
-
-  const onToggleItemClick = (): void => {
-    setRegister(!isRegister);
-    setLogin(!isLogin);
-  };
+  const [isRegister, isLogin, onToggleItemClick] = useToggle();
 
   return (
     <Container>

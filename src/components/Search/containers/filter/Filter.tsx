@@ -10,14 +10,9 @@ import { marksAge, primaryIndustryData, revenueMarks } from './data/data';
 import { AutocompleteField } from 'components';
 import { ToggleContainer, ToggleItem } from 'components/Login/containers/main/MainForm';
 import { useGenderToggle } from 'hooks/useGenderToggle';
+import { useToggle } from 'hooks/useToggle';
 
 export const Filter: FC = () => {
-  const [isAdvanced, setAdvanced] = useState(true);
-  const [isCustomize, setCustomize] = useState(false);
-
-  const [isSingle, setIsSingle] = useState(true);
-  const [isMarried, setIsMarried] = useState(false);
-
   const [industry, setIndustry] = useState();
   const [location, setLocation] = useState();
   const [scope, setScope] = useState();
@@ -30,6 +25,8 @@ export const Filter: FC = () => {
   const [age, setAge] = React.useState<number[]>([30, 45]);
   const [value, setValue] = React.useState<number[]>([10000000, 75000000]);
 
+  const [isAdvanced, isCustomize, onToggleItemClick] = useToggle();
+  const [isSingle, isMarried, onRelationsClick] = useToggle();
   const { isMale, isFemale, isBoth, onGenderClick, showGenderResult } = useGenderToggle();
 
   const onRevenueChange = (event: Event, newValue: number | number[]): void => {
@@ -38,16 +35,6 @@ export const Filter: FC = () => {
 
   const onAgeChange = (event: Event, newValue: number | number[]): void => {
     setAge(newValue as number[]);
-  };
-
-  const onToggleItemClick = (): void => {
-    setAdvanced(!isAdvanced);
-    setCustomize(!isCustomize);
-  };
-
-  const onRelationsClick = (): void => {
-    setIsSingle(!isSingle);
-    setIsMarried(!isMarried);
   };
 
   const onSubmit = (values: any): void => {
