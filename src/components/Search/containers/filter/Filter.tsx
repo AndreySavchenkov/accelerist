@@ -9,6 +9,7 @@ import { marksAge, primaryIndustryData, revenueMarks } from './data/data';
 
 import { AutocompleteField } from 'components';
 import { ToggleContainer, ToggleItem } from 'components/Login/containers/main/MainForm';
+import { useGenderToggle } from 'hooks/useGenderToggle';
 
 export const Filter: FC = () => {
   const [isAdvanced, setAdvanced] = useState(true);
@@ -16,10 +17,6 @@ export const Filter: FC = () => {
 
   const [isSingle, setIsSingle] = useState(true);
   const [isMarried, setIsMarried] = useState(false);
-
-  const [isMale, setIsMale] = useState(true);
-  const [isFemale, setIsFemale] = useState(false);
-  const [isBoth, setIsBoth] = useState(false);
 
   const [industry, setIndustry] = useState();
   const [location, setLocation] = useState();
@@ -33,34 +30,7 @@ export const Filter: FC = () => {
   const [age, setAge] = React.useState<number[]>([30, 45]);
   const [value, setValue] = React.useState<number[]>([10000000, 75000000]);
 
-  const onGenderClick = (name: string): void => {
-    if (name === 'male') {
-      setIsMale(true);
-      setIsFemale(false);
-      setIsBoth(false);
-    }
-    if (name === 'female') {
-      setIsMale(false);
-      setIsFemale(true);
-      setIsBoth(false);
-    }
-    if (name === 'both') {
-      setIsMale(false);
-      setIsFemale(false);
-      setIsBoth(true);
-    }
-  };
-
-  const showGenderResult = (): string => {
-    if (isMale) {
-      return 'male';
-    }
-    if (isFemale) {
-      return 'female';
-    }
-
-    return 'both';
-  };
+  const { isMale, isFemale, isBoth, onGenderClick, showGenderResult } = useGenderToggle();
 
   const onRevenueChange = (event: Event, newValue: number | number[]): void => {
     setValue(newValue as number[]);
