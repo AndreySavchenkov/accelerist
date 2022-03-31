@@ -22,3 +22,4 @@ export const getFavoriteItemCount = (state: RootStateT): number =>
 export const getSuccessful = (state: RootStateT): boolean =>
   state.notifications.successful;
 export const getError = (state: RootStateT): boolean => state.notifications.error;
+export const getPreloader = (state: RootStateT): boolean => state.notifications.preload;

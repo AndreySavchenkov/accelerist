@@ -26,6 +26,7 @@ export {
   LittleCard,
   HighPanel,
   Pagination,
+  Preloader,
 } from './general';
 
 export {

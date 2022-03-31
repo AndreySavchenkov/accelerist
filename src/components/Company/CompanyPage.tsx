@@ -4,9 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Header, ProfilePanel, Company, CompanyDescription, AsideMenu } from 'components';
+import {
+  Header,
+  ProfilePanel,
+  Company,
+  CompanyDescription,
+  AsideMenu,
+  Preloader,
+} from 'components';
 import { getCompanyByIdAction } from 'redux/companies/companiesSaga';
-import { getCompany } from 'redux/selectors/selectors';
+import { getCompany, getPreloader } from 'redux/selectors/selectors';
 
 const Box = styled.div`
   display: flex;
@@ -46,6 +53,7 @@ export const CompanyPage: FC = memo(() => {
   const { id } = useParams();
 
   const company = useSelector(getCompany);
+  const isPreload = useSelector(getPreloader);
 
   useEffect(() => {
     id && dispatch(getCompanyByIdAction(id));
@@ -57,7 +65,9 @@ export const CompanyPage: FC = memo(() => {
       <ProfilePanel />
       <Container>
         <InnerContainer>
-          {company ? (
+          {isPreload ? (
+            <Preloader />
+          ) : (
             <ProfileContainer>
               <Company
                 name={company.name}
@@ -71,8 +81,6 @@ export const CompanyPage: FC = memo(() => {
                 <AsideMenu />
               </Box>
             </ProfileContainer>
-          ) : (
-            '**********************Wait Please**********************'
           )}
         </InnerContainer>
       </Container>

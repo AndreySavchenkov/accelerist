@@ -11,10 +11,15 @@ import {
   LeftArrowIcon,
   RightArrowIcon,
 } from 'assets/svg';
-import { Card, Pagination } from 'components';
+import { Card, Pagination, Preloader } from 'components';
 import { ONE } from 'constance';
 import { getCompaniesAction } from 'redux/companies/companiesSaga';
-import { getCompanies, getItemCount, getTotalItems } from 'redux/selectors/selectors';
+import {
+  getCompanies,
+  getItemCount,
+  getPreloader,
+  getTotalItems,
+} from 'redux/selectors/selectors';
 
 export let instance: any = {};
 
@@ -24,6 +29,7 @@ export const SearchFoundPanel: FC = () => {
   const cards = useSelector(getCompanies);
   const totalItems = useSelector(getTotalItems);
   const itemCount = useSelector(getItemCount);
+  const isPreload = useSelector(getPreloader);
 
   const dispatch = useDispatch();
 
@@ -81,9 +87,7 @@ export const SearchFoundPanel: FC = () => {
         />
       </SettingsPanel>
 
-      <Cards>
-        <Suspense fallback={<h1>Loading Companies..</h1>}>{cardsList}</Suspense>
-      </Cards>
+      <Cards>{isPreload ? <Preloader /> : cardsList}</Cards>
 
       <MobileNavigation>
         <LeftArrow onClick={onLeftArrowClick}>

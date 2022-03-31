@@ -15,6 +15,7 @@ import {
   PasswordNew,
   Filter,
   SearchFoundPanel,
+  Preloader,
 } from 'components';
 
 export const DashboardPage = React.lazy(() =>
@@ -47,7 +48,7 @@ const App: FC = () => {
           <Route
             path="/dashboard"
             element={
-              <Suspense fallback={<h1>Loading........</h1>}>
+              <Suspense fallback={<Preloader />}>
                 <DashboardPage />
               </Suspense>
             }
@@ -55,7 +56,7 @@ const App: FC = () => {
           <Route
             path="/favorites"
             element={
-              <Suspense fallback={<h1>Loading........</h1>}>
+              <Suspense fallback={<Preloader />}>
                 <FavoritesPage />
               </Suspense>
             }
@@ -63,7 +64,7 @@ const App: FC = () => {
           <Route
             path="/prospects"
             element={
-              <Suspense fallback={<h1>Loading........</h1>}>
+              <Suspense fallback={<Preloader />}>
                 <ProspectsPage />
               </Suspense>
             }
@@ -71,7 +72,7 @@ const App: FC = () => {
           <Route
             path="/prospects/prospects-list"
             element={
-              <Suspense fallback={<h1>Loading........</h1>}>
+              <Suspense fallback={<Preloader />}>
                 <ProspectsListPage />
               </Suspense>
             }
@@ -79,7 +80,7 @@ const App: FC = () => {
           <Route
             path=":id"
             element={
-              <Suspense fallback={<h1>Loading........</h1>}>
+              <Suspense fallback={<Preloader />}>
                 <CompanyPage />
               </Suspense>
             }

@@ -9,3 +9,4 @@ export { LinkToLogin } from './LinkToLogin';
 export { LinkToSupport } from './LinkToSupport';
 export { LittleCard } from './LittleCard';
 export { Pagination } from './Pagination';
+export { Preloader } from './Preloader';

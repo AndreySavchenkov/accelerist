@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { Card, HighPanel, Header, Pagination } from 'components';
+import { Card, HighPanel, Header, Pagination, Preloader } from 'components';
 import { MAX_CARD_ON_PAGE, ONE } from 'constance';
 import { getFavoriteCompaniesAction } from 'redux/companies/companiesSaga';
 import {
@@ -11,6 +11,7 @@ import {
   getFavoriteItemCount,
   getFavoriteTotalItems,
   getFavoriteTotalPages,
+  getPreloader,
 } from 'redux/selectors/selectors';
 
 export const FavoritesPage: FC = () => {
@@ -21,6 +22,7 @@ export const FavoritesPage: FC = () => {
   const totalPage = useSelector(getFavoriteTotalPages);
   const itemCount = useSelector(getFavoriteItemCount);
   const cards = useSelector(getFavoriteCompanies);
+  const isPreload = useSelector(getPreloader);
 
   const dispatch = useDispatch();
 
@@ -70,7 +72,7 @@ export const FavoritesPage: FC = () => {
                 />
               </div>
             </SettingsContainer>
-            <Cards>{cardsList}</Cards>
+            <Cards>{isPreload ? <Preloader /> : cardsList}</Cards>
           </DashboardContainer>
         </InnerContainer>
       </Container>
