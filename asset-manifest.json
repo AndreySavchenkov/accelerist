@@ -1,9 +1,10 @@
 {
   "files": {
     "main.css": "/accelerist/static/css/main.073c9b0a.css",
-    "main.js": "/accelerist/static/js/main.64786a3f.js",
+    "main.js": "/accelerist/static/js/main.366f4953.js",
     "static/js/787.e0fa5844.chunk.js": "/accelerist/static/js/787.e0fa5844.chunk.js",
     "static/media/loginBackground.jpg": "/accelerist/static/media/loginBackground.ac31fe3937c64e7674f4.jpg",
+    "static/media/preloader.gif": "/accelerist/static/media/preloader.14cef69641ed7a7d5a5e.gif",
     "static/media/navigator1.png": "/accelerist/static/media/navigator1.e4cb910aaf5278d50c84.png",
     "static/media/navigator2.png": "/accelerist/static/media/navigator2.0b68956eb7831cfc2d16.png",
     "static/media/imgScoop.png": "/accelerist/static/media/imgScoop.864d1d88f94878301138.png",
@@ -14,11 +15,11 @@
     "static/media/news6.png": "/accelerist/static/media/news6.f85b6ce8aee2c876ccf4.png",
     "index.html": "/accelerist/index.html",
     "main.073c9b0a.css.map": "/accelerist/static/css/main.073c9b0a.css.map",
-    "main.64786a3f.js.map": "/accelerist/static/js/main.64786a3f.js.map",
+    "main.366f4953.js.map": "/accelerist/static/js/main.366f4953.js.map",
     "787.e0fa5844.chunk.js.map": "/accelerist/static/js/787.e0fa5844.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.64786a3f.js"
+    "static/js/main.366f4953.js"
   ]
 }
