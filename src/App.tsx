@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Suspense } from 'react';
 
 import './App.css';
 import { useSelector } from 'react-redux';
@@ -14,13 +14,24 @@ import {
   PasswordResend,
   PasswordNew,
   Filter,
-  CompanyPage,
-  DashboardPage,
-  FavoritesPage,
-  ProspectsPage,
-  ProspectsListPage,
   SearchFoundPanel,
 } from 'components';
+
+export const DashboardPage = React.lazy(() =>
+  import('components').then(x => ({ default: x.DashboardPage })),
+);
+export const FavoritesPage = React.lazy(() =>
+  import('components').then(x => ({ default: x.FavoritesPage })),
+);
+export const ProspectsPage = React.lazy(() =>
+  import('components').then(x => ({ default: x.ProspectsPage })),
+);
+export const ProspectsListPage = React.lazy(() =>
+  import('components').then(x => ({ default: x.ProspectsListPage })),
+);
+export const CompanyPage = React.lazy(() =>
+  import('components').then(x => ({ default: x.CompanyPage })),
+);
 
 const App: FC = () => {
   const accessToken = useSelector((state: RootStateT) => state.login.accessToken);
@@ -33,11 +44,46 @@ const App: FC = () => {
             <Route index element={<SearchFoundPanel />} />
             <Route path="filter" element={<Filter />} />
           </Route>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/prospects" element={<ProspectsPage />} />
-          <Route path="/prospects/prospects-list" element={<ProspectsListPage />} />
-          <Route path=":id" element={<CompanyPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Suspense fallback={<h1>Loading........</h1>}>
+                <DashboardPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Suspense fallback={<h1>Loading........</h1>}>
+                <FavoritesPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/prospects"
+            element={
+              <Suspense fallback={<h1>Loading........</h1>}>
+                <ProspectsPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/prospects/prospects-list"
+            element={
+              <Suspense fallback={<h1>Loading........</h1>}>
+                <ProspectsListPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path=":id"
+            element={
+              <Suspense fallback={<h1>Loading........</h1>}>
+                <CompanyPage />
+              </Suspense>
+            }
+          />
         </Routes>
       ) : (
         <Routes>

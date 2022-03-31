@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, Suspense } from 'react';
 
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,7 +34,7 @@ export const SearchFoundPanel: FC = () => {
       headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
     });
     dispatch(getCompaniesAction(localPage));
-  }, [dispatch, localPage]);
+  }, []);
 
   const onRightArrowClick = (): void => {
     setLocalPage(localPage + ONE);
@@ -80,7 +80,11 @@ export const SearchFoundPanel: FC = () => {
           onRightArrowClick={onRightArrowClick}
         />
       </SettingsPanel>
-      <Cards>{cardsList}</Cards>
+
+      <Cards>
+        <Suspense fallback={<h1>Loading Companies..</h1>}>{cardsList}</Suspense>
+      </Cards>
+
       <MobileNavigation>
         <LeftArrow onClick={onLeftArrowClick}>
           <LeftArrowIcon />
